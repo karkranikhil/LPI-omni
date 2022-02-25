@@ -1,0 +1,139 @@
+<template>
+    <div class="mainWraper homePage">
+
+
+        <div class="content slds-wrap slds-grid ">
+
+            <div class="pageTitle slds-col slds-size_12-of-12">
+
+                <h3>Dashboard</h3>
+                <p>welcome to the Licensing permitting & Inspections</p>
+            </div>
+        </div>
+
+        <div class="content slds-wrap  slds-grid ">
+
+            <div class=" slds-col slds-size_3-of-12 statusDetails">
+                <div class="box slds-wrap slds-grid slds-grid_align-center approvedData">
+                    <div class=" slds-col slds-size_8-of-12 ">
+                        <strong>Active</strong>
+                        <p> Licenses </p>
+                        <h2>10</h2>
+                    </div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={licensing} /></div>
+
+                </div>
+            </div>
+
+            <div class=" slds-col slds-size_3-of-12 statusDetails">
+                <div class="box slds-wrap slds-grid slds-grid_align-center submittedData">
+                    <div class=" slds-col slds-size_8-of-12 ">
+                        <strong>Active</strong>
+                        <p> Vehicles</p>
+                        <h2>10</h2>
+                    </div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={vehicle} /></div>
+
+                </div>
+            </div>
+
+            <div class=" slds-col slds-size_3-of-12 statusDetails">
+                <div class="box slds-wrap slds-grid slds-grid_align-center draftData">
+                    <div class=" slds-col slds-size_8-of-12 ">
+                        <strong>Pending</strong>
+                        <p> Licenses Renewal</p>
+                        <h2>3</h2>
+                    </div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={renewal} /></div>
+
+                </div>
+            </div>
+
+
+            <div class=" slds-col slds-size_3-of-12 statusDetails">
+                <div class="box slds-wrap slds-grid slds-grid_align-center expiredData">
+                    <div class=" slds-col slds-size_8-of-12 ">
+                        <strong>Expiring</strong>
+                        <p> Day's</p>
+                        <h2>10</h2>
+                    </div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={date} /></div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="divider"></div>
+
+        <div class="content slds-wrap slds-grid ">
+            <div class="pageTitle slds-col slds-size_12-of-12">
+                <h3>Active Licenses</h3>
+            </div>
+            <div class=" slds-col slds-size_12-of-12 tableData">
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th>Email Id</th>
+                        <th>Type</th>
+                        <th>TLC Number</th>
+                        <th>Expiration Date</th>
+                        <!-- <th>SSN Number</th> -->
+                        <th>Status</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <template for:each={data} for:item="acc">
+                            <tr key={acc.Id}>
+                                <td>{acc.Name}</td>
+                                <td>{acc.Email}</td>
+                                <td>{acc.Type}</td>
+                                <td>{acc.tlcNumber}</td>
+                                <td>{acc.licenseDate}</td>
+                                <td>{acc.status}</td>
+                                <td>
+                                    <a href="">
+                                        Edit
+                                    </a>
+                                    <!-- <template if:true={acc.Renew}> -->
+                                    <a href="https://mtxlpi.force.com/tlcPortal/s/license-application">
+                                        | Renew
+                                    </a>
+                                    <!-- </template> -->
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="divider"></div>
+            <div class="pageTitle slds-col slds-size_12-of-12">
+                <h3>Applications</h3>
+            </div>
+
+            <div class=" slds-col slds-size_12-of-12 tableData">
+                <table>
+                    <thead>
+                        <th>Number</th>
+                        <th>Application Type</th>
+                        <th>Create Date</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        <template for:each={appData} for:item="ad">
+                            <tr key={appData.Id}>
+                                <td>{ad.Name}</td>
+                                <td>{ad.ApplicationType}</td>
+                                <td>{ad.CreatedDate}</td>
+                                <td>{ad.Status}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <c-b-c-d-boards-english></c-b-c-d-boards-english> -->
+        <div class="divider"></div>
+        <!-- <c-lpi-payment></c-lpi-payment> -->
+        <!-- <c-qauick-links></c-qauick-links> -->
+    </div>
+</template>

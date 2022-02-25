@@ -1,0 +1,3 @@
+let styleDefinition =
+      {"state0element0block_element0block_element0":[{"conditions":"default","styleObject":{"class":"slds-col  condition-element slds-text-align_left slds-p-left_xx-small slds-p-top_xxx-small attestation_checkbox-size slds-large-size_1-of-12 slds-medium-size_1-of-12 slds-small-size_1-of-12 slds-size_1-of-12  ","style":"     : #ccc 1px solid; \n         ","styleProperties":{}}}]};
+  export default styleDefinition

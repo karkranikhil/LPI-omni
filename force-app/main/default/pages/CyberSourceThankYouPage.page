@@ -1,0 +1,104 @@
+<!--
+@description       : 
+@author            : Wasef Mohiuddin
+@group             : 
+@last modified on  : 07-29-2021
+@last modified by  : Wasef Mohiuddin
+Modifications Log 
+Ver   Date         Author            Modification
+1.0   06-16-2021   Wasef Mohiuddin   Initial Version
+-->
+<apex:page controller="CyberSourceThankYouPageController" showHeader="false" lightningStylesheets="true" action="{!doInit}">
+    
+    <apex:slds />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        .main-container {
+        text-align: center;
+        max-width: 639px !important;
+        margin: 4em auto;
+        }
+        p {
+        color: #333;
+        font-size: 16px;
+        }
+        .green_text {
+        color:#2E844A;
+        font-size: 22px;
+        font-weight: bold;
+        }
+        .red_text {
+        color: red;
+        }
+    </style>
+    <div class="main-container slds-scope">
+        <apex:pageMessages />
+        <apex:outputPanel rendered="{!paymentResponse.decision == 'ACCEPT'}">
+            <apex:outputPanel rendered="{!processCompleted}">
+                <h1 class="success_msg">
+                    <p class="green_text">Congratulations!</p>
+                    <p>Your payment has been processed successfully.</p>
+                    <p>This window will be closed automatically in 5 seconds.</p>
+                </h1>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!!processCompleted}">
+                <section role="alertdialog" tabindex="0" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt" style="position: relative !important; transition: none !important; outline: none !important;" aria-modal="true">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header slds-theme_error slds-theme_alert-texture">
+                            <h2 class="slds-text-heading_medium" id="prompt-heading-id">Error</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium slds-text-align_left" id="prompt-message-wrapper">
+                            <apex:outputText value="{!message}" escape="false"></apex:outputText>
+                        </div>
+                    </div>
+                </section>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!paymentResponse.decision != 'ACCEPT' && paymentResponse.decision != 'CANCEL'}">
+            <section role="alertdialog" tabindex="0" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt" style="position: relative; transition: none !important; outline: none !important;" aria-modal="true">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header slds-theme_error slds-theme_alert-texture">
+                        <h2 class="slds-text-heading_medium" id="prompt-heading-id">Error</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium slds-text-align_left" id="prompt-message-wrapper">
+                        <apex:outputText value="{!message}" escape="false"></apex:outputText>
+                    </div>
+                </div>
+            </section>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!paymentResponse.decision == 'CANCEL'}">
+            <h5> 
+                <p class="red_text">Transaction Cancelled!</p>
+                <p>This window will be closed automatically in 5 seconds.</p>
+            </h5>
+        </apex:outputPanel>
+    </div>
+    <script type="text/javascript">
+    var response = JSON.parse('{!cybersourceResponse}');
+    var reloadWindowCheck = {!reloadWindowCheck};
+    var thankYouFlowType = '{!thankYouFlowType}';
+    var additionalThankYouParams = '{!additionalThankYouParams}';
+    
+    window.postMessage('{!cybersourceResponse}', window.location);
+    
+    if(response.decision == 'ACCEPT' || response.decision == 'CANCEL'){
+        setTimeout("window.close()", 5000);
+        
+        if(response.decision != 'CANCEL' && reloadWindowCheck){
+            if(thankYouFlowType){
+                if(additionalThankYouParams){
+                    //window.opener.location.href = '/bcd/s/confirmation?thankYouFlowType='+thankYouFlowType+'&additionalThankYouParams='+additionalThankYouParams;
+                    window.opener.location.href = '/tlcPortal/s/confirmation?thankYouFlowType='+thankYouFlowType+'&additionalThankYouParams='+additionalThankYouParams;
+                } else {
+                    //window.opener.location.href = '/bcd/s/confirmation?thankYouFlowType='+thankYouFlowType;
+                    window.opener.location.href = '/tlcPortal/s/confirmation?thankYouFlowType='+thankYouFlowType;
+                }
+            } else {
+                //window.opener.location.href = '/bcd/s/';
+                window.opener.location.href = '/tlcPortal/s/';
+            }
+        }
+    }
+    </script>
+</apex:page>

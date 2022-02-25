@@ -1,0 +1,431 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <vlocity_ins-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </vlocity_ins-toast>
+</div>
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-m-around_none form_view" style="     : #ccc 1px solid; 
+         ">
+          <div data-style-id="state0element0" class="slds-col    form_view slds-size_12-of-12  " data-rindex={rindex} style="      
+         position: relative;" >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Business Controlling Person"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-p-around_xx-small  slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-62","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-62","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col   slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element0block_element0_child"   record={record}  card={card}  field-name="\{isApplicantBusinessControllingReadOnly}"  label="Is the applicant a controlling person of this cannabis business?"  placeholder=""  styles='\{"label":{"fontSize":"14px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col   slds-p-around_xx-small  slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-small-size_2-of-12 slds-size_2-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element1block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element1block_element0_child"   record={record}  card={card}  field-name="\{businessPronounReadOnly}"  label="Pronoun"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element2" class="slds-col   slds-p-around_xx-small  slds-large-size_5-of-12 slds-medium-size_5-of-12 slds-small-size_5-of-12 slds-size_5-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element2block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element2block_element0_child"   record={record}  card={card}  field-name="\{businessFirstNameReadOnly}"  label="First Name"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element3" class="slds-col   slds-p-around_xx-small  slds-large-size_5-of-12 slds-medium-size_5-of-12 slds-small-size_5-of-12 slds-size_5-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element3block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element3block_element0_child"   record={record}  card={card}  field-name="\{businessLastNameReadOnly}"  label="Last Name"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element4block_element0_child"   record={record}  card={card}  field-name="\{businessPhoneNumberReadOnly}"  format="M/D/YYYY"  label="Phone Number"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element5" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element5_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element5block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element5block_element0_child"   record={record}  card={card}  field-name="\{businessEmailAddressReadOnly}"  format="MM/DD/YYYY"  label="Email Address"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element6" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element6_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element6block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element6block_element0_child"   record={record}  card={card}  field-name="\{DOBReadOnly}"  label="Date of Birth"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7" class="slds-col   slds-p-around_xx-small  slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Mailing Address"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element0block_element0_child"   record={record}  card={card}  field-name="\{MailingAddress1ReadOnly}"  label="Address 1"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element1" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element1block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element1block_element0_child"   record={record}  card={card}  field-name="\{MailingAddress2ReadOnly}"  label="Address 2"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element2" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element2block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element2block_element0_child"   record={record}  card={card}  field-name="\{MailingCityReadOnly}"  label="City"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element3" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element3block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element3block_element0_child"   record={record}  card={card}  field-name="\{MailingStateReadOnly}"  label="State"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element4" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element4block_element0_child"   record={record}  card={card}  field-name="\{MailingZipCodeReadOnly}"  label="Zip Code"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element8" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element8_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element8block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element8block_element0_child"   record={record}  card={card}  field-name="\{isNMResidentReadOnly}"  label="Are you a New Mexico resident?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element9" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <vlocity_ins-block data-style-id="state0element0block_element9_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element10" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element10_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element10block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element10block_element0_child"   record={record}  card={card}  field-name="\{businessEthnicityReadOnly}"  label="Ethnicity"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element11" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"businessEthnicityReadOnly","id":"state-new-condition-3","operator":"==","type":"custom","value":"kejscsknckbscjbskcbkscbjhsbcAnother Hispanic, Latino or Spanish Origin"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element11_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"businessEthnicityReadOnly","id":"state-new-condition-3","operator":"==","type":"custom","value":"kejscsknckbscjbskcbkscbjhsbcAnother Hispanic, Latino or Spanish Origin"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element11block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element11block_element0_child"   record={record}  card={card}  field-name="\{businessEthnicityOtherReadOnly}"  label="Other Ethnicity"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element12" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element12_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element12block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element12block_element0_child"   record={record}  card={card}  field-name="\{RaceReadOnly}"  label="Race"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element13" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"RaceReadOnly","id":"state-new-condition-89","operator":"==","type":"custom","value":"jsjbsjxbhsbxhjbshjbsx"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element13_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"RaceReadOnly","id":"state-new-condition-89","operator":"==","type":"custom","value":"jsjbsjxbhsbxhjbshjbsx"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element13block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element13block_element0_child"   record={record}  card={card}  field-name="\{OwnerRaceOtherReadOnly}"  label="Specify Race"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element14" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element14_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element14block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element14block_element0_child"   record={record}  card={card}  field-name="\{GenderReadOnly}"  label="Gender"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element15" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <vlocity_ins-block data-style-id="state0element0block_element15_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element16" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element16_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element16block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element16block_element0_child"   record={record}  card={card}  field-name="\{BCPRadioLegalNameChangeReadOnly}"  label="Has this person ever legally changed their name or used a different name for employment or school?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element17" class="slds-col    slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"BCPRadioLegalNameChangeReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element17_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"BCPRadioLegalNameChangeReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element17block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element17block_element0_child"   record={record}  card={card}  field-name="\{PreviousNamesReadOnly}"  label="Please provide all the previous names"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element18" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element18_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element18block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 13px !important;
+color: #555 !important;
+    font-weight: normal;" ><vlocity_ins-output-field data-style-id="state0element0block_element18block_element0_child"   record={record}  card={card}  merge-field="%3Cp%3E%3Cspan%20style=%22font-weight:%20400;%20font-size:%2010pt;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EHas%20this%20partner%20of%20your%20limited%20partnership,%20this%20member%20of%20your%20limited%20liability%20company,%20this%20director,%20officer,%20or%20trustee%20of%20your%20corporation%20or%20trust,%20or%20this%20controlling%20person%20of%20the%20applicant%20been%20convicted%20of%20the%20following%20crimes:%3C/span%3E%3C/p%3E%0A%3Cul%3E%0A%3Cli%3E%3Cspan%20style=%22font-weight:%20400;%20font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EA%20felony%20conviction%20involving%20fraud,%20deceit,%20or%20embezzlement%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3E%3Cspan%20style=%22font-weight:%20400;%22%3EA%20felony%20conviction%20for%20hiring,%20employing,%20or%20otherwise%20using%20a%20person%20younger%20than%20eighteen%20years%20of%20age%20to:%3C/span%3E%3C/span%3E%0A%3Cul%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EPrepare%20for%20sale,%20transport%20or%20carry%20a%20controlled%20substance;%20or,%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3ESell,%20give%20away%20or%20offer%20to%20sell%20a%20controlled%20substance%20to%20any%20person%3C/span%3E%3C/li%3E%0A%3C/ul%3E%0A%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EA%20felony%20offense%20for%20the%20possession,%20use,%20manufacture,%20distribution%20or%20dispensing%20or%20possession%20with%20the%20intent%20to%20manufacture,%20distribute%20or%20dispense%20a%20controlled%20substance,%20which%20no%20longer%20includes%20cannabis.%3C/span%3E%3C/li%3E%0A%3C/ul%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div data-style-id="state0element0block_element18block_element1" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element18block_element1_child"   record={record}  card={card}  field-name="\{BCPCriminalRadioReadOnly}"  label=""  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element19" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"BCPCriminalRadioReadOnly","id":"state-new-condition-2","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element19_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"BCPCriminalRadioReadOnly","id":"state-new-condition-2","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element19block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element19block_element0_child"   record={record}  card={card}  field-name="\{IndividualCriminalConvectionsReadOnly}"  label="If you answered yes to the previous question, please provide an explanation that includes: 1) the date of conviction; 2) dates of incarceration, probation and parole; 3) a description of the crime/offense; and, 4) an explanation as to your rehabilitation since the conviction."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element20" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-1","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element20_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-1","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element20block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element20block_element0_child"   record={record}  card={card}  field-name="\{soleControllingReadOnly}"  label="Is the applicant the sole controlling person of the cannabis business?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element21" class="slds-col   slds-p-around_small  slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element21_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-m-around_none form_view" style="     : #ccc 1px solid; 
+         ">
+          <div data-style-id="state0element0" class="slds-col    form_view slds-size_12-of-12  " data-rindex={rindex} style="      
+         position: relative;" >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Business Controlling Person"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-p-around_xx-small  slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-62","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-62","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col   slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element0block_element0_child"   record={record}  card={card}  field-name="\{isApplicantBusinessControllingReadOnly}"  label="Is the applicant a controlling person of this cannabis business?"  placeholder=""  styles='\{"label":{"fontSize":"14px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col   slds-p-around_xx-small  slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-small-size_2-of-12 slds-size_2-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element1block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element1block_element0_child"   record={record}  card={card}  field-name="\{businessPronounReadOnly}"  label="Pronoun"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element2" class="slds-col   slds-p-around_xx-small  slds-large-size_5-of-12 slds-medium-size_5-of-12 slds-small-size_5-of-12 slds-size_5-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element2block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element2block_element0_child"   record={record}  card={card}  field-name="\{businessFirstNameReadOnly}"  label="First Name"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element3" class="slds-col   slds-p-around_xx-small  slds-large-size_5-of-12 slds-medium-size_5-of-12 slds-small-size_5-of-12 slds-size_5-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element3block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element3block_element0_child"   record={record}  card={card}  field-name="\{businessLastNameReadOnly}"  label="Last Name"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element4block_element0_child"   record={record}  card={card}  field-name="\{businessPhoneNumberReadOnly}"  format="M/D/YYYY"  label="Phone Number"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element5" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element5_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element5block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element5block_element0_child"   record={record}  card={card}  field-name="\{businessEmailAddressReadOnly}"  format="MM/DD/YYYY"  label="Email Address"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element6" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element6_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element6block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element6block_element0_child"   record={record}  card={card}  field-name="\{DOBReadOnly}"  label="Date of Birth"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7" class="slds-col   slds-p-around_xx-small  slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Mailing Address"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element0block_element0_child"   record={record}  card={card}  field-name="\{MailingAddress1ReadOnly}"  label="Address 1"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element1" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element1block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element1block_element0_child"   record={record}  card={card}  field-name="\{MailingAddress2ReadOnly}"  label="Address 2"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element2" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element2block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element2block_element0_child"   record={record}  card={card}  field-name="\{MailingCityReadOnly}"  label="City"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element3" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element3block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element3block_element0_child"   record={record}  card={card}  field-name="\{MailingStateReadOnly}"  label="State"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7block_element4" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element7block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element4block_element0_child"   record={record}  card={card}  field-name="\{MailingZipCodeReadOnly}"  label="Zip Code"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element8" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element8_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element8block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element8block_element0_child"   record={record}  card={card}  field-name="\{isNMResidentReadOnly}"  label="Are you a New Mexico resident?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element9" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <vlocity_ins-block data-style-id="state0element0block_element9_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element10" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element10_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element10block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element10block_element0_child"   record={record}  card={card}  field-name="\{businessEthnicityReadOnly}"  label="Ethnicity"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element11" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"businessEthnicityReadOnly","id":"state-new-condition-3","operator":"==","type":"custom","value":"kejscsknckbscjbskcbkscbjhsbcAnother Hispanic, Latino or Spanish Origin"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element11_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"businessEthnicityReadOnly","id":"state-new-condition-3","operator":"==","type":"custom","value":"kejscsknckbscjbskcbkscbjhsbcAnother Hispanic, Latino or Spanish Origin"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element11block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element11block_element0_child"   record={record}  card={card}  field-name="\{businessEthnicityOtherReadOnly}"  label="Other Ethnicity"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element12" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element12_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element12block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element12block_element0_child"   record={record}  card={card}  field-name="\{RaceReadOnly}"  label="Race"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element13" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"RaceReadOnly","id":"state-new-condition-89","operator":"==","type":"custom","value":"jsjbsjxbhsbxhjbshjbsx"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element13_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"RaceReadOnly","id":"state-new-condition-89","operator":"==","type":"custom","value":"jsjbsjxbhsbxhjbshjbsx"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element13block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element13block_element0_child"   record={record}  card={card}  field-name="\{OwnerRaceOtherReadOnly}"  label="Specify Race"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element14" class="slds-col   slds-p-around_xx-small  slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element14_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element14block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element14block_element0_child"   record={record}  card={card}  field-name="\{GenderReadOnly}"  label="Gender"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element15" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <vlocity_ins-block data-style-id="state0element0block_element15_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element16" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element16_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element16block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element16block_element0_child"   record={record}  card={card}  field-name="\{BCPRadioLegalNameChangeReadOnly}"  label="Has this person ever legally changed their name or used a different name for employment or school?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element17" class="slds-col    slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"BCPRadioLegalNameChangeReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element17_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"BCPRadioLegalNameChangeReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element17block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element17block_element0_child"   record={record}  card={card}  field-name="\{PreviousNamesReadOnly}"  label="Please provide all the previous names"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element18" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element18_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element18block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 13px !important;
+color: #555 !important;
+    font-weight: normal;" ><vlocity_ins-output-field data-style-id="state0element0block_element18block_element0_child"   record={record}  card={card}  merge-field="%3Cp%3E%3Cspan%20style=%22font-weight:%20400;%20font-size:%2010pt;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EHas%20this%20partner%20of%20your%20limited%20partnership,%20this%20member%20of%20your%20limited%20liability%20company,%20this%20director,%20officer,%20or%20trustee%20of%20your%20corporation%20or%20trust,%20or%20this%20controlling%20person%20of%20the%20applicant%20been%20convicted%20of%20the%20following%20crimes:%3C/span%3E%3C/p%3E%0A%3Cul%3E%0A%3Cli%3E%3Cspan%20style=%22font-weight:%20400;%20font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EA%20felony%20conviction%20involving%20fraud,%20deceit,%20or%20embezzlement%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3E%3Cspan%20style=%22font-weight:%20400;%22%3EA%20felony%20conviction%20for%20hiring,%20employing,%20or%20otherwise%20using%20a%20person%20younger%20than%20eighteen%20years%20of%20age%20to:%3C/span%3E%3C/span%3E%0A%3Cul%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EPrepare%20for%20sale,%20transport%20or%20carry%20a%20controlled%20substance;%20or,%3C/span%3E%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3ESell,%20give%20away%20or%20offer%20to%20sell%20a%20controlled%20substance%20to%20any%20person%3C/span%3E%3C/li%3E%0A%3C/ul%3E%0A%3C/li%3E%0A%3Cli%3E%3Cspan%20style=%22font-size:%2010pt;%20color:%20#555555;%20font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%22%3EA%20felony%20offense%20for%20the%20possession,%20use,%20manufacture,%20distribution%20or%20dispensing%20or%20possession%20with%20the%20intent%20to%20manufacture,%20distribute%20or%20dispense%20a%20controlled%20substance,%20which%20no%20longer%20includes%20cannabis.%3C/span%3E%3C/li%3E%0A%3C/ul%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div data-style-id="state0element0block_element18block_element1" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element18block_element1_child"   record={record}  card={card}  field-name="\{BCPCriminalRadioReadOnly}"  label=""  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element19" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"BCPCriminalRadioReadOnly","id":"state-new-condition-2","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element19_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"BCPCriminalRadioReadOnly","id":"state-new-condition-2","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element19block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element19block_element0_child"   record={record}  card={card}  field-name="\{IndividualCriminalConvectionsReadOnly}"  label="If you answered yes to the previous question, please provide an explanation that includes: 1) the date of conviction; 2) dates of incarceration, probation and parole; 3) a description of the crime/offense; and, 4) an explanation as to your rehabilitation since the conviction."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element20" class="slds-col   slds-p-around_xx-small  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-1","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element20_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"isApplicantBusinessControllingReadOnly","id":"state-new-condition-1","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element20block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element20block_element0_child"   record={record}  card={card}  field-name="\{soleControllingReadOnly}"  label="Is the applicant the sole controlling person of the cannabis business?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"14px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element21" class="slds-col   slds-p-around_small  slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element21_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

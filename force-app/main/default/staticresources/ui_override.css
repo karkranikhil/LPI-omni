@@ -1,0 +1,10 @@
+.omniscript-article {
+    border: none;
+}
+h3.slds-accordion__summary-heading .slds-truncate {
+    color: #e66e1e;
+}
+button.slds-button.slds-button_reset.slds-accordion__summary-action {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+}

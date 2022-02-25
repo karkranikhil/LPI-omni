@@ -1,0 +1,59 @@
+<apex:page readOnly="true" standardController="Settlement__c" renderAs="advanced_pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+    <html>
+        <head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+    td {
+padding:10px;
+}
+</style>
+</head>
+        <body>
+            <table >
+                <caption>You have two options:</caption>
+                <tr>
+                    <td colspan="3" style="background:rgb(163, 160, 160)"> <b>Accept this Settlement Offer</b>
+                    </td></tr>
+                <tr>
+                    
+                    <td rowspan="2" style="background:rgb(163, 160, 160)">1
+                    </td>
+                    <td>what?</td>
+                    <td> - Plead  Guilty to : 80-13(a)(3)(vii)- Comply With Traffic Laws<br/>
+                        - Agree to accept three points<br/>
+                        - This Violation will stay on your TLC record and will count towards the calculation of future TLC penalities<br/>
+                        - If you accept this settlement offer , you don't have to come to a hearing</td>
+                    
+                </tr>
+                <tr>
+                    <td> How?</td>
+                    <td><u>By Mail:</u><br/>
+                        - Sign the bottom of this letter and return it in the enclosed envelope by 24/02/2022<br/>
+                        <u>In Person:</u><br/>
+                        - Sign the bottom of this letter and being it with you to TLC Offices at 31-00 47" Avenue, 3 Floor, Long Island City,<br/></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3" style="background:rgb(163, 160, 160)"> <b>  Wait for the hearing infront of an OATH judge</b>
+                    </td></tr>
+                
+                <tr>
+                    <td rowspan="2" style="background:rgb(163, 160, 160)">2
+                    </td>
+                    <td>What?</td>
+                    <td>  -You have the right to a hearing in front of a judge. At the hearing you can tell the judge your side of the story and show evelence in your defee. You can bring an attorney or representative to the hearing or you can represent yourself.<br/>
+                        - if the judge decides you did not violate TLC rules you will not pay any fines<br/>
+                        - If the judge decides you did violate TLC rules you could receive the penalties listed under "Rule and Violation"<br/></td>
+                    
+                </tr>
+                <tr>
+                    <td> How?</td>
+                    <td>   -Wait for a summons to be mailed to you. The summons will list the hearing location, date and time where you will be able to defend yourself against the rule violation</td>
+                </tr>
+            </table>
+        </body>
+    </html>
+</apex:page>

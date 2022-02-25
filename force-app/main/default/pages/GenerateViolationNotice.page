@@ -1,0 +1,20 @@
+<apex:page readOnly="true" standardController="Case" renderAs="advanced_pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+	<html>
+        <body>
+            <div style="text-align:left;"><apex:outputText value="{0, DATE, dd'/'MM'/'yyyy}" ><apex:param value="{!TODAY()}" /></apex:outputText></div>
+            <div style="text-align:left;">{!Case.Name_of_Licensee__c}</div>
+            <div style="text-align:left;">{!Case.Account.PersonMailingStreet}, {!Case.Account.PersonMailingCity}, {!Case.Account.PersonMailingState}, {!Case.Account.PersonMailingPostalCode}</div>
+        	<div style="margin-top:20px;text-align:left;">{!Case.Account.FirstName},</div>
+            <p>
+                A complaint has been filed against your license {!Case.License_If_Known__c}. The complaint details are provided below.
+            </p>
+            <p>
+                <apex:outputText escape="false" value="{!Case.Description}"></apex:outputText>
+            </p>
+            <p>
+                Sincerely,<br/>
+                New Hampshire Office of Professional Licensure and Certification
+            </p>
+        </body>
+    </html>
+</apex:page>

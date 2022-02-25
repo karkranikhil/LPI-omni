@@ -1,0 +1,3 @@
+let styleDefinition =
+      {"state0element0":[{"conditions":"default","styleObject":{"class":"slds-col  condition-element slds-border_right slds-border_bottom slds-border_left slds-p-around_x-small mtx_table_tr slds-size_12-of-12  ","style":"background-color:#FFFFFF;     border-right: #dddddd 0px solid;border-bottom: #dddddd 0px solid;border-left: #dddddd 0px solid; \n         ","styleProperties":{}}}]};
+  export default styleDefinition

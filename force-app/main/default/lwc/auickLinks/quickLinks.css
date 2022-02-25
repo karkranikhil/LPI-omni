@@ -1,0 +1,55 @@
+@font-face{
+    font-family: 'Roboto', sans-serif;
+    src: url("@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Roboto:wght@100;300;400;500;700;900&display=swap')") format('TrueType');
+}
+
+.mainWraper{
+    font-family: 'Roboto', sans-serif;
+   
+}
+
+.content{
+    padding: 1rem 8rem!important;
+}
+
+
+
+.auickLinks{
+    justify-content: space-around;
+}
+
+
+.auickLinks .box{
+    background: #F9F9F9;
+    position: relative;
+    padding: 2% 14%;
+    max-height: 220px;
+    min-height: 220px;
+    border-radius: 12px;
+    margin: 5%;
+    word-break: break-all;
+}
+
+.auickLinks .box .shape{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #FFCC00;
+    border-radius: 100%;
+    top: -40px;
+    left:37%;
+}
+
+.auickLinks h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 30px 0px;
+    text-transform: uppercase;
+}
+
+.auickLinks a{
+    padding-right: 16px;
+    color:#3787FF;
+    display: inline-block;
+    margin: 2px 0px;
+}

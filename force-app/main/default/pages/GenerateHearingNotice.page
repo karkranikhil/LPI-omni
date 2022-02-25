@@ -1,0 +1,14 @@
+<apex:page readOnly="true" standardController="Case" renderAs="advanced_pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+	<html>
+        <body>
+            <div style="text-align:left;"><apex:outputText value="{0, DATE, dd'/'MM'/'yyyy}" ><apex:param value="{!TODAY()}" /></apex:outputText></div>
+            <div style="text-align:left;">{!Case.Name_of_Licensee__c}</div>
+            <div style="text-align:left;">{!Case.Account.PersonMailingStreet}, {!Case.Account.PersonMailingCity}, {!Case.Account.PersonMailingState}, {!Case.Account.PersonMailingPostalCode}</div>
+        	<div style="margin-top:20px;text-align:left;">Division of Licensing Services</div>
+            <div style="margin-top:15px;text-align:left;"><b>Notice of Hearing</b></div>
+            <p>
+                PLEASE TAKE NOTICE that the complaint in this proceeding contains allegations charging the respondent (s) with a violation of law. The allegations and violations of law contained in the attached complaint are deemed denied and the interposition of an answer is option. Under the provisions of the applicable law, a hearing on this complaint will be held: BEFORE: Administrative Law Judge, NAME: AT: New Hampshire Department of State Administrative Law Tribunal ADDRESS
+            </p>
+        </body>
+    </html>
+</apex:page>

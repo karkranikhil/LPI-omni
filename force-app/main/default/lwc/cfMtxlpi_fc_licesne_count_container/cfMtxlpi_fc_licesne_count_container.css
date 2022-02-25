@@ -1,0 +1,11 @@
+.mtx-home__card {
+    box-shadow: 2px 2px 20px 5px rgba(13, 60, 200, 0.05);
+}
+
+.mtx-home__icon-container {
+    display: flex;
+}
+
+.mtx-home__icon-container .slds-grid.slds-wrap {
+    align-items: center;
+}

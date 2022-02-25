@@ -1,0 +1,85 @@
+<template>
+    <header>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <div class="mainWraper">
+            <div class="content slds-wrap  slds-grid">
+                <div class="slds-col slds-size_2-of-12 slds-text-align_left">
+                    <img src={logo} onclick={navigateToHome} class="logo" />
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <template if:false={isGuest}>
+                        <nav>
+                            <a href="/tlcPortal/s/" class="active">Home </a>
+
+
+
+                            <span>
+                                <lightning-combobox name="license" label="" value={value} placeholder="License"
+                                    options={license} class="slds-text-align_left rightSpace" onchange={handleChange}>
+                                </lightning-combobox>
+                            </span>
+
+                            <!-- <span>
+                                <lightning-combobox name="progress" label="" value={value} placeholder="Summons"
+                                    options={summons} class="slds-text-align_left rightSpace" onchange={handleChange}>
+                                </lightning-combobox>
+                            </span> -->
+                            <span>
+                                <button class="summonsBtn" onclick={navigateToPage}>Summons & Settlements</button>
+                            </span>
+                            <span>
+                                <lightning-combobox name="progress" label="" value={value} placeholder="Complaints"
+                                    options={complaints} class="slds-text-align_left rightSpace"
+                                    onchange={handleChange}>
+                                </lightning-combobox>
+                            </span>
+
+
+                            <!-- 
+                            <a href="">License  <lightning-icon icon-name="utility:chevrondown" class="chevrondown"
+                                alternative-text="Approved"  ></lightning-icon></a>
+                            <a href="">Summons/Settlements<lightning-icon icon-name="utility:chevrondown" class="chevrondown"
+                                alternative-text="Approved"  ></lightning-icon></a>
+                            <a href="">Complaints <lightning-icon icon-name="utility:chevrondown" class="chevrondown"
+                                alternative-text="Approved"  ></lightning-icon></a> -->
+                            <a href={logoutLink}>Logout</a>
+                        </nav>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_4-of-12 slds-text-align_right userLogin">
+                    <span>
+                        <lightning-combobox name="progress" label="" value={value} placeholder="languages"
+                            options={options} class="slds-text-align_left languages" onchange={handleChange}>
+                        </lightning-combobox>
+                    </span>
+                    <!-- <span class="line"></span>  -->
+                    <!-- <span>
+                        <lightning-icon icon-name="utility:notification" class="notificationIcon"
+                            alternative-text="Approved" onclick={handleNotification} title="Approved"></lightning-icon>
+                    </span> -->
+                    <!-- <span class="line"></span>  -->
+                    <template if:false={isGuest}>
+                        <a href="" class="userName">{name}</a>
+                        <span class="dropdown">
+                            <span class="slds-avatar  profileImage">
+                                <img src={profileUrl} alt="profile picture">
+                            </span>
+                        </span>
+                    </template>
+                    <!-- <template if:true={isGuest}>
+                        <span class="line"></span>
+                        <span>
+                            <a href="/tlcPortal/s/login">Login</a>
+                        </span>
+                        <span class="line"></span>
+                        <span>
+                            <a href="/tlcPortal/s/register-page">Register</a>
+                        </span>
+                    </template> -->
+                </div>
+            </div>
+        </div>
+    </header>
+</template>

@@ -1,0 +1,9 @@
+html {
+    height: 100%;
+    background-color: #F7F9FD;
+}
+
+.mtx-home__welcome-contain {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px 5px rgba(13, 60, 200, 0.05);
+}

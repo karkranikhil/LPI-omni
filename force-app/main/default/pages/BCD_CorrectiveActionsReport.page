@@ -1,0 +1,152 @@
+<apex:page sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" showHeader="false" renderAs="pdf" Controller="BCD_CorrectiveActionReportController" action="{!saveAttachments}">
+    
+    <head> 
+        <style>
+            th, td, table {
+            border:1px solid black;
+            }
+            .tableClass {
+            border:0px;
+            }
+            .sideClass {
+            width:30%;
+            }
+            @page {
+            size: 8.3in 11.7in;
+            margin: 0mm;
+            border:0px solid #0080C8;
+            padding:1em;
+            }
+            .greenColor{
+            color:green;
+            font-weight:bold;
+            }
+            .redColor{
+            color:red;
+            font-weight:bold;
+            }
+        </style>
+    </head>
+    
+    <main>
+        <apex:pageBlock rendered="{!inspectionCompleted}">
+            <div style="padding-top:2em;padding-bottom:3em;">
+                <div style="text-align:center;font-weight:bold;font-size:.8em">
+                    STATE OF NEW MEXICO<br/>
+                    Regulation &amp; Licensing Department<br/>
+                    {!UPPER(inspection.License__r.RegulatoryAuthorizationType.IssuingDepartment.Name)}<br/>
+                    P.O. Box 25101 Santa Fe, NM 87505<br/>
+                    (505) 476-4622 (PHONE) • (505)476-4645 (FAX)
+                </div>
+                <div style="text-align:center;font-size:.8em">
+                    <div style="display:inline-block;float:left;width:30%;text-align:left;!important;">
+                        <b>Facility</b><br/>
+                        {!inspection.License__r.Trade_Name__c}<br/>
+                        {!infoWrapper.formattedAddress1}<br/>
+                        {!infoWrapper.formattedAddress2}
+                    </div>
+                    <div style="display:inline-block;padding-top:2em;">
+                        <img style="width:10em;" src="{!$Resource.NewMexicoSeal}" />
+                    </div>
+                    <div style="display:inline-block;width:10%">
+                    </div>
+                    <div style="display:inline-block;float:right;width:20%;text-align:left;!important;">
+                        <b>License</b><br/>	
+                        <b>License No:</b>{!inspection.License__r.Name}<br/>
+                        <b>Profession:</b>{!inspection.License__r.RegulatoryAuthorizationType.IssuingDepartment.Name}<br/>
+                        <b>License Type:</b>{!inspection.License__r.RegulatoryAuthorizationType.Name}<br/>
+                    </div>
+                </div>
+                <div>
+                    <div style="display:inline-block;width:30%"/>
+                    <div style="display:inline-block;text-align:left;padding-top:2em;width:40%">
+                        <table style="width:100%">
+                            <tr>
+                                <td><b>Inspection Date:</b></td>
+                                <td><apex:outputText value="{0,date,MM/dd/yyyy hh:mm:ss aa}"> <apex:param value="{!inspection.ActualVisitStartTime}"/></apex:outputText></td>
+                            </tr>
+                            <tr>
+                                <td><b>Result:</b></td>
+                                <td class="{!IF(inspection.Inspection_Result__c=='Pass','greenColor',IF(inspection.Inspection_Result__c=='Fail','redColor',''))}">{!inspection.Inspection_Result__c}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="display:inline-block;width:30%"/>
+                </div>
+                
+                <div style="text-align:left;padding-top:2em;">
+                    <table style="width:100%">
+                            <tr style="width:100%">
+                                <th style="width:25%">Violation Code</th>
+                                <th style="width:75%">Remarks</th> 
+                            </tr>
+                        </table>
+                    <apex:repeat value="{!regulatoryCodeViolationsList}" var="index">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="width:25%">{!index.itemCode}</td>
+                                <td style="width:75%">{!index.remarks}</td> 
+                            </tr>
+                        </table>
+                    </apex:repeat>
+                    <br/>
+                </div>
+                <div style="text-align:left;padding-top:1em;">
+                    <table style="width:80%;position:relative;left:10%;">
+                        <tr style="text-align:center;font-size:.8em"><td colspan="2"><b>Checklist Results</b></td></tr>
+                        <apex:repeat value="{!correctiveActionsList}" var="index">
+                            <tr style="background-color:#C0C0C0; font-size:.9em"><td colspan="2"><b><i>{!index.categoryName}</i></b></td></tr>
+                            <tr style="font-size:.8em">
+                                <th style="width:85%">Question</th>
+                                <th style="width:15%">Answer</th> 
+                            </tr>
+                            <apex:repeat value="{!index.checklistWrapperList}" var="innerIndex">
+                                <tr style="font-size:.8em">
+                                    <td>{!innerIndex.itemName}</td>
+                                    <td class="{!IF(innerIndex.result=='Compliant','greenColor',IF(innerIndex.result=='Non Compliant','redColor',''))}">{!IF(innerIndex.result=='Blank',innerIndex.textFieldResponse, innerIndex.result)}</td> 
+                                </tr>
+                            </apex:repeat>
+                        </apex:repeat>
+                    </table>
+                    <br/>
+                </div>
+                <div style="text-align:left;padding-top:15em;font-size:.8em">
+                    <b>Remarks:</b>{!inspection.StatusRemarks}
+                </div>
+                <div style="text-align:center;padding-top:.5em;font-weight:bold;font-size:.8em">
+                    THE UNDERSIGNED LICENSEE, DESIGNEE, OR OTHER AUTHORIZED REPRESENTATIVE OF THE LICENSEE ACKNOWLEDGES RECIEPT OF THIS INSPECTION REPORT, FAILURE TO CORRECT A CIOLATION MAY RESULT IN FURTHER DISCIPLINARY ACTION.
+                </div>
+                <div style="padding-top:5em;"></div>
+                <div style="width:90%;text-align:center;padding-left:5%;font-size:0.8em">
+                    <div style="display:inline-block;width:30%">
+                        <img src="/servlet/servlet.FileDownload?file={!infoWrapper.InspectorSignature}" width="80%" height="80%"/>
+                    </div>
+                    <div style="display:inline-block;width:30%">
+                        <apex:outputText value="{0,date,MM/dd/yyyy hh:mm:ss aa}"> <apex:param value="{!inspection.ActualVisitStartTime}"/></apex:outputText>
+                    </div>
+                    <div style="display:inline-block;width:30%">
+                        <img src="/servlet/servlet.FileDownload?file={!infoWrapper.LicenseeSignature}" width="80%" height="80%"/>
+                    </div>
+                    
+                    <div style="display:inline-block;width:30%">
+                        <hr/>
+                        Signature of Inspector
+                    </div>
+                    <div style="display:inline-block;width:30%">
+                        <hr style="width:70%"/>
+                        Date/Time
+                    </div>
+                    <div style="display:inline-block;width:30%">
+                        <hr/>
+                        Signature of Owner/Representative
+                    </div>
+                </div>
+            </div>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!!inspectionCompleted}">
+            <div style="margin-top:5em;text-align:center;font-size:1.5em;width:100%">
+                Please complete the inspection to view the report.
+            </div>
+        </apex:pageBlock>
+    </main>
+</apex:page>

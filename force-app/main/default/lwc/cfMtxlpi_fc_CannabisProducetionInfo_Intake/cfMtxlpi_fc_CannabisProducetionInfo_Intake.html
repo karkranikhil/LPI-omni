@@ -1,0 +1,271 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <vlocity_ins-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </vlocity_ins-toast>
+</div>
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-m-around_none form_view" style="     : #ccc 1px solid; 
+         ">
+          <div data-style-id="state0element0" class="slds-col    slds-p-vertical_large form_view slds-size_12-of-12  " data-rindex={rindex} style="      
+         position: relative;" >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Production Details"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element0block_element0_child"   record={record}  card={card}  field-name="\{haveBusinessLicenseReadOnly}"  label="Do you have a current and valid Business License?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element1block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element1block_element0_child"   record={record}  card={card}  field-name="\{OnlyMedicalCannabisReadOnly}"  label="Will you be growing only Medical Cannabis from August 1st 2021 through July 31st 2022?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element2" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"gasPermit","id":"state-new-condition-48","operator":"!=","type":"custom","value":"true"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"gasPermit","id":"state-new-condition-48","operator":"!=","type":"custom","value":"true"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element2block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element2block_element0_child"   record={record}  card={card}  field-name="\{haveLPGasPermitReadOnly}"  label="Do you have a current and valid LP Gas Permit?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element3" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element3block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element3block_element0_child"   record={record}  card={card}  field-name="\{CannabisSellingReadOnly}"  label="Did your LNPP sell at least 80% of its cannabis and cannabis-derived products over the past 12 months?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element4block_element0_child"   record={record}  card={card}  field-name="\{PremisesNumberReadOnly}"  label="Provide the number of existing approved license premises?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element5" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element5_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element5block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element5block_element0_child"   record={record}  card={card}  field-name="\{PrecedingMonthsPlantCountReadOnly}"  label="Reported number of mature cannabis plants harvested in the preceding 6 months."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element6" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element6_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element6block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element6block_element0_child"   record={record}  card={card}  field-name="\{IncreasePlantLimitReadOnly}"  label="Would you like to increase your mature cannabis plant limit?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"IncreasePlantLimitReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element7_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"IncreasePlantLimitReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element0_child"   record={record}  card={card}  field-name="\{AdditionalPlantCountReadOnly}"  label="How many additional mature cannabis plants would you like to request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element8" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-20","operator":"!=","type":"custom","value":""}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element8_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-20","operator":"!=","type":"custom","value":""}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element8block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element8block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreaseRequestReadOnly}"  label="Would you like to submit a request for an emergency mature cannabis plant count increase?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element9" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-5","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element9_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-5","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element9block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element9block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreaseReadOnly}"  label="Have you already requested an emergency increase this year?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element10" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-15","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element10_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-15","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element10block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element10block_element0_child"   record={record}  card={card}  field-name="\{IsEmergencyIncreaseApprovedReadOnly}"  label="Was that emergency increase approved by the Medical Cannabis Program?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element11" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-10","operator":"==","type":"custom","value":"jhsbhbhsbjhsbhjbsxhbshbx"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element11_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-10","operator":"==","type":"custom","value":"jhsbhbhsbjhsbhjbsxhbshbx"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element11block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element11block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreasePlantCountReadOnly}"  label="How many mature cannabis plants did you request as part of your emergency request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element12" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"IsEmergencyIncreaseApprovedReadOnly","id":"state-new-condition-25","operator":"==","type":"custom","value":"No"},{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-99","logicalOperator":"||","operator":"==","type":"custom","value":"No"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element12_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"IsEmergencyIncreaseApprovedReadOnly","id":"state-new-condition-25","operator":"==","type":"custom","value":"No"},{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-99","logicalOperator":"||","operator":"==","type":"custom","value":"No"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element12block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element12block_element0_child"   record={record}  card={card}  field-name="\{AdditionalPlantRequestReadOnly}"  label="How many additional mature cannabis plants would you like to request as part of your emergency request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element13" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-12","operator":"==","type":"custom","value":"hbdhhshshbshbs"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element13_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-12","operator":"==","type":"custom","value":"hbdhhshshbshbs"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element13block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element13block_element0_child"   record={record}  card={card}  field-name="\{BioTrackCertifyReadOnly}"  label="Do you certify the information entered in the BioTrack© seed to sale tracking system, related to your LNPP inventory of cannabis and cannabis-derived products, is accurate and current to the best of your knowledge?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element14" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element14_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element14block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element14block_element0_child"   record={record}  card={card}  field-name="\{LNPPInventoryInfoReadOnly}"  label="By checking this box, I certify that the information I’ve entered here regarding this LNPP’s inventory of cannabis and cannabis-derived products is accurate and current."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12 "  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-m-around_none form_view" style="     : #ccc 1px solid; 
+         ">
+          <div data-style-id="state0element0" class="slds-col    slds-p-vertical_large form_view slds-size_12-of-12  " data-rindex={rindex} style="      
+         position: relative;" >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="true"  label="Production Details"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element0block_element0_child"   record={record}  card={card}  field-name="\{haveBusinessLicenseReadOnly}"  label="Do you have a current and valid Business License?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element1" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element1block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element1block_element0_child"   record={record}  card={card}  field-name="\{OnlyMedicalCannabisReadOnly}"  label="Will you be growing only Medical Cannabis from August 1st 2021 through July 31st 2022?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element2" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"gasPermit","id":"state-new-condition-48","operator":"!=","type":"custom","value":"true"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element2_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"gasPermit","id":"state-new-condition-48","operator":"!=","type":"custom","value":"true"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element2block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element2block_element0_child"   record={record}  card={card}  field-name="\{haveLPGasPermitReadOnly}"  label="Do you have a current and valid LP Gas Permit?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element3" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element3_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element3block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element3block_element0_child"   record={record}  card={card}  field-name="\{CannabisSellingReadOnly}"  label="Did your LNPP sell at least 80% of its cannabis and cannabis-derived products over the past 12 months?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " >
+    <vlocity_ins-block data-style-id="state0element0block_element4_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col    slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px; max-height:50px;  " ><vlocity_ins-output-field data-style-id="state0element0block_element4block_element0_child"   record={record}  card={card}  field-name="\{PremisesNumberReadOnly}"  label="Provide the number of existing approved license premises?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element5" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element5_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element5block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element5block_element0_child"   record={record}  card={card}  field-name="\{PrecedingMonthsPlantCountReadOnly}"  label="Reported number of mature cannabis plants harvested in the preceding 6 months."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element6" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element6_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element6block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element6block_element0_child"   record={record}  card={card}  field-name="\{IncreasePlantLimitReadOnly}"  label="Would you like to increase your mature cannabis plant limit?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element7" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"IncreasePlantLimitReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element7_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"IncreasePlantLimitReadOnly","id":"state-new-condition-0","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element7block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element7block_element0_child"   record={record}  card={card}  field-name="\{AdditionalPlantCountReadOnly}"  label="How many additional mature cannabis plants would you like to request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element8" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-20","operator":"!=","type":"custom","value":""}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element8_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-20","operator":"!=","type":"custom","value":""}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element8block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element8block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreaseRequestReadOnly}"  label="Would you like to submit a request for an emergency mature cannabis plant count increase?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element9" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-5","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element9_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseRequestReadOnly","id":"state-new-condition-5","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element9block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element9block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreaseReadOnly}"  label="Have you already requested an emergency increase this year?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element10" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-15","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element10_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-15","operator":"==","type":"custom","value":"Yes"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element10block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element10block_element0_child"   record={record}  card={card}  field-name="\{IsEmergencyIncreaseApprovedReadOnly}"  label="Was that emergency increase approved by the Medical Cannabis Program?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element11" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-10","operator":"==","type":"custom","value":"jhsbhbhsbjhsbhjbsxhbshbx"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element11_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-10","operator":"==","type":"custom","value":"jhsbhbhsbjhsbhjbsxhbshbx"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element11block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element11block_element0_child"   record={record}  card={card}  field-name="\{EmergencyIncreasePlantCountReadOnly}"  label="How many mature cannabis plants did you request as part of your emergency request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element12" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"IsEmergencyIncreaseApprovedReadOnly","id":"state-new-condition-25","operator":"==","type":"custom","value":"No"},{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-99","logicalOperator":"||","operator":"==","type":"custom","value":"No"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element12_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"IsEmergencyIncreaseApprovedReadOnly","id":"state-new-condition-25","operator":"==","type":"custom","value":"No"},{"field":"EmergencyIncreaseReadOnly","id":"state-new-condition-99","logicalOperator":"||","operator":"==","type":"custom","value":"No"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element12block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element12block_element0_child"   record={record}  card={card}  field-name="\{AdditionalPlantRequestReadOnly}"  label="How many additional mature cannabis plants would you like to request as part of your emergency request?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element13" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-12","operator":"==","type":"custom","value":"hbdhhshshbshbs"}],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element13_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[{"field":"haveBusinessLicenseReadOnly","id":"state-new-condition-12","operator":"==","type":"custom","value":"hbdhhshshbshbs"}],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element13block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element13block_element0_child"   record={record}  card={card}  field-name="\{BioTrackCertifyReadOnly}"  label="Do you certify the information entered in the BioTrack© seed to sale tracking system, related to your LNPP inventory of cannabis and cannabis-derived products, is accurate and current to the best of your knowledge?"  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element0block_element14" class="slds-col   slds-p-vertical_x-small slds-p-horizontal_large  slds-large-size_12-of-12 slds-medium-size_4-of-12 slds-small-size_12-of-12 slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0block_element14_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element14block_element0" class="slds-col    slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12  " data-rindex={rindex} style="      
+      min-height:50px;   " ><vlocity_ins-output-field data-style-id="state0element0block_element14block_element0_child"   record={record}  card={card}  field-name="\{LNPPInventoryInfoReadOnly}"  label="By checking this box, I certify that the information I’ve entered here regarding this LNPP’s inventory of cannabis and cannabis-derived products is accurate and current."  labelclass="mtx-form__field-label"  placeholder=""  styles='\{"label":{"color":"#555555","fontSize":"12px"},"value":{"color":"#333333","fontSize":"16px"}}'  type="text"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

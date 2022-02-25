@@ -1,0 +1,103 @@
+<apex:page sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" action="{!initExternal}" Controller="BCD_PrintLicenseController"
+           showHeader="false" renderAs="pdf">
+    <apex:stylesheet value="{!URLFOR($Resource.GothamFont, 'gotham.css')}" />
+    
+    <head>
+        <title>Test1</title>
+        <style> 
+            
+            @page {
+            size: 8.3in 11.7in;
+            margin: 0mm;
+            border:0px solid #0080C8;
+            padding:30px;
+            }
+            main {
+            font-family: 'Open Sans', sans-serif;
+            }
+            .background_image{
+            width: 100px;
+            position: absolute;
+            left: 50px;
+            top: 30px
+            }
+            .certificate {
+            position: absolute;
+            text-align: center;
+            top: 2.1in;
+            left: 2.1in;
+            width: 70%;
+            }
+            .font{
+            margin:0px;
+            font-size:10px;
+            }
+            .passportPhoto{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 35em;
+            top: 110px;
+            }
+            
+        </style>
+    </head>
+    <main style="font-family: 'Gotham';" class="watermark">
+        <apex:repeat value="{!displayData}" var="bLicense">
+            <div >
+                
+                <header>
+                    This digital copy of your license is to be used for limited purposes only and does not replace the official license issued and mailed by the New Mexico Regulation and Licensing Department. This digital copy may be used for insurance credentialing or for other limited purposes when an official license is not available. This digital copy should not be used for public display, except for temporary purposes, if the license is required to be displayed at the licensee’s primary place of business. Additional copies or replacements of an official license may be ordered for a fee online through the licensing portal.
+                </header>
+                <div style="text-align:center;margin:0px !important;width:100%;position:absolute;top:228px;">
+                    <img Class="Watermark" src="{!$Resource.WatermarkLogo}" style="width:150px;" />
+                </div>
+                <div style="text-align:center;margin:0px !important;width:100%;margin:10px;position:absolute;top:130px;">
+                    <img id="theImage" Class="background_image" src="{!$Resource.mtxlpi_LicenseLogo}" />
+                    <apex:outputPanel rendered="{!IF(bLicense.AttachmentId == '',false, true)}">
+                        <img class="passportPhoto" src="/servlet/servlet.FileDownload?file={!bLicense.AttachmentId}"/>
+                    </apex:outputPanel>
+                    <header style="font-size: 24px;margin: 20px 0px 20px 0px;float: left;width: 100%;font-weight:bold;">
+                        <div style="width: 350px;margin: 0px auto 20px auto;font-size:26px;font-style:italic;">State of New Mexico</div>
+                        <div style="width: 350px;margin: auto;">
+                            {!bLicense.licenseToDisplay.RegulatoryAuthorizationType.IssuingDepartment.Name} 
+                        </div> 
+                    </header>
+                    <div style="float:left;width:100%;">
+                        <apex:outputPanel rendered="{!IF(bLicense.ShowAdditionalInfo == false,true, false)}">
+                            <p style="margin:10px 0px 10px 0px;;font-size:14px;">
+                            HEREBY CERTIFIES THAT
+                        	</p>
+                        	<p style="margin:10px 0px 25px 0px;font-size:32px;font-weight:bold;">{!bLicense.licenseToDisplay.Account.Name}</p>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(bLicense.ShowAdditionalInfo == true,true, false)}">
+                            <p style="margin:0px 0px 10px 0px;;font-size:14px;">
+                            HEREBY CERTIFIES THAT
+                            </p>
+                            <apex:outputPanel rendered="{!IF(bLicense.licenseToDisplay.Business_Name__c == '',false, true)}">
+                                <p style="margin:10px 0px 10px 0px;font-size:28px;font-weight:bold;line-height:0">{!bLicense.licenseToDisplay.Business_Name__c}</p>
+                            </apex:outputPanel><br/>
+                            <apex:outputPanel rendered="{!IF(bLicense.licenseToDisplay.Trade_Name__c == '',false, true)}">
+                            	<b>DBA: {!bLicense.licenseToDisplay.Trade_Name__c}</b>
+                            </apex:outputPanel>
+                        </apex:outputPanel>    
+                        <p style="margin:20px 0px 0px 0px;font-size:14px;">HAVING GIVEN SATISFACTORY EVIDENCE OF THE COMPLETION OF</p>
+                        <p style="margin:0px 0px 0px 0px;font-size:14px;">PROFESSIONAL AND OTHER REQUIREMENTS PRESCRIBED BY LAW</p>
+                        <p style="margin:0px 0px 5px 0px;font-size:14px;">IS GRANTED A LICENSE TO PRACTICE IN THE STATE OF NEW MEXICO</p>
+                        <p style="margin:20px 0px 20px 0px;font-size:28px;font-weight:bold;">{!bLicense.RegAuthName}</p>
+                        <div style="width:600px;margin:auto;">
+                            <p style="margin:10px 0px 5px 0px;font-size:16px;float:left;width: 48%;text-align: left;">License No. {!bLicense.licenseToDisplay.Name}</p>
+                            <p style="margin:10px 0px 5px 0px;font-size:16px;float:left;width: 26%;text-align: left;">Issued 
+                                {!bLicense.startDate}
+                            </p>
+                            <p style="margin:10px 0px 5px 0px;font-size:16px;float:left;width: 26%;text-align: left;">Expires 
+                                {!bLicense.endDate}
+                            </p>
+                        </div>
+                        <p style="margin:50px 0px 20px 0px;font-size:11px;clear:left;font-style: italic;"><b>THIS LICENSE SHOULD BE CONSPICUOUSLY POSTED IN PLACE OF BUSINESS OR AS REQUIRED BY LAW</b></p>
+                    </div>
+                </div>
+            </div>
+        </apex:repeat>
+    </main>
+</apex:page>

@@ -1,0 +1,41 @@
+/* Table CSS */
+.mtx_global_table_head {
+background: #F3F5FC !important;
+border: 1px solid #BDCBFA !important;
+margin-bottom: -4px !important;
+}
+.mtx_th {
+    line-height: 35px !important;
+    font-weight: normal !important;
+    font-family: 'Montserrat', sans-serif !important;
+    text-transform: uppercase;
+    color: #555555 !important;  
+    font-size:13px !important;
+    padding: 0 !important;
+}
+.mtx_th span {
+    font-size:13px !important;
+}
+label.slds-show--inline.slds-form-element__label {
+    color: #555 !important;
+    font-weight: normal;
+}
+.mtx_tbl_title {
+    color:rgb(228, 107, 32); 
+}
+.tble_content {
+    border: none !important;
+    min-height: 2.5em;
+}
+.tble_content span{
+     font-size:13px !important;
+}
+.table_bordered {
+    border: 1px solid #BDCBFA;
+    border-top: none;
+}
+.mtx_table_tr{
+    border-left: 1px solid #bdcbfa;
+    border-right: 1px solid #bdcbfa;
+    border-bottom: 1px solid #bdcbfa;
+}

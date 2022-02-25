@@ -1,0 +1,3 @@
+let styleDefinition =
+      {"state0element0block_element1block_element0block_element5":[{"conditions":"default","styleObject":{"class":"slds-col  condition-element slds-p-vertical_x-small slds-p-left_xx-small mtx_th slds-size_2-of-12  ","style":"     : #ccc 1px solid; \n         ","styleProperties":{"labelclass":"ab","styles":{"label":{"color":"","fontFamily":"","fontSize":"13px","textAlign":"left"},"value":{"color":""}}}}}]};
+  export default styleDefinition

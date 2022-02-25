@@ -1,0 +1,185 @@
+<!--
+  @description       : 
+  @author            : Arpit Mathur
+  @group             : 
+  @last modified on  : 09-20-2021
+  @last modified by  : Arpit Mathur
+-->
+<apex:page sidebar="false"  standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" action="{!initInternal}" Controller="CCD_PrintLicenseController"
+           showHeader="false" renderAs="pdf" >
+    <apex:stylesheet value="{!URLFOR($Resource.GothamFont, 'gotham.css')}"/>
+    <head>
+        <!--
+https://gist.github.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59
+
+-->
+        <!--<link rel="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css"/>-->
+        
+        
+        
+        <style> 
+            @page {
+            size: 8.5in 11in;
+            margin: 0mm;
+            border:0px solid #0080C8;
+            padding:30px;
+            }
+            
+            .background_image{
+            width: 120px;
+            position: relative;
+            left: 5em;
+            top: 8em;
+            }
+            .certificate {
+            position: absolute;
+            text-align: center;
+            top: 2.1in;
+            left: 2.1in;
+            width: 70%;
+            }
+            .font{
+            margin:0px;
+            font-size:10px;
+            }
+            
+            
+        </style>
+    </head>
+    <main>
+        <div style="font-family:Times;">
+            <div style="margin-top:18.7em"></div>
+            
+            
+            <div>
+                <!--Right Side Information-->
+                <div style="display:inline-block;position:absolute;left:60%;width:40%;text-align:left;font-size:13.5px;font-weight:bold;font-family:'Times';">
+                    {!bLicense.Trade_Name__c}<br/>
+                    {!address.Street}<br/>
+                    {!address.Street_2__c}<br/>
+                    {!address.City} {!address.State} {!address.PostalCode} <br/>
+                </div>
+                
+                
+                <div style="align:left;display:inline-block;padding-top:1em;padding-bottom:1.5em">
+                    <div style="font-size:16px;font-weight:bold;font-family:'Times';margin-left:4em;line-height:0;text-align:center;margin-top: 5px;">{!bLicense.Trade_Name__c}</div><br/>
+                    <!--<div style="font-size:10px;font-weight:bold;font-family:'Times';margin-left:6em;line-height:0;text-align:center;margin-top: -5px;">Cannabis Control Division</div><br/>-->
+                    
+                    <div style="font-weight:bold;font-family:'Times';margin-left:0em;line-height:3;margin-top:0.2em;">
+                        <div style="font-size:9px;display:inline-block;padding-left:3.5em" rendered="{!IF((isRelatedToVice == false),true,false)}">
+                            <div style="margin-left:3em;">{!bLicense.Name}</div>
+                        </div>
+                        <div style="font-size:9px; display:inline-block; padding-left:2.5em;max-width:200px;line-height: 1;padding-bottom: 23px;">
+                           <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name ='LNPP License Renewal' || bLicense.RecordType.DeveloperName == 'Vice_License'),true,false)}" >
+                              <div style="margin-left:2.5em;">Vertically Integrated Cannabis Establishment</div>
+                            </apex:variable>
+                            <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name ='LNPP License Renewal' || isRelatedToVice == true), false,true)}" >
+                                <div style="margin-left:4em;">{!bLicense.RegulatoryAuthorizationType.Name} {!className}</div>
+                            </apex:variable>
+                            <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Producer' && isRelatedToVice == true), true, false)}" >
+                        <div style="margin-left:4em;">VICE-Producer</div>
+                    </apex:variable>
+                   
+                   <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Manufacturer' && isRelatedToVice == true), true, false)}" >
+                        <div style="margin-left:4em;">VICE-Manufacturer {!className}</div>
+                    </apex:variable>
+                   
+                   <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Retailer' && isRelatedToVice == true), true, false)}" >
+                        <div style="margin-left:4em;">VICE-Retailer</div>
+                    </apex:variable>
+                  
+                        </div>
+                    </div>
+                    
+                    <div style="font-size:12px;font-weight:bold;font-family:'Times';margin-left:3.5em;line-height:1.2; ">
+                        <div style="display:inline-block;padding-left:1.5em;">
+                            {!startDate}
+                        </div>
+                        <div style="display:inline-block;padding-left:10em;">
+                            {!endDate}
+                        </div>
+                    </div><br/>
+                </div>
+            </div>
+            
+            <!--Wall License-->
+            <div style="margin-top: 0.5em">
+                <img id="theImage" Class="background_image" src="{!$Resource.mtxlpi_LicenseLogo}" />
+            <section style="text-align:center;margin:0px !important;width:100%;position:relative;top:2em;">
+                <header style="font-size: 20px;margin: 20px 0px 20px 0px;float: left;width: 100%;font-weight:bold;">
+                    <div style="width: 400px;margin: auto;font-family: 'Times';padding-left:20px;">
+                        Regulation &amp; Licensing Department
+                    </div>
+                    <div style="width: 400px;margin: auto;font-family: 'Times';padding-left:20px;">
+                        Cannabis Control Division
+                    </div>
+                </header>
+                <div style="float:left;width:100%;">
+                    <p style="margin:2px 2px 2px 2px;;font-size:12px;">
+                        HEREBY CERTIFIES THAT
+                    </p>
+                    <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;font-family: 'Times'">{!bLicense.Trade_Name__c}</p>
+                    <p style="margin:10px 0px 0px 0px;font-size:12px;">HAVING GIVEN SATISFACTORY EVIDENCE OF THE LICENSING REQUIREMENTS</p>
+                    <p style="margin:2px 0px 0px 0px;font-size:12px;"> PRESCRIBED BY LAW  IS GRANTED A LICENSE TO OPERATE IN THE STATE</p>
+                    <p style="margin:2px 0px 5px 0px;font-size:12px;"> OF NEW MEXICO AS A </p>
+                    
+                    <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name ='LNPP License Renewal' || bLicense.RecordType.DeveloperName == 'Vice_License'),true,false)}" >
+                        <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;font-family: 'Times'">Vertically Integrated Cannabis Establishment</p>
+                    </apex:variable>
+                    <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name ='LNPP License Renewal' || isRelatedToVice == true),false,true)}" >
+                        <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;font-family: 'Times'">{!bLicense.RegulatoryAuthorizationType.Name} {!className}</p>
+                    </apex:variable>
+                    <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Producer' && isRelatedToVice == true), true, false)}" >
+                        <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;">VICE-Producer</p>
+                    </apex:variable>
+                   
+                   <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Manufacturer' && isRelatedToVice == true), true, false)}" >
+                        <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;">VICE-Manufacturer {!className}</p>
+                    </apex:variable>
+                   
+                   <apex:variable var="foo" value="foo" rendered="{!IF((bLicense.RegulatoryAuthorizationType.Name =='Cannabis Retailer' && isRelatedToVice == true), true, false)}" >
+                        <p style="margin:20px 0px 20px 0px;font-size:20px;font-weight:bold;">VICE-Retailer</p>
+                    </apex:variable>
+                    <table style="width:600px;margin:auto;">
+                          <thead>
+                            <tr>
+                              <th style="font-size:12px;">License No.</th>   
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="font-size:12px;">{!bLicense.Name}</td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width:600px;margin:auto;">
+                         <tbody>
+                            <tr>
+                                <td align="right" style="font-weight:bold;font-size:12px;">Issued</td> 
+                                <td style="font-size:12px;" align="left">{!startDate}</td>
+                                <td align="right" style="font-weight:bold;font-size:12px;">Expires</td> 
+                                <td style="font-size:12px;" align="left">{!endDate}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <p style="margin:10px 0px 10px 0px;font-size:8px;clear:left;line-height:0;">THIS LICENSE SHOULD BE CONSPICUOUSLY POSTED IN PLACE OF BUSINESS OR AS REQUIRED BY LAW</p>
+                    
+                    <!--div style="width:600px;">
+                        <p style="margin-left:30px;padding:3px 0px 0px 0px;font-size:16px;float:left;width: 22%;text-align: center;line-height:0;">Issued 
+                            {!startDate}
+                        </p>
+                        <p style="margin-right:30px;padding:3px 0px 0px 0px;font-size:16px;float:right;width: 23%;text-align: left;line-height:0;">Expires 
+                            {!endDate}
+                        </p>
+                    </div>
+                    <div style="width:600px;margin:auto;">
+                    <p style="margin:20px 0px 20px 0px;font-size:11px;clear:left;line-height:0;">THIS LICENSE SHOULD BE CONSPICUOUSLY POSTED IN PLACE OF BUSINESS OR AS REQUIRED BY LAW</p>
+                    </div-->
+                    </div>
+            </section>
+            </div>
+            
+        </div>
+    </main>
+</apex:page>

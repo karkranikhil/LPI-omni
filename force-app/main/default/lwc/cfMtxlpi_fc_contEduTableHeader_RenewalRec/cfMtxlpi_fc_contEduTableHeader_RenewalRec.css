@@ -1,0 +1,6 @@
+@media (max-width: 767px) {
+    .mobile_add_button {
+        text-align: left;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,150 @@
+<apex:page sidebar="false"  standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" action="{!initInternal}" Controller="BCD_PrintLicenseController"
+           showHeader="false" renderAs="pdf" >
+    <apex:stylesheet value="{!URLFOR($Resource.GothamFont, 'gotham.css')}"/>
+    <head>
+        <!--
+https://gist.github.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59
+
+-->
+        <!--<link rel="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css"/>-->
+        
+        <style> 
+            @page {
+            size: 8.5in 11in;
+            margin: 0mm;
+            border:0px solid #0080C8;
+            padding:30px;
+            }
+            
+            .background_image{
+            width: 110px;
+            position: relative;
+            left: 5em;
+            top: 7.5em;
+            }
+            .certificate {
+            position: absolute;
+            text-align: center;
+            top: 2.1in;
+            left: 2.1in;
+            width: 70%;
+            }
+            .font{
+            margin:0px;
+            font-size:10px;
+            }
+            .show{
+            display:block;
+            }
+            .hideClass{
+            display:none;
+            }
+            .passportPhoto{
+            width: 1in;
+            height: 1in;
+            position: relative;
+            left: 28em;
+            top: 8em;
+            }
+            
+        </style>
+    </head>
+    <main>
+        <apex:repeat value="{!displayData}" var="bLicense">
+            <div style="font-family:Times;page-break-before:always;">
+                <div style="margin-top:18.7em"></div>
+                
+                
+                <div>
+                    <!--Right Side Information-->
+                    <div style="display:inline-block;position:absolute;left:60%;width:40%;text-align:left;font-size:13.5px;font-weight:bold;font-family:'Times';">
+                        <div class="{!IF(bLicense.licenseToDisplay.Account.Name != '','showClass','hideClass')}">
+                            {!bLicense.licenseToDisplay.Account.Name}<br/></div>
+                        <div class="{!IF(bLicense.licenseToDisplay.Account.PersonMailingStreet != '','showClass','hideClass')}">
+                            {!bLicense.licenseToDisplay.Account.PersonMailingStreet}{!IF(bLicense.licenseToDisplay.Account.PersonMailingStreet != '',',','')}<br/>
+                        </div>
+                        <div class="{!IF(bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c != '','showClass','hideClass')}">
+                            {!bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c}{!IF(bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c != '',',','')}<br/>
+                        </div>
+                        {!bLicense.licenseToDisplay.Account.PersonMailingCity}{!IF(bLicense.licenseToDisplay.Account.PersonMailingCity != '',',','')} {!bLicense.licenseToDisplay.Account.PersonMailingState} {!bLicense.licenseToDisplay.Account.PersonMailingPostalCode}<br/>
+                    </div>
+                    
+                    
+                    <div style="align:left;display:inline-block;padding-top:1em;padding-bottom:1.5em">
+                        <div style="font-size:16px;font-weight:bold;font-family:'Times';margin-left:6em;line-height:0;text-align:center;margin-top: 5px;">{!bLicense.licenseToDisplay.Account.Name}</div><br/>
+                        <apex:outputPanel rendered="{!bLicense.ShowBoardNameOnWalletLicense}">
+                        	<div style="font-size:10px;font-weight:bold;font-family:'Times';margin-left:9em;line-height:0;text-align:center;margin-top: -5px;">{!bLicense.licenseToDisplay.RegulatoryAuthorizationType.IssuingDepartment.Name}</div><br/>
+                        </apex:outputPanel>
+                        <div style="font-weight:bold;font-family:'Times';margin-left:0em;line-height:3;margin-top:0.2em;">
+                            <div style="font-size:9px;display:inline-block;padding-left:3.5em">
+                                <div style="margin-left:2em;">{!bLicense.licenseToDisplay.Name}</div>
+                            </div>
+                            <div style="font-size:9px; display:inline-block; padding-left:2.5em;max-width:200px;line-height: 1;padding-bottom: 23px;">
+                                <div style="margin-left:4em;">{!bLicense.regAuthName}</div>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size:14px;font-weight:bold;font-family:'Times';margin-left:2.5em;line-height:1.2; ">
+                            <div style="display:inline-block;">
+                                {!bLicense.startDate}
+                            </div>
+                            <div style="display:inline-block;padding-left:7.5em">
+                                {!bLicense.endDate}
+                            </div>
+                        </div><br/>
+                    </div>
+                </div>
+                
+                <!--Wall License-->
+                <div style="margin-top: 0.5em">
+                    <img id="theImage" Class="background_image" src="{!$Resource.mtxlpi_LicenseLogo}" />
+                    <apex:outputPanel rendered="{!IF(bLicense.AttachmentId == '',false, true)}">
+                        <img class="passportPhoto" src="/servlet/servlet.FileDownload?file={!bLicense.AttachmentId}"/>
+                    </apex:outputPanel>
+                    <section style="text-align:center;margin:0px !important;width:100%;position:relative;top:2em;">
+                        <header style="font-size: 24px;margin: 20px 0px 10px 0px;float: left;width: 100%;font-weight:bold;">
+                            <div style="width: 350px;margin: auto;font-family: 'Times';padding-left:20px;">
+                                {!bLicense.licenseToDisplay.RegulatoryAuthorizationType.IssuingDepartment.Name} 
+                            </div>
+                        </header>
+                        <div style="float:left;width:100%;">
+                            <apex:outputPanel rendered="{!IF(bLicense.ShowAdditionalInfo == false,true, false)}">
+                                <p style="margin:10px 0px 10px 0px;;font-size:14px;">
+                                    HEREBY CERTIFIES THAT
+                                </p>
+                                <p style="margin:10px 0px 25px 0px;font-size:32px;font-weight:bold;font-family: 'Times'">{!bLicense.licenseToDisplay.Account.Name}</p>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(bLicense.ShowAdditionalInfo == true,true, false)}">
+                                <p style="margin:0px 0px 20px 0px;;font-size:14px;">
+                                    HEREBY CERTIFIES THAT
+                                </p>
+                                <apex:outputPanel rendered="{!IF(bLicense.licenseToDisplay.Business_Name__c == '',false, true)}">
+                                    <p style="margin:10px 0px 10px 0px;font-size:28px;font-weight:bold;line-height:0">{!bLicense.licenseToDisplay.Business_Name__c}</p>
+                                </apex:outputPanel><br/>
+                                <apex:outputPanel rendered="{!IF(bLicense.licenseToDisplay.Trade_Name__c == '',false, true)}">
+                                    <b>DBA: {!bLicense.licenseToDisplay.Trade_Name__c}</b>
+                                </apex:outputPanel>
+                            </apex:outputPanel> 
+                            <p style="margin:10px 0px 0px 0px;font-size:14px;">HAVING GIVEN SATISFACTORY EVIDENCE OF THE COMPLETION OF</p>
+                            <p style="margin:0px 0px 0px 0px;font-size:14px;">PROFESSIONAL AND OTHER REQUIREMENTS PRESCRIBED BY LAW</p>
+                            <p style="margin:0px 0px 5px 0px;font-size:14px;">IS GRANTED A LICENSE TO PRACTICE IN THE STATE OF NEW MEXICO</p>
+                            <p style="margin:10px 0px 5px 0px;font-size:20px;font-weight:bold;font-family: 'Times'">{!bLicense.regAuthName}</p>
+                            <div style="width:600px;margin:auto;">
+                                <p style="padding:3px 0px 0px 25px;font-size:16px;float:left;width: 40%;text-align: left;line-height:0;">License No. {!bLicense.licenseToDisplay.Name}</p>
+                                <p style="padding:3px 0px 0px 0px;font-size:16px;float:left;width: 22%;text-align: center;line-height:0;">Issued 
+                                    {!bLicense.startDate}
+                                </p>
+                                <p style="padding:3px 0px 0px 0px;font-size:16px;float:right;width: 23%;text-align: left;line-height:0;">Expires 
+                                    {!bLicense.endDate}
+                                </p>
+                            </div>
+                            <p style="margin:10px 0px 20px 0px;font-size:11px;clear:left;line-height:.5;"><br/>THIS LICENSE SHOULD BE CONSPICUOUSLY POSTED IN PLACE OF BUSINESS OR AS REQUIRED BY LAW</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+        </apex:repeat>    
+    </main>
+    
+</apex:page>

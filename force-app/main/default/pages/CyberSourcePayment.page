@@ -1,0 +1,43 @@
+<!--
+@description       : 
+@author            : Wasef Mohiuddin
+@group             : 
+@last modified on  : 07-07-2021
+@last modified by  : Wasef Mohiuddin
+Modifications Log 
+Ver   Date         Author            Modification
+1.0   05-26-2021   Wasef Mohiuddin   Initial Version
+-->
+<apex:page showHeader="false" controller="CyberSourceController" title="Payment Gateway" applyBodyTag="false"
+           lightningStylesheets="false">
+    
+    <div class="main-class">
+        <form id="theForm" action="{!endpoint}" method="post">
+            <apex:outputtext escape="false" value="{!ParametersValuesHidden}"></apex:outputtext>
+            <apex:outputtext escape="false" value="{!SignedData}"></apex:outputtext>
+            <input class="primary_nm" type="submit" id="submit" value="Confirm"/>
+        </form>
+        
+        <script type="text/javascript">
+        var response = {!paymentAlreadyExists};
+        if(!response){
+            window.onload = function () {
+                document.getElementById('submit').click();
+            };
+        }
+        </script>
+    </div>
+    
+    <div class="errorMessage">
+        <apex:pageBlock rendered="{!paymentAlreadyExists}">
+            <apex:pageMessages ></apex:pageMessages>
+        </apex:pageBlock>
+    </div>
+    
+    <style>
+        .main-class{
+        display: none;
+        }
+    </style>
+    
+</apex:page>

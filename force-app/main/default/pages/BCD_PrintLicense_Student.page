@@ -1,0 +1,108 @@
+<apex:page sidebar="false"  standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" action="{!initInternal}" Controller="BCD_PrintLicenseController"
+           showHeader="false" renderAs="pdf" >
+    <apex:stylesheet value="{!URLFOR($Resource.GothamFont, 'gotham.css')}"/>
+    <head>
+        <!--
+https://gist.github.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59
+
+-->
+        <!--<link rel="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css"/>-->
+        
+        <style> 
+            @page {
+            size: 8.5in 11in;
+            margin: 0mm;
+            border:0px solid #0080C8;
+            padding:30px;
+            }
+            
+            .background_image{
+            width: 120px;
+            position: relative;
+            left: 5em;
+            top: 8em;
+            }
+            .certificate {
+            position: absolute;
+            text-align: center;
+            top: 2.1in;
+            left: 2.1in;
+            width: 70%;
+            }
+            .font{
+            margin:0px;
+            font-size:10px;
+            }
+            .show{
+            display:block;
+            }
+            .hideClass{
+            display:none;
+            }
+            .passportPhoto{
+            width: 1in;
+            height: 1in;
+            position: relative;
+            left: 28em;
+            top: 8em;
+            }
+            #watermark
+            {
+            position:fixed;
+            top:1px;
+            right:1px;
+            opacity:0.1;
+            z-index:99;
+            color:white;
+            }
+        </style>
+    </head>
+    <main>
+        <apex:repeat value="{!displayData}" var="bLicense">
+            <div style="font-family:Times;font-size:1.1em;page-break-before:always;">
+                <!--<img width="80%" id="watermark" src="{!$Resource.NewMexicoSeal}"/>-->
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="6" style="text-align:center;font-size:1.2em;"><b>THIS PERMIT MUST BE DISPLAYED IN A BINDER IN THE SCHOOL</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding-top:10px;"><b>NEW MEXICO BOARD OF BARBERS &amp; COSMETOLOGISTS<br/>P.O. BOX 25101, SANTA FE, NEW MEXICO 87504<br/>(505) 476-4622</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:center"><b><br/>STUDENT PERMIT</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left">
+                            <div class="{!IF(bLicense.licenseToDisplay.Account.PersonMailingStreet != '','showClass','hideClass')}">
+                                {!bLicense.licenseToDisplay.Account.PersonMailingStreet}{!IF(bLicense.licenseToDisplay.Account.PersonMailingStreet != '',',','')}<br/>
+                            </div>
+                            <div class="{!IF(bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c != '','showClass','hideClass')}">
+                                {!bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c}{!IF(bLicense.licenseToDisplay.Account.Mailing_Street_Address_2__c != '',',','')}<br/>
+                            </div>
+                            {!bLicense.licenseToDisplay.Account.PersonMailingCity}{!IF(bLicense.licenseToDisplay.Account.PersonMailingCity != '',',','')} {!bLicense.licenseToDisplay.Account.PersonMailingState} {!bLicense.licenseToDisplay.Account.PersonMailingPostalCode}<br/>
+                        </td>
+                        <td colspan="2" style="text-align:center">Permit No.: <b>{!bLicense.licenseToDisplay.Name}</b></td>
+                        <td colspan="2" style="text-align:left">Registration Code: </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:left;padding-top:10px;">Name of Licensed School: </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:left;">Date Student Enrolled: </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:left;padding-top:10px;"><i>Has filed applicaiton for registration and has been approved to study the course of: </i><b>{!bLicense.regAuthName}</b></td>
+                    </tr>
+                    <tr >
+                        <td colspan="3" style="text-align:left;padding-top:10px;">Date Issued: {!bLicense.startDate}</td>
+                        <td colspan="3" style="text-align:left;padding-top:10px;">Expiration Date: {!bLicense.startDate}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:left;padding-top:100px;"></td>
+                        <td colspan="2" style="text-align:center;padding-top:100px;"><hr/><br/><b>School Official Signature</b></td>
+                    </tr>
+                </table>
+            </div>
+        </apex:repeat>    
+    </main>
+</apex:page>

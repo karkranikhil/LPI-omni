@@ -1,0 +1,108 @@
+@font-face{
+    font-family: 'Roboto', sans-serif;
+    src: url("@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Roboto:wght@100;300;400;500;700;900&display=swap')") format('TrueType');
+}
+
+.mainWraper{
+    font-family: 'Roboto', sans-serif;
+   
+}
+
+.content{
+    padding: 1rem 8rem!important;
+    align-items: center;
+}
+
+
+header{
+    background:#fff;
+    border-bottom:8px solid #FFCC00
+}
+
+header .logo{
+    width:180px;
+    cursor: pointer;
+
+}
+
+header .languages{
+    width:max-content;
+    border:none;
+    margin-right:26px;
+}
+
+header .languages button{
+    border:none!important;
+}
+
+header span{
+    display: inline-block;
+}
+
+header .line{
+    width: 1px;
+        height: 30px;
+        background: #dbdbdb;
+        margin: 0px 20px -11px 20px;
+        display: inline-block;
+}
+.userLogin{
+    
+    margin-top: -12px;
+}
+.userLogin a{
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.userLogin a:hover{
+    color: #fc0;
+}
+
+.userLogin .userName{
+    margin: 0px 16px;
+    font-weight: normal;
+    color: #000;
+}
+
+.notificationIcon{
+    width:20px;
+}
+
+nav a, .active{
+    margin-right: 8px;
+    padding:6px 16px;
+    border:1px solid #fff;
+    border-radius:6px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: #fc0;
+    border:1px solid #fc0;
+}
+nav .active{
+    color: #000!important;
+    border:1px solid #fc0!important;
+
+}
+.chevrondown svg{
+    width: 15px!important;
+    fill: #000!important;
+    margin-left: 6px!important;
+}
+
+.rightSpace, .rightSpace .slds-input_faux{
+    border:none!important;
+    margin-right: 16px!important;
+}
+
+.summonsBtn{
+    border: 1px
+     solid #e1e1e1;
+        padding: 6px 14px;
+        border-radius: 4px;
+        margin-right: 16px;
+        background: #fff;
+    
+}

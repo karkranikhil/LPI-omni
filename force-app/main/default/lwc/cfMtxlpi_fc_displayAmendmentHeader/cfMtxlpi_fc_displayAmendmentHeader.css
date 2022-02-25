@@ -1,0 +1,17 @@
+.mtx_table_tr[c-cfMtxlpi_fc_displayAmendmentFields_cfMtxlpi_fc_displayAmendmentFields]
+{
+    border-left: 1px solid #bdcbfa;
+    border-right: 1px solid #bdcbfa;
+    border-bottom: 1px solid #bdcbfa;
+}
+.mtx_global_table_head {
+background: rgba(13, 60, 200, 0.05);
+border: 1px solid #BDCBFA;
+margin-top:15px;
+}
+.mtx_th {
+    padding: 10px;
+}
+.slds-flexipage-container_medium {
+    width: none !important;
+}

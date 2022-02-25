@@ -1,0 +1,8 @@
+.mtx-home__card  .slds-scope .slds-truncate {
+    color: #e66e1e;
+    font-weight: bold;
+}
+.mtx-home__welcome-contain {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px 5px rgba(13, 60, 200, 0.05);
+}

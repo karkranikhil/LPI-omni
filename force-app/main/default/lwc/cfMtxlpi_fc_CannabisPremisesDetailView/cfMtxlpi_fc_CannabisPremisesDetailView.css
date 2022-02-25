@@ -1,0 +1,4 @@
+.text-wrap .action-template {
+    text-overflow: ellipsis;
+    word-break: break-all;
+}

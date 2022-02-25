@@ -1,0 +1,56 @@
+.THIS .siteforceContentArea{
+    background: #f9f9f9;
+    border-radius: 8px;
+    width: 520px;
+    margin: 5% auto 15% auto;
+    position: relative;
+    padding: 3%;
+}
+
+
+.THIS .loginButton{
+        background: #ffcc00!important;
+       border-radius: 6px!important;
+}
+
+.THIS .registerForm button{
+    background: #ffcc00!important;
+    border-radius: 6px!important;
+    border: none;
+    padding: 8px 16px;
+    margin: 16px;
+    width: 100%;
+    font-weight: 600;
+}
+.THIS input{
+    border-color: #d8d6d6!important;
+    border-radius: 4px!important;
+    padding: 6px 8px;
+}
+
+
+.THIS .salesforceIdentityLoginBody2 .cCenterPanel:before, .THIS  .themeLayoutWrapper{
+    display:none!important; 
+}
+
+.THIS .inverseTextColor{
+    color: #3787FF!important;
+}
+.THIS .forceCommunityRichText p{
+    font-size: 28px!important;
+    text-align: center!important;
+    display: inherit!important;
+    margin-bottom: 20px!important;
+}
+
+.THIS .salesforceIdentityLoginForm2 .inputContainer{
+        margin-bottom: 10px!important;
+    padding: 12px!important;
+    background-color: #ffffff!important;
+    border: 1px solid #ccc!important;
+    border-radius: 6px!important;
+}
+.THIS .salesforceIdentityLoginForm2 .inputIcon {
+    color: #000!important;
+    margin-top: 5px!important;
+}

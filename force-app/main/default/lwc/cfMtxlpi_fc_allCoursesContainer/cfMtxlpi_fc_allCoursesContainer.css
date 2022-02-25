@@ -1,0 +1,9 @@
+.mtx_global_table_head {
+background: rgba(13, 60, 200, 0.05);
+border: 1px solid #BDCBFA;
+margin-top:15px;
+}
+
+.mtx_th {
+    padding: 0 !important;
+}

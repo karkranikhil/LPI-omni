@@ -1,0 +1,96 @@
+<aura:component controller="SearchLicenseAndPermitController" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="searchkey" type="String" access="global"/>
+    <aura:attribute name="typeoflicense" type="String" access="global"/>
+    <aura:attribute name="licensetypes" type="Map" access="global"/>
+    <aura:attribute name="listOfResults" type="List" access="global"/>
+      <aura:attribute name="showTable" type="Boolean" Default ="False" access="global"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <lightning:card >
+    	<div class="slds-grid slds-wrap">
+        	<div class="slds-size_1-of-3 slds-p-around_small">
+                <lightning:input label="Licensee Name/License Number" value="{!v.searchkey}" />
+            </div>
+            <div class="slds-size_1-of-3 slds-p-around_small">
+                <lightning:select name="select" label="Type of License" value="{!v.typeoflicense}" >
+                    <option text="--None--" value=""></option>
+                    <!--<aura:iteration items="{!v.licensetypes}" var="option">
+                        <option text="{!option.label}" value="{!option.value}"></option>
+                    </aura:iteration>-->
+                    <aura:iteration items="{!v.licensetypes}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" />
+                    </aura:iteration>
+                </lightning:select>
+            </div>
+            <div class="slds-size_1-of-3 slds-p-around_small" style="padding-top: 40px;">
+            	
+            	<lightning:button label="Search" onclick="{!c.searchlicenses}"/>
+            </div>
+        </div>
+        <aura:renderIf isTrue="{!v.showTable}">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-p-around_small">
+               
+                <thead>
+                     <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Licensee Name">Licensee Name</div>
+                        </th>
+                          <th class="" scope="col">
+                            <div class="slds-truncate" title="License Number">License Number</div>
+                        </th>
+                          <th class="" scope="col">
+                            <div class="slds-truncate" title="License Number">Type of License</div>
+                        </th>
+                          <!--<th class="" scope="col">
+                            <div class="slds-truncate" title="License Number">Expiration Date </div>
+                        </th>-->
+                          <th class="" scope="col">
+                            <div class="slds-truncate" title="License Number">License Status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <!--<thead>
+            	
+            </thead>
+                <thead>
+            	<tr><td>Type of License</td></tr>
+            </thead>
+                <thead>
+            	<tr><td>Expiration Date </td></tr>
+            </thead>
+                <thead>
+            	<tr><td>License Status</td></tr>
+            </thead>-->
+            <tbody>
+            	<aura:iteration items="{!v.listOfResults}" var="item">
+                    <tr class="slds-hint-parent">
+                        <td data-label="Licensee Name">
+                            <div class="slds-truncate" title="Licensee Name">{!item.Licensee_Name__c}</div>
+                        </td>
+                        <td data-label="Licensee Name">
+                            <div class="slds-truncate" title="License Number">{!item.Name }</div>
+                        </td>
+                         <td data-label="Licensee Name">
+                            <div class="slds-truncate" title="License Number">{!item.License_Type__c}</div>
+                        </td>
+                         <!--<td data-label="Licensee Name">
+                            <div class="slds-truncate" title="License Number">{!item.PM_End_Date__c}</div>
+                        </td>-->
+                         <td data-label="Licensee Name">
+                            <div class="slds-truncate" title="License Number">{!item.Status}</div>
+                        </td>
+                        
+                        </tr>
+                	<!--<tr><td>{!item.Licensee_Name__c}</td></tr>
+                    <tr><td>{!item.Auto_Number__c}</td></tr>
+                    <tr><td>{!item.License_Type__c}</td></tr>
+                    <tr><td>{!item.PM_End_Date__c}</td></tr>
+                    <tr><td>{!item.Status}</td></tr>-->
+                   
+                </aura:iteration>
+            </tbody>
+        </table>
+        </aura:renderIf> 
+
+        
+    </lightning:card>
+</aura:component>
