@@ -1,44 +1,72 @@
 <template>
-    <lightning-card>
-        <h7>View Licenses</h7>
-        <div class=" slds-col slds-size_12-of-12 tableData">
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Email Id</th>
-                    <th>Type</th>
-                    <th>TLC Number</th>
-                    <th>Expiration Date</th>
-                    <!-- <th>SSN Number</th> -->
-                    <th>Status</th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    <template for:each={data} for:item="acc">
-                        <tr key={acc.Id}>
-                            <td>{acc.Name}</td>
-                            <td>{acc.Email}</td>
-                            <td>{acc.Type}</td>
-                            <td>{acc.tlcNumber}</td>
-                            <td>{acc.licenseDate}</td>
-                            <td>{acc.status}</td>
-                            <td>
-                                <a href="">
-                                    <lightning-icon icon-name="utility:preview" class="chevrondown"
-                                        alternative-text="View"></lightning-icon>
-                                </a>
-                                <a if:true={acc.Renew}>
-                                    <!-- | Renew -->
-                                    <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
-                                        alternative-text="Renew" onclick={onClick}>
-                                    </lightning-icon>
-                                </a>
-                            </td>
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
+    <div class="mainWraper homePage">
+        <div class="content slds-wrap slds-grid ">
+            <div class="pageTitle slds-col slds-size_7-of-12">
+                <h3>View Licenses</h3>
+            </div>
+            <div class="slds-clearfix slds-col slds-size_5-of-12">
+                <a class="primary_button slds-float_right"
+                    href="https://mtxlpi.force.com/tlcPortal/s/license-application">Apply For
+                    License</a>
+            </div>
         </div>
-</lightning-card>
+    </div>
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="2">
+                <lightning-vertical-navigation selected-item={selectedItem} onselect={handleSelect} class="navigation">
+                    <lightning-vertical-navigation-section label="Vehicles">
+                        <lightning-vertical-navigation-item-badge label="Active" name="VActive"
+                            badge-count={VActiveCount}>
+                        </lightning-vertical-navigation-item-badge>
+                        <lightning-vertical-navigation-item-badge label="Pending" name="VPending"
+                            badge-count={VPendingCount}>
+                        </lightning-vertical-navigation-item-badge>
+                        <lightning-vertical-navigation-item-badge label="Inactive" name="VInactive"
+                            badge-count={VInactiveCount}>
+                        </lightning-vertical-navigation-item-badge>
+                    </lightning-vertical-navigation-section>
+                    </br> </br>
+                    <lightning-vertical-navigation-section label="Driver">
+                        <lightning-vertical-navigation-item-badge label="Active" name="DActive"
+                            badge-count={DActiveCount}>
+                        </lightning-vertical-navigation-item-badge>
+                        <lightning-vertical-navigation-item-badge label="Pending" name="DPending"
+                            badge-count={DPendingCount}>
+                        </lightning-vertical-navigation-item-badge>
+                        <lightning-vertical-navigation-item-badge label="Inactive" name="DInactive"
+                            badge-count={DInactiveCount}>
+                        </lightning-vertical-navigation-item-badge>
+                    </lightning-vertical-navigation-section>
+                </lightning-vertical-navigation>
+            </lightning-layout-item>
+            <lightning-layout-item padding="horizontal-medium" size="10">
+                <div class="slds-col tableData">
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Email Id</th>
+                            <th>Type</th>
+                            <th>TLC Number</th>
+                            <th>Expiration Date</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            <template for:each={data} for:item="acc">
+                                <tr key={acc.Id}>
+                                    <td>{acc.Name}</td>
+                                    <td>{acc.Email}</td>
+                                    <td>{acc.Type}</td>
+                                    <td>{acc.tlcNumber}</td>
+                                    <td>{acc.licenseDate}</td>
+                                    <td>{acc.status}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
 
 </template>

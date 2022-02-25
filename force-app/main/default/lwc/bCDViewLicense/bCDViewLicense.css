@@ -1,0 +1,18 @@
+.primary_button{
+    padding:5px 5%;
+    background:#FFCC00;
+    color:#000;
+    margin:16px;
+    border:1px solid #FFCC00;
+    font-size: 16px;
+    border-radius: 6px;
+}
+.secondary_button{
+    padding:4px 20px;
+    background:#fff;
+    color:#000;
+    margin:16px 0px;
+    border:1px solid #fff;
+    font-size: 16px;
+    border-radius: 6px;
+}

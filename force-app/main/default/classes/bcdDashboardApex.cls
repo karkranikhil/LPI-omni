@@ -75,8 +75,6 @@ public class bcdDashboardApex {
         }
     }
 
-
-    // getAllDetails
     @AuraEnabled
     public static list<WrapperClass> getAllDetails(){
         try {
@@ -94,7 +92,7 @@ public class bcdDashboardApex {
                     wrapper.Id = ac.Id;
                     wrapper.Name = ac.Account.Name;
                     wrapper.Email = ac.Account.PersonEmail;
-                    wrapper.Type = ac.License_Type__c;
+                    wrapper.Type = ac.Regulatory_Authorization_Type__c;
                     wrapper.status = ac.Status;
                     wrapper.tlcNumber = ac.Name;
                     if(ac.PeriodEnd != null){                     

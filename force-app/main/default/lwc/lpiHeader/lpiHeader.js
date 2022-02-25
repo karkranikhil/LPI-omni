@@ -97,6 +97,11 @@ export default class LpiHeader extends NavigationMixin(LightningElement) {
                 window.open("/tlcPortal/s/view-license", "_self");
             }
         }
+        if (event.target.name == 'complaints') {
+            if(event.target.value == 'Raise a Complaint'){
+                window.open("https://mtxlpi.force.com/tlcPortal/s/raise-complaint","_self");
+            }
+        }
     }
 
     // logout
