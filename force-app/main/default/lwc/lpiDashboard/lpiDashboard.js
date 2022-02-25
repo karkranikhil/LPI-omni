@@ -12,6 +12,7 @@ export default class LpiDashboard extends LightningElement {
 
     data = [];
     appData = [];
+	renewURL;
     
     connectedCallback() {
         console.log("connectedCallback");
@@ -37,5 +38,11 @@ export default class LpiDashboard extends LightningElement {
 			this.appData = undefined;
 		})
     }
+
+	onClick(event) {
+		console.log(event.target.name);
+		this.renewURL = 'https://mtxlpi.force.com/tlcPortal/s/license-renewal?licenseId='+event.target.name;
+		window.open(this.renewURL, '_self');
+	}
 
 }

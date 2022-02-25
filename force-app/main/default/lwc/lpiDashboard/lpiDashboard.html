@@ -66,8 +66,13 @@
         <div class="divider"></div>
 
         <div class="content slds-wrap slds-grid ">
-            <div class="pageTitle slds-col slds-size_12-of-12">
+            <div class="pageTitle slds-col slds-size_8-of-12">
                 <h3>Active Licenses</h3>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                <a class="secondary_button" href="https://mtxlpi.force.com/tlcPortal/s/view-license"> View Licenses</a>
+                <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/license-application">Add New
+                    Licenses</a>
             </div>
             <div class=" slds-col slds-size_12-of-12 tableData">
                 <table>
@@ -91,17 +96,16 @@
                                 <td>{acc.licenseDate}</td>
                                 <td>{acc.status}</td>
                                 <td>
-                                    <a href="">
-                                        <lightning-icon icon-name="utility:edit" class="chevrondown"
-                                        alternative-text="Approved"  ></lightning-icon>
+                                    <a href="https://mtxlpi.force.com/tlcPortal/s/view-license">
+                                        <lightning-icon icon-name="utility:preview" class="chevrondown"
+                                            alternative-text="View"></lightning-icon>
                                     </a>
-                                    <!-- <template if:true={acc.Renew}> -->
-                                    <a href="https://mtxlpi.force.com/tlcPortal/s/license-application">
+                                    <a if:true={acc.Renew}>
                                         <!-- | Renew -->
-                                        <lightning-icon icon-name="utility:rotate" class="chevrondown"
-                                        alternative-text="Approved"  ></lightning-icon>
+                                        <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
+                                            alternative-text="Renew" onclick={onClick}>
+                                        </lightning-icon>
                                     </a>
-                                    <!-- </template> -->
                                 </td>
                             </tr>
                         </template>

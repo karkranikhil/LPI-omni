@@ -6,18 +6,20 @@ import basePath from "@salesforce/community/basePath";
 import { getRecord } from "lightning/uiRecordApi";
 import fetchUserDetail from "@salesforce/apex/ManageUserController.fetchUserDetail";
 import lpiLogo from "@salesforce/resourceUrl/lpiLogo";
+import { NavigationMixin } from 'lightning/navigation';
 
 
 
 
-export default class LpiHeader extends LightningElement {
+export default class LpiHeader extends NavigationMixin(LightningElement) {
+
     @track showSpinner;
     @track logo;
     @track profileUrl;
     value = 'English';
     @track name;
 
-    
+
     @wire(getRecord, {
         recordId: USER_ID,
         fields: [NAME_FIELD],
@@ -34,7 +36,7 @@ export default class LpiHeader extends LightningElement {
     }
 
     connectedCallback() {
-       
+
         // this.showSpinner = true;
         this.getProfilePicture();
         this.logo = lpiLogo;
@@ -50,7 +52,7 @@ export default class LpiHeader extends LightningElement {
 
     get license() {
         return [
-            { label: 'Under License', value: 'Under License' },
+            { label: 'View License', value: 'View License' },
             { label: 'Apply For License', value: 'Apply For License' },
         ];
     }
@@ -70,29 +72,33 @@ export default class LpiHeader extends LightningElement {
         ];
     }
 
+
+
     handleNotification() {
         console.log("Navigate");
         window.open("/tlcPortal/s/", "_self");
     }
 
-    navigateToHome(){
+    navigateToHome() {
         window.open("/tlcPortal/s/", "_self");
     }
 
-    navigateToPage(){
-        window.open("/tlcPortal/s/summons-and-settlements","_self");
+    navigateToPage() {
+        window.open("/tlcPortal/s/summons-and-settlements", "_self");
     }
 
     handleChange(event) {
         this.value = event.detail.value;
-        if(this.target.name =='license'){
-            if(event.target.value =='Apply For License'){
-                window.open("/tlcPortal/s/license-renewal", "_self");
-            }else if(event.target.value =='Under License'){
-               // window.open("/tlcPortal/s/", "_self");
+        if (event.target.name == 'license') {
+            if (event.target.value == 'Apply For License') {
+                window.open("/tlcPortal/s/license-application/", "_self");
+            }
+            else if (event.target.value == 'View License') {
+                window.open("/tlcPortal/s/view-license", "_self");
             }
         }
     }
+
     // logout
     get isGuest() {
         return isGuest;

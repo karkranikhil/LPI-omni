@@ -7,14 +7,14 @@ public class bcdDashboardApex {
             if(us.size()>0){
                 String contactID = us[0].ContactId;
                 List<WrapperClass> wc = new List<WrapperClass>();
-                for(BusinessLicense ac :  [SELECT Id,Account.Name,Account.PersonEmail,License_Type__c,Account.TLC_License_number__c,PeriodEnd,Status,Regulatory_Authorization_Type__c FROM BusinessLicense WHERE ContactId = :contactID AND Regulatory_Authorization_Type__c IN ('Vehicle Licensing','Driver Licensing')]){
+                for(BusinessLicense ac :  [SELECT Id,Account.Name,Account.PersonEmail,License_Type__c,Account.TLC_License_number__c,PeriodEnd,Status,Regulatory_Authorization_Type__c,Name FROM BusinessLicense WHERE ContactId = :contactID AND Regulatory_Authorization_Type__c IN ('Vehicle Licensing','Driver Licensing')]){
                     WrapperClass wrapper  = new WrapperClass();
                     wrapper.Id = ac.Id;
                     wrapper.Name = ac.Account.Name;
                     wrapper.Email = ac.Account.PersonEmail;
                     wrapper.Type = ac.License_Type__c;
                     wrapper.status = ac.Status;
-                    wrapper.tlcNumber = ac.Account.TLC_License_number__c;
+                    wrapper.tlcNumber = ac.Name;
 
                     if(ac.PeriodEnd != null){
                         
@@ -22,7 +22,7 @@ public class bcdDashboardApex {
                         Date licenseDate = date.newinstance(dT.year(), dT.month(), dT.day());
                         wrapper.licenseDate = licenseDate;
 
-                        if(ac.PeriodEnd.AddDays(7) < date.today()){
+                        if(date.today().AddDays(-10) < = ac.PeriodEnd){
                             wrapper.Renew = true;
                         }else{
                             wrapper.Renew = false;
@@ -82,4 +82,5 @@ public class bcdDashboardApex {
         @AuraEnabled
         public Boolean Renew;
     }
+    
 }
