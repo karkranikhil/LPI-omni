@@ -1,0 +1,85 @@
+<template>
+    <div class="content slds-wrap slds-grid ">
+        <div class="pageTitle slds-col slds-size_12-of-12">
+            <h3>Settlements</h3>
+        </div>
+        <div class=" slds-col slds-size_12-of-12">
+            <table>
+                <thead>
+                    <th>License Name</th>
+                    <th>Points</th>
+                    <th>1st Violation</th>
+                    <th>2nd Violation</th>
+                    <th>3rd Violation</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <template for:each={settlements} for:item="settlement">
+                        <tr key={settlement.Id}>
+                            <td>{settlement.Business_License__r.Name}</td>
+                            <td>{settlement.Points__c}</td>
+                            <td><template if:true={settlement.Fines__c}><template
+                                        if:true={settlement.Fines__r.X1st_Violation__c}>$
+                                        {settlement.Fines__r.X1st_Violation__c}</template></template></td>
+                            <td><template if:true={settlement.Fines__c}><template
+                                        if:true={settlement.Fines__r.X2nd_Violation__c}>$
+                                        {settlement.Fines__r.X2nd_Violation__c}</template></template></td>
+                            <td><template if:true={settlement.Fines__c}><template
+                                        if:true={settlement.Fines__r.X3rd_Violation__c}>$
+                                        {settlement.Fines__r.X3rd_Violation__c}</template></template></td>
+                            <td>{settlement.Status__c}</td>
+                            <td>
+                                <button data-id={settlement.Id} data-name="settlement" class="slds-button" onclick={handlePayment}>PAY</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <!-- <div>
+                <lightning-datatable key-field="Id" data={data} columns={columns} show-row-number-column
+                    hide-checkbox-column onrowaction={callRowAction}>
+                </lightning-datatable>
+            </div> -->
+
+        </div>
+    </div>
+
+    <div class="content slds-wrap slds-grid ">
+        <div class="pageTitle slds-col slds-size_12-of-12">
+            <h3>Summons</h3>
+        </div>
+        <div class=" slds-col slds-size_12-of-12">
+            <table>
+                <thead>
+                    <th>License Name</th>
+                    <th>Date of Offense</th>
+                    <th>Date Issued</th>
+                    <th>TLC Driver Name</th>
+                    <th>TLC Vehicle Number</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <template for:each={summons} for:item="summon">
+                        <tr key={summon.Id}>
+                            <td>{summon.Business_License__r.Name}</td>
+                            <td>{summon.Date_of_Offense__c}</td>
+                            <td>{summon.Date_Issued__c}</td>
+                            <td>{summon.TLC_Driver_Number__c}</td>
+                            <td>{summon.TLC_Vehicle_Number__c}</td>
+                            <td>
+                                <button data-id={summon.Id} data-name="summon" class="slds-button" onclick={viewRecord}>View</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <!-- <div>
+                <lightning-datatable key-field="Id" data={data} columns={columns} show-row-number-column
+                    hide-checkbox-column onrowaction={callRowAction}>
+                </lightning-datatable>
+            </div> -->
+
+        </div>
+    </div>
+</template>

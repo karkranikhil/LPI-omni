@@ -1,27 +1,34 @@
 <apex:page readOnly="true" standardController="Settlement__c" renderAs="advanced_pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
     <html>
         <head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-    td {
-padding:10px;
-}
-</style>
-</head>
+            <style>
+                table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                }
+                td {
+                padding:10px;
+                }
+            </style>
+        </head>
         <body>
+            <p>
+                NYC Taxi and Limousine Commission could charge you with a violation of TLC Rule 580-13(a)(3)(vii) 
+                which carries a me $300 and 3 points if plead guilty before the hearing; a fine of $400 and 
+                3 points if found guilty following a hearing.
+            </p>
+            <br/>
+            <br/>
             <table >
-                <caption>You have two options:</caption>
+                <caption style="text-align:left;">You have two options:</caption><br/>
                 <tr>
-                    <td colspan="3" style="background:rgb(163, 160, 160)"> <b>Accept this Settlement Offer</b>
+                    <td colspan="3" style="background:rgb(163, 160, 160);"> <b style="padding-left:14px;">Accept this Settlement Offer</b>
                     </td></tr>
                 <tr>
                     
                     <td rowspan="2" style="background:rgb(163, 160, 160)">1
                     </td>
-                    <td>what?</td>
+                    <td>What?</td>
                     <td> - Plead  Guilty to : 80-13(a)(3)(vii)- Comply With Traffic Laws<br/>
                         - Agree to accept three points<br/>
                         - This Violation will stay on your TLC record and will count towards the calculation of future TLC penalities<br/>
@@ -37,7 +44,7 @@ padding:10px;
                 </tr>
                 
                 <tr>
-                    <td colspan="3" style="background:rgb(163, 160, 160)"> <b>  Wait for the hearing infront of an OATH judge</b>
+                    <td colspan="3" style="background:rgb(163, 160, 160)"> <b style="padding-left:14px;">  Wait for a hearing in front of an OATH judge</b>
                     </td></tr>
                 
                 <tr>
@@ -54,6 +61,13 @@ padding:10px;
                     <td>   -Wait for a summons to be mailed to you. The summons will list the hearing location, date and time where you will be able to defend yourself against the rule violation</td>
                 </tr>
             </table>
+            <br/>
+            <p>
+                <b>Questions? </b>If you have questions about your options or if you would like to discuss or provide information 
+                about your case, you or your attorney or representative may contact TLC. Information you provide 
+                TLC can be used by TLC at a hearing TLC staff i available 8.00 a.m. to 4:00 p.m., 
+                Monday through Friday at 718-391-5584 or 31-00 47th Avenue, 3rd floor, Long Island City, Ny 11101.
+            </p>
         </body>
     </html>
 </apex:page>

@@ -54,6 +54,7 @@ header .line{
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
+    
 }
 .userLogin a:hover{
     color: #fc0;
@@ -61,8 +62,8 @@ header .line{
 
 .userLogin .userName{
     margin: 0px 16px;
-    font-weight: normal;
     color: #000;
+    font-weight: bold;
 }
 
 .notificationIcon{
@@ -71,15 +72,15 @@ header .line{
 
 nav a, .active{
     margin-right: 8px;
-    padding:6px 16px;
+    padding:7px 16px;
     border:1px solid #fff;
-    border-radius:6px;
+    border-radius:4px;
     text-decoration: none;
 }
 
 nav a:hover{
     color: #fc0;
-    border:1px solid #fc0;
+    border:1px solid #e1e1e1;
 }
 nav .active{
     color: #000!important;
@@ -99,10 +100,14 @@ nav .active{
 
 .summonsBtn{
     border: 1px
-     solid #e1e1e1;
+     solid #fff;
         padding: 6px 14px;
         border-radius: 4px;
         margin-right: 16px;
         background: #fff;
     
+}
+
+.profileImage img{
+    border-radius: 100px;
 }

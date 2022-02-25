@@ -128,7 +128,7 @@ public with sharing class CyberSourceController {
                         
                         bill_to_address_postal_code = (String.isNotBlank(con.MailingPostalCode) ? con.MailingPostalCode.replaceAll('[^a-zA-Z0-9-,\'\\s+]', '') : '');
                         
-                        bill_to_address_country = (String.isNotBlank(con.MailingCountry) ? con.MailingCountry.replaceAll('[^a-zA-Z0-9-,\'\\s+]', '') : '');
+                        bill_to_address_country = '';//(String.isNotBlank(con.MailingCountry) ? con.MailingCountry.replaceAll('[^a-zA-Z0-9-,\'\\s+]', '') : '');
                         
                         reference_number = recordId + '' + Datetime.now().getTime();
                         issuer_additional_data = con.Id + '__' + recordId + '__' + paymentType + '__' + UserInfo.getUserId() + '__' + transactionId;

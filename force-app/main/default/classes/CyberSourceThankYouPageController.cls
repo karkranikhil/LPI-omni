@@ -238,7 +238,7 @@ public without sharing class CyberSourceThankYouPageController {
                                                      FROM Settlement__c 
                                                      WHERE Id =: paymentResponse.recordId];
             
-            Transaction_Log__c transactionLogRecord = createTransactionLogForPaymentResponse('SUCCESS', 'License', null);
+            Transaction_Log__c transactionLogRecord = createTransactionLogForPaymentResponse('SUCCESS', 'Settlement', null);
             
             if(transactionLogRecord != null) {
                 settlementRecord.Status__c = 'Granted';
@@ -249,7 +249,7 @@ public without sharing class CyberSourceThankYouPageController {
             
         } catch(Exception ex){
             Transaction_Log__c transactionLogRecord = 
-                createTransactionLogForPaymentResponse('FAILURE', 'License', ex.getMessage() + ' with Stack Trace: ' + ex.getStackTraceString());
+                createTransactionLogForPaymentResponse('FAILURE', 'Settlement', ex.getMessage() + ' with Stack Trace: ' + ex.getStackTraceString());
         } 
     }
 
@@ -260,7 +260,7 @@ public without sharing class CyberSourceThankYouPageController {
                                                      FROM Summon__c 
                                                      WHERE Id =: paymentResponse.recordId];
             
-            Transaction_Log__c transactionLogRecord = createTransactionLogForPaymentResponse('SUCCESS', 'License', null);
+            Transaction_Log__c transactionLogRecord = createTransactionLogForPaymentResponse('SUCCESS', 'Summon', null);
             
             if(transactionLogRecord != null) {
                 //upsert summonRecord;
@@ -270,7 +270,7 @@ public without sharing class CyberSourceThankYouPageController {
             
         } catch(Exception ex){
             Transaction_Log__c transactionLogRecord = 
-                createTransactionLogForPaymentResponse('FAILURE', 'License', ex.getMessage() + ' with Stack Trace: ' + ex.getStackTraceString());
+                createTransactionLogForPaymentResponse('FAILURE', 'Summon', ex.getMessage() + ' with Stack Trace: ' + ex.getStackTraceString());
         } 
     }
 
@@ -415,7 +415,13 @@ public without sharing class CyberSourceThankYouPageController {
             } else if(flowType == 'Application Exam'){
                 logRecord.Application_Reference__c = paymentResponse.recordId;
                 logRecord.Transaction_Fee_Created__c = false;
-            }
+            } else if(flowType == 'Summon'){
+                logRecord.Summon__c = paymentResponse.recordId;
+                logRecord.Transaction_Fee_Created__c = false;
+            } else if(flowType == 'Settlement'){
+                logRecord.Settlement__c = paymentResponse.recordId;
+                logRecord.Transaction_Fee_Created__c = false;
+            } 
             
             update logRecord;
             

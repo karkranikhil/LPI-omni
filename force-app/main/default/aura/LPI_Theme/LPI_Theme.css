@@ -1,2 +1,169 @@
-.THIS {
+.THIS header button{
+    border:1px solid #fff;
+    color:#000!important;
+}
+
+.THIS *,.THIS a, .THIS button{
+    outline:none!important
+}
+
+.THIS header .slds-truncate, .THIS header  a{
+    color:#000!important;
+}
+
+.THIS header button:hover{
+    border:1px solid #e1e1e1;
+    color:#000!important;
+}
+
+.THIS table td svg{
+    width: 16px!important;
+
+}
+
+.THIS table{
+    margin:16px 0px;
+}
+
+.THIS table th, .THIS table td{
+    padding:8px 10px;
+}
+
+.THIS table thead{
+
+color:#000;
+font-size:14px;
+background:#FFFAE6;
+
+
+}
+.THIS table th{
+    background:#FFFAE6;
+    position: sticky;
+    top: 0px;
+}
+
+
+.THIS table tbody tr{
+    background:#F9F9F9;
+    font-size: 12px;
+    border-bottom: 4px solid #fff;
+}
+.THIS table tbody tr a{
+    margin-left: 16px;
+
+}
+
+.THIS table tbody tr:hover{
+    background:#fff;
+}
+
+
+.THIS .pageTitle h3{
+    font-size:20px!important;
+    font-weight: 400;
+}
+
+.THIS .lpiContent{
+    padding: 1rem 8rem;
+}
+
+.THIS .slds-button_brand{
+    background: #FFCC00!important;
+    font-size: 14px!important;
+    border-color:#FFCC00;
+    font-weight: bold;
+}
+
+
+.THIS .slds-button_neutral{
+    background: #fff;
+    font-size: 14px;
+    border-color:#FFCC00;
+    font-weight: bold;
+    color:#000;
+}
+
+
+.THIS .slds-progress__item.slds-is-active .slds-progress__marker{
+    background: #fff;
+    font-size: 14px;
+    border-color: #ffcc00;
+    font-weight: bold;
+    color: #000;
+}
+
+.THIS .slds-card{
+    border:none;
+} 
+.THIS .slds-form-element {
+    margin-bottom: 10px;
+}
+
+
+.THIS .slds-form-element input{
+    padding: 3px 12px;
+    border-color: #e1e1e1;
+    
+}
+.THIS textarea{
+    border-color: #e1e1e1;
+}
+
+
+.THIS .slds-form-element label{
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.THIS .btnLabel{
+    font-weight: bold;
+    font-size: 14px;
+}
+.THIS .omni-vert-stepchart-completed:after{
+    background-color: rgb(255 204 0)!important;
+}
+
+.THIS .slds-progress__list .omni-vert-stepchart-active:before,.THIS .omni-vert-stepchart-completed:before{
+    background-color: rgb(255 204 0)!important;
+}
+
+.THIS .vlc-separator {
+    border-width: 0.2rem!important;
+    width: 6rem!important;
+    border-color: #dfdfdf!important;
+    border-radius: 6px!important;
+
+}
+
+.THIS [type=radio]:checked+.slds-radio__label .slds-radio_faux:after{
+    border-color: #ffcc00!important;
+}
+
+.THIS .slds-checkbox [type=checkbox]:checked+.slds-checkbox__label .slds-checkbox_faux:after{
+    border-color: #ffcc00!important;
+}
+
+.THIS td ol{
+    font-size: 14px;
+}
+
+.THIS td ol li{
+    margin-bottom: 16px;
+}
+.THIS td strong{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.THIS .slds-rich-text-editor__output td, .THIS .slds-rich-text-editor__output p{
+    background-color: #fff!important;
+    color: #000!important;
+    font-size: 14px;
+}
+
+.THIS fieldset, .THIS .slds-form-element__legend{
+    font-size: 14px;
+    color: #000!important;
+    margin-bottom: 16px;
 }
