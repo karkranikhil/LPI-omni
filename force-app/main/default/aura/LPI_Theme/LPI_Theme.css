@@ -66,6 +66,8 @@ background:#FFFAE6;
 
 .THIS .lpiContent{
     padding: 1rem 8rem;
+    min-height: calc(90vh - 0px)!important;
+    
 }
 
 .THIS .slds-button_brand{
@@ -127,7 +129,9 @@ background:#FFFAE6;
 .THIS .slds-progress__list .omni-vert-stepchart-active:before,.THIS .omni-vert-stepchart-completed:before{
     background-color: rgb(255 204 0)!important;
 }
-
+.THIS .slds-radio [type=radio]:checked+.slds-radio__label .slds-radio_faux:after{
+    background-color: rgb(255 204 0)!important;
+}
 .THIS .vlc-separator {
     border-width: 0.2rem!important;
     width: 6rem!important;
@@ -136,7 +140,7 @@ background:#FFFAE6;
 
 }
 
-.THIS [type=radio]:checked+.slds-radio__label .slds-radio_faux:after{
+.THIS .slds-checkbox [type=radio]:checked+.slds-radio__label .slds-radio_faux:after{
     border-color: #ffcc00!important;
 }
 

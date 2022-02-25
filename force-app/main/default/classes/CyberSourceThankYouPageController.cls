@@ -80,7 +80,7 @@ public without sharing class CyberSourceThankYouPageController {
             paymentResponse.paymentType = data[2];
             paymentResponse.recordId = data[1];
             paymentResponse.transactionLogId = data[4];
-            
+            system.debug('TransactionLogId>>>'+paymentResponse.transactionLogId);
             requestDetails = [SELECT Id, Request_Details__c FROM Transaction_Log__c WHERE Id =: paymentResponse.transactionLogId].Request_Details__c;
             
             if( decision != null && decision == 'ACCEPT' && reason_code == 100 ) {
@@ -92,15 +92,35 @@ public without sharing class CyberSourceThankYouPageController {
                     
                     reloadWindowCheck = true;
                     
-                    List<Transaction_Log__c> recurringTransactionLogs = [SELECT Id, Transaction_Id__c 
+                    List<Transaction_Log__c> recurringTransactionLogs = [SELECT Id, Transaction_Id__c, Business_License__c 
                                                                          FROM Transaction_Log__c 
                                                                          WHERE Transaction_Id__c =: paymentResponse.transactionid];
+
+                    List<Transaction_Log__c> tLogs = [
+                        SELECT Id, Transaction_Id__c, Business_License__c 
+                                                                         FROM Transaction_Log__c 
+                                                                         WHERE Id =: paymentResponse.transactionLogId
+                    ];
+                    system.debug('TransactionLogSize>>'+tLogs.size());
+                    system.debug('PaymentType>>'+paymentResponse.paymentType);
+                    if(tLogs.size() > 0 && paymentResponse.paymentType == 'Renewal'){
+                            List<BusinessLicense> bls = new List<BusinessLicense>();
+                            for(Transaction_Log__c tl: tLogs){
+                                BusinessLicense bl = new BusinessLicense();
+                                bl.Id = tl.Business_License__c;
+                                bl.PeriodStart = System.today();
+                                bl.PeriodEnd = System.today().AddDays(365);
+                                bls.add(bl);
+                            }
+                            update bls;
+                    }
+
                     
                     if(recurringTransactionLogs.isEmpty()) {
-
                         if (paymentResponse.paymentType == 'Application Fee'){
                             MTXLPI_ProcessNewPayment.processNewPayment(this);
-                        } else if (paymentResponse.paymentType == 'Renewal Fee') {
+                        } 
+                         else if (paymentResponse.paymentType == 'Renewal Fee') {
                             thankYouFlowType = 'newRenewal';
                             MTXLPI_ProcessRenewalPayment.processRenewalPayment(this);
                         } else if (paymentResponse.paymentType == 'Settlement Fee'){

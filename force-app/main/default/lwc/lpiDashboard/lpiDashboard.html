@@ -7,7 +7,7 @@
             <div class="pageTitle slds-col slds-size_12-of-12">
 
                 <h3>Dashboard</h3>
-                <p>welcome to the Licensing permitting & Inspections</p>
+                <p>Welcome to the Licensing permitting & Inspections</p>
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                     <div class=" slds-col slds-size_8-of-12 ">
                         <strong>Active</strong>
                         <p> Licenses </p>
-                        <h2>10</h2>
+                        <h2>{ActiveLicenseCount}</h2>
                     </div>
                     <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={licensing} /></div>
 
@@ -30,7 +30,7 @@
                     <div class=" slds-col slds-size_8-of-12 ">
                         <strong>Active</strong>
                         <p> Vehicles</p>
-                        <h2>10</h2>
+                        <h2>{ActiveVehicleCount}</h2>
                     </div>
                     <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={vehicle} /></div>
 
@@ -42,7 +42,7 @@
                     <div class=" slds-col slds-size_8-of-12 ">
                         <strong>Pending</strong>
                         <p> Licenses Renewal</p>
-                        <h2>3</h2>
+                        <h2>{PendingRenewalCount}</h2>
                     </div>
                     <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={renewal} /></div>
 
@@ -53,9 +53,9 @@
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center expiredData">
                     <div class=" slds-col slds-size_8-of-12 ">
-                        <strong>Expiring</strong>
-                        <p> Day's</p>
-                        <h2>10</h2>
+                        <strong>Expiring in</strong>
+                        <p>10 Day's</p>
+                        <h2>{ExpiringLicenseCount}</h2>
                     </div>
                     <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={date} /></div>
 
@@ -71,8 +71,8 @@
             </div>
             <div class="slds-col slds-size_4-of-12">
                 <a class="secondary_button" href="https://mtxlpi.force.com/tlcPortal/s/view-license"> View Licenses</a>
-                <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/license-application">Add New
-                    Licenses</a>
+                <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/license-application">Apply For
+                    License</a>
             </div>
             <div class=" slds-col slds-size_12-of-12 tableData">
                 <table>
@@ -122,16 +122,16 @@
                     <thead>
                         <th>Number</th>
                         <th>Application Type</th>
-                        <th>Create Date</th>
+                        <th>Applied Date</th>
                         <th>Status</th>
                     </thead>
                     <tbody>
                         <template for:each={appData} for:item="ad">
                             <tr key={appData.Id}>
-                                <td>{ad.Name}</td>
-                                <td>{ad.ApplicationType}</td>
-                                <td>{ad.CreatedDate}</td>
-                                <td>{ad.Status}</td>
+                                <td>{ad.Id}</td>
+                                <td>{ad.Type}</td>
+                                <td>{ad.licenseDate}</td>
+                                <td>{ad.status}</td>
                             </tr>
                         </template>
                     </tbody>

@@ -1,0 +1,44 @@
+<template>
+    <lightning-card>
+        <h7>View Licenses</h7>
+        <div class=" slds-col slds-size_12-of-12 tableData">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Type</th>
+                    <th>TLC Number</th>
+                    <th>Expiration Date</th>
+                    <!-- <th>SSN Number</th> -->
+                    <th>Status</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <template for:each={data} for:item="acc">
+                        <tr key={acc.Id}>
+                            <td>{acc.Name}</td>
+                            <td>{acc.Email}</td>
+                            <td>{acc.Type}</td>
+                            <td>{acc.tlcNumber}</td>
+                            <td>{acc.licenseDate}</td>
+                            <td>{acc.status}</td>
+                            <td>
+                                <a href="">
+                                    <lightning-icon icon-name="utility:preview" class="chevrondown"
+                                        alternative-text="View"></lightning-icon>
+                                </a>
+                                <a if:true={acc.Renew}>
+                                    <!-- | Renew -->
+                                    <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
+                                        alternative-text="Renew" onclick={onClick}>
+                                    </lightning-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+</lightning-card>
+
+</template>

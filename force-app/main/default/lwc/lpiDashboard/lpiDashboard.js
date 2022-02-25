@@ -13,6 +13,10 @@ export default class LpiDashboard extends LightningElement {
     data = [];
     appData = [];
 	renewURL;
+	ActiveLicenseCount = 0;
+	ActiveVehicleCount = 0;
+	PendingRenewalCount = 0;
+	ExpiringLicenseCount = 0;
     
     connectedCallback() {
         console.log("connectedCallback");
@@ -20,6 +24,17 @@ export default class LpiDashboard extends LightningElement {
 		.then(result => {
             console.log('Data', result);
 			this.data = result;
+			this.ActiveLicenseCount = result.length;
+
+			for (let i = 0; i < result.length; i++) {
+				if(result[i].Renew == true){
+					this.ExpiringLicenseCount = this.ExpiringLicenseCount +1;
+				}
+				if(result[i].Type == 'Vehicle License'){
+					this.ActiveVehicleCount = this.ActiveVehicleCount +1;
+			  }
+			}
+
 			this.error = undefined;
 		})
 		.catch(error => {
@@ -31,12 +46,19 @@ export default class LpiDashboard extends LightningElement {
 		.then(appResult => {
             console.log('App Data', appResult);
 			this.appData = appResult;
+
+			for (let i = 0; i < appResult.length; i++) {
+				if(appResult[i].status == 'Submitted'){
+					this.PendingRenewalCount = this.PendingRenewalCount +1;
+				}
+			  }
 			this.error = undefined;
 		})
 		.catch(error => {
 			this.error = error;
 			this.appData = undefined;
 		})
+
     }
 
 	onClick(event) {
