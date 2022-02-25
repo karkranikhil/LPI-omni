@@ -95,22 +95,25 @@
                                 <td>{acc.tlcNumber}</td>
                                 <td>{acc.licenseDate}</td>
                                 <td>{acc.status}</td>
+
                                 <td>
-                                    <!-- <lightning-formatted-url name={acc.Id} label="View"></lightning-formatted-url> -->
-                                    <!-- <a href="https://mtxlpi.force.com/tlcPortal/s/view-license"> -->
-                                    <lightning-icon icon-name="utility:preview" class="chevrondown"></lightning-icon>
-
-                                    &nbsp;&nbsp; &nbsp;&nbsp;
-                                    <template if:true={acc.Renew}>
-                                        <!-- <lightning-formatted-url name={acc.Id} onclick={onClick} label="| Review">|
-                                            Review
-                                        </lightning-formatted-url> -->
-
+                                    <a href="https://mtxlpi.force.com/tlcPortal/s/view-license">
+                                        <!-- <lightning-icon icon-name="utility:preview" class="chevrondown"
+                                            alternative-text="View"></lightning-icon> -->
+                                        View
+                                    </a>
+                                    <a if:true={acc.Renew} name={acc.Id} onclick={onClick}>
+                                        <span>|</span>
+                                        Renew
                                         <!-- | Renew -->
-                                        <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
+                                        <!-- <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
                                             alternative-text="Renew" onclick={onClick}>
-                                        </lightning-icon>
-                                    </template>
+                                        </lightning-icon> -->
+                                    </a>
+                                    <a name={acc.Id} onclick={onUpdate}>
+                                        <span>|</span>
+                                        Update
+                                    </a>
                                 </td>
                             </tr>
                         </template>

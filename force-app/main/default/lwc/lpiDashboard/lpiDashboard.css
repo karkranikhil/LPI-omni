@@ -157,13 +157,13 @@ td a span{
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
     .THIS .lpiContent{
-        padding: 0rem 4rem!important;
+        padding: 0rem 2rem!important;
         
     }
 }
 @media screen and (min-width: 1280px) and (max-width: 1439px) {
     .THIS .lpiContent{
-        padding: 0rem 6rem!important;
+        padding: 0rem 2rem!important;
         
     }
 }

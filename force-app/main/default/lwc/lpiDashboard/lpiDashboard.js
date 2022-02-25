@@ -62,9 +62,14 @@ export default class LpiDashboard extends LightningElement {
     }
 
 	onClick(event) {
-		console.log(event.target.name);
+		console.log('Renew License ',event.target.name);
 		this.renewURL = 'https://mtxlpi.force.com/tlcPortal/s/license-renewal?licenseId='+event.target.name;
 		window.open(this.renewURL, '_self');
+	}
+
+	onUpdate(event){
+		console.log('Update License ',event.target.name);
+		window.open('https://mtxlpi.force.com/tlcPortal/s/update-license?licenseId='+event.target.name, '_self');
 	}
 
 }

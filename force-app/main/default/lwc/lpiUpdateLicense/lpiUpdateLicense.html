@@ -1,0 +1,411 @@
+<template>
+    <div class="slds-card slds-align_absolute-center ">
+        <div class="slds-col slds-size_8-of-12 tableData">
+            <table>
+                <thead class="slds-clearfix">
+                    <th class="slds-float_left">
+                        <h3>Applicant Information</h3>
+                    </th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3>Licensee</h3>
+                        </td>
+                        <td>
+                            <h3>{data.LicenseName}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>License Type</h3>
+                        </td>
+                        <td>
+                            <h3>{data.LicenseType}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>License Number</h3>
+                        </td>
+                        <td>
+                            <h3>{data.BusinessLicense}</h3>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <th>
+                        <h3>Updated Contact Information</h3>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3 class="slds-align_absolute-center">Current Contact Information</h3>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <h3 class="slds-align_absolute-center">New Contact Information</h3>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Cell Phone</h3>
+                        </td>
+                        <td>
+                            <h3>{data.CellPhone}</h3>
+                        </td>
+                        <td>
+                            <h3>Cell Phone</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="tel" name="cell" value={cell} onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>TelePhone</h3>
+                        </td>
+                        <td>
+                            <h3>{data.TelePhone}</h3>
+                        </td>
+                        <td>
+                            <h3>TelePhone</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="tel" name="tel" value={tel} onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Email Address</h3>
+                        </td>
+                        <td>
+                            <h3>{data.Email}</h3>
+                        </td>
+                        <td>
+                            <h3>Email Address</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="email" name="email" value={email} onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <th>
+                        <h3>Updated Address Information</h3>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3 class="slds-align_absolute-center">Current Mailing Address</h3>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <h3 class="slds-align_absolute-center">New Mailing Information</h3>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Building Number</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MBuilding}</h3>
+                        </td>
+                        <td>
+                            <h3>Building Number</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mBuilding" maxlength="20" value={mBuilding}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Street</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MStreet}</h3>
+                        </td>
+                        <td>
+                            <h3>Street</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mStreet" maxlength="250" value={mStreet}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Apt#</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MApt}</h3>
+                        </td>
+                        <td>
+                            <h3>Apt#</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mApt" maxlength="20" value={mApt}
+                                    onchange={handleChange}></lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>City</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MCity}</h3>
+                        </td>
+                        <td>
+                            <h3>City</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mCity" maxlength="20" value={mCity}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>State</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MState}</h3>
+                        </td>
+                        <td>
+                            <h3>State</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mState" maxlength="20" value={mState}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Zip Code</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MZipcode}</h3>
+                        </td>
+                        <td>
+                            <h3>Zip Code</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mZip" maxlength="20" value={mZip}
+                                    onchange={handleChange}></lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Borough</h3>
+                        </td>
+                        <td>
+                            <h3>{data.MBorough}</h3>
+                        </td>
+                        <td>
+                            <h3>Borough</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="mBorough" maxlength="20" value={mBorough}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h3 class="slds-align_absolute-center">Current Residence Address</h3>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <h3 class="slds-align_absolute-center">New Residence Information</h3>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Building Number</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RBuilding}</h3>
+                        </td>
+                        <td>
+                            <h3>Building Number</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rBuilding" maxlength="20" value={rBuilding}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Street</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RStreet}</h3>
+                        </td>
+                        <td>
+                            <h3>Street</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rStreet" maxlength="250" value={rStreet}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Apt#</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RApt}</h3>
+                        </td>
+                        <td>
+                            <h3>Apt#</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rApt" maxlength="20" value={rApt}
+                                    onchange={handleChange}></lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>City</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RCity}</h3>
+                        </td>
+                        <td>
+                            <h3>City</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rCity" maxlength="20" value={rCity}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>State</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RState}</h3>
+                        </td>
+                        <td>
+                            <h3>State</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rState" maxlength="20" value={rState}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Zip Code</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RZipcode}</h3>
+                        </td>
+                        <td>
+                            <h3>Zip Code</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rZip" maxlength="20" value={rZip}
+                                    onchange={handleChange}></lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Borough</h3>
+                        </td>
+                        <td>
+                            <h3>{data.RBorough}</h3>
+                        </td>
+                        <td>
+                            <h3>Borough</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                <lightning-input type="text" name="rBorough" maxlength="20" value={rBorough}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                            </h3>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="slds-align_absolute-center">
+                <a class="primary_button" onclick={saveRecord}>Save</a>
+                <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
+            </div>
+        </div>
+    </div>
+</template>

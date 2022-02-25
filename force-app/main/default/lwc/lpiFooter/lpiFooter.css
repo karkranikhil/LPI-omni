@@ -42,7 +42,7 @@ footer{
 }
 @media screen and (min-width: 1280px) and (max-width: 1439px) {
    .content{
-        padding: 0rem 6rem!important;
+        padding: 0rem 2rem!important;
         
     }
 }
