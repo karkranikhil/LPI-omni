@@ -8,7 +8,7 @@ public inherited sharing class MTXLPI_ProcessNewPayment {
         try {
             StatusResponse sr = new StatusResponse();
             
-            PreliminaryApplicationRef application = [SELECT Id, Authority__c, Status__c, Status_Reason__c, LicenseTypeId__c, Request_Type__c, 
+            PreliminaryApplicationRef application = [SELECT Id, Authority__c, Status__c, Status_Reason__c, LicenseTypeId__c, Request_Type__c, LicenseTypeId__r.Name,
                                                      BusinessAccountNameId, LicenseTypeId__r.IssuingDepartment.ExternalId__c, LicenseStartDate__c, 
                                                      LicenseEndDate__c, Taken_And_Passed_NCE__c, Taken_And_Passed_NMF__c, Flags__c, Flag_Reason__c,
                                                      CEU_Completion__c,LicenseTypeId__r.External_Id__c,RecordType.DeveloperName
@@ -16,7 +16,7 @@ public inherited sharing class MTXLPI_ProcessNewPayment {
                                                      WHERE Id =: cyberSource.paymentResponse.recordId];
             
             cyberSource.thankYouFlowType = 'newApplication';
-            
+
             if(application.Authority__c  == 'Cannabis' &&  application.Status_Reason__c == 'Pending Application Payment'){
                 cyberSource.processPendingPayment();
             } else{
@@ -34,6 +34,10 @@ public inherited sharing class MTXLPI_ProcessNewPayment {
                 mainApplication.ApplicationType = 'New';
                 mainApplication.AppliedDate = System.now();
                 mainApplication.Status = 'Submitted';
+                if(application.LicenseTypeId__r.Name == 'Driver License')
+                    mainApplication.RecordTypeId = '0125f000000uyOgAAI';    //forDriver License
+                else if(application.LicenseTypeId__r.Name == 'Vehicle License')
+                    mainApplication.RecordTypeId = '0125f000000uyOlAAI';    //for Vehicle License
                 mainApplication.LicenseTypeId = application.LicenseTypeId__c;
                 mainApplication.AccountId = application.BusinessAccountNameId;
                 mainApplication.SavedApplicationRefId = application.Id;
@@ -64,7 +68,12 @@ public inherited sharing class MTXLPI_ProcessNewPayment {
                     mainApplication.Flag_Reason__c = application.Flag_Reason__c;
                 }
                 
-                insert mainApplication; 
+                insert mainApplication;
+
+                // if(application.LicenseTypeId__r.Name == 'Driver License' ||
+                // application.LicenseTypeId__r.Name == 'Vehicle License'){
+                //     updateFilesParent(application.Id, mainApplication.Id);
+                // }
                 
                 RegulatoryTrxnFee rtxnFee = cyberSource.createRegulatoryTrxnFee('Application Intake', mainApplication.Id, application.Id);
                 
@@ -116,4 +125,19 @@ public inherited sharing class MTXLPI_ProcessNewPayment {
         application.Flag_Reason__c = sr.Flag_Reason;
         return sr;
     }
+    // public static void updateFilesParent(String prevParentId, String newParentId){
+    //     List<ContentDocumentLink> cdls = new List<ContentDocumentLink>([
+    //         SELECT Id, LinkedEntityId  FROM ContentDocumentLink Where LinkedEntityId =: prevParentId
+    //     ]);
+    //     List<ContentDocumentLink> newCDLS = new List<ContentDocumentLink>();
+    //     for(ContentDocumentLink cdl: cdls){
+    //         cdl.LinkedEntityId = newParentId;
+    //         ContentDocumentLink newCDL = new ContentDocumentLink();
+    //         newCDL.LinkedEntityId = newParentId;
+    //         newCDL.ContentDocumentId = cdl.ContentDocumentId;
+    //         newCDLS.add(newCDL);
+    //     }
+    //     if(newCDLS.size() > 0)
+    //         insert newCDLS;
+    // }
 }

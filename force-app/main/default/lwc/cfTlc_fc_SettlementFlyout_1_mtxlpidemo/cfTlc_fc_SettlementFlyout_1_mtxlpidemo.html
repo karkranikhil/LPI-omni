@@ -19,11 +19,25 @@
             <template if:true={hasPermission}>
               <template if:true={hasRecords}>
                         <template for:each={_records} for:item="record" for:index="rindex">
-                            
+                            <vlocity_ins-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><vlocity_ins-output-field data-style-id="state0element0_child"   card={card}  record={record}  merge-field="%3Cdiv%3ERecord%20Id%20%7BrecordId%7D%3C/div%3E%0A%3Cdiv%3EParent%20Id%20%7BParent.recordId%7D%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12" data-rindex={rindex} style="" >
+    <vlocity_ins-custom-lwc-wrapper class="" element-name="c-t-l-c-create-settlement-and-navigate-english" property='\{"recordid":"{Parent.recordId}","c__recordid":"{Parent.recordId}"}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-t-l-c-create-settlement-and-navigate-english  ></c-t-l-c-create-settlement-and-navigate-english></vlocity_ins-custom-lwc-wrapper>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
                         </template>
                       </template>
                       <template if:false={hasRecords}>
-                            
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><vlocity_ins-output-field data-style-id="state0element0_child"   card={card}  record={record}  merge-field="%3Cdiv%3ERecord%20Id%20%7BrecordId%7D%3C/div%3E%0A%3Cdiv%3EParent%20Id%20%7BParent.recordId%7D%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12" data-rindex={rindex} style="" >
+    <vlocity_ins-custom-lwc-wrapper class="" element-name="c-t-l-c-create-settlement-and-navigate-english" property='\{"recordid":"{Parent.recordId}","c__recordid":"{Parent.recordId}"}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-t-l-c-create-settlement-and-navigate-english  ></c-t-l-c-create-settlement-and-navigate-english></vlocity_ins-custom-lwc-wrapper>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
                       </template>
             </template>
             <template if:true={hasError}>

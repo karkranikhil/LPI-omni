@@ -3,7 +3,7 @@ public without sharing class TLC_PaymentController {
     @AuraEnabled
     public static List<Settlement__c> fetchSettlements(){
         try {
-            return [SELECT Id,Business_License__r.Name,Points__c,Fines__r.X1st_Violation__c,Fines__r.X2nd_Violation__c,Fines__r.X3rd_Violation__c,Status__c
+            return [SELECT Id,Summon__r.Name,Business_License__r.Name,Points__c,Fines__r.X1st_Violation__c,Fines__r.X2nd_Violation__c,Fines__r.X3rd_Violation__c,Status__c
                 FROM Settlement__c ORDER BY createdDate DESC LIMIT 20];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

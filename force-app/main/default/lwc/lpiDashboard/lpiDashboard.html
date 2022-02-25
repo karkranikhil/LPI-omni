@@ -2,7 +2,7 @@
     <div class="mainWraper homePage">
 
 
-        <div class="content slds-wrap slds-grid ">
+        <div class="slds-wrap slds-grid ">
 
             <div class="pageTitle slds-col slds-size_12-of-12">
 
@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="content slds-wrap  slds-grid ">
+        <div class="slds-wrap  slds-grid ">
 
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center approvedData">
@@ -65,15 +65,15 @@
         </div>
         <div class="divider"></div>
 
-        <div class="content slds-wrap slds-grid ">
-            <div class="pageTitle slds-col slds-size_8-of-12">
+        <div class=" slds-wrap slds-grid ">
+            <div class="pageTitle slds-col slds-size_12-of-12">
                 <h3>Active Licenses</h3>
             </div>
-            <div class="slds-col slds-size_4-of-12">
+            <!-- <div class="slds-col slds-size_8-of-12 slds-text-align_right">
                 <a class="secondary_button" href="https://mtxlpi.force.com/tlcPortal/s/view-license"> View Licenses</a>
                 <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/license-application">Apply For
                     License</a>
-            </div>
+            </div> -->
             <div class=" slds-col slds-size_12-of-12 tableData">
                 <table>
                     <thead>
@@ -84,7 +84,7 @@
                         <th>Expiration Date</th>
                         <!-- <th>SSN Number</th> -->
                         <th>Status</th>
-                        <th></th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         <template for:each={data} for:item="acc">
@@ -96,16 +96,21 @@
                                 <td>{acc.licenseDate}</td>
                                 <td>{acc.status}</td>
                                 <td>
-                                    <a href="https://mtxlpi.force.com/tlcPortal/s/view-license">
-                                        <lightning-icon icon-name="utility:preview" class="chevrondown"
-                                            alternative-text="View"></lightning-icon>
-                                    </a>
-                                    <a if:true={acc.Renew}>
+                                    <!-- <lightning-formatted-url name={acc.Id} label="View"></lightning-formatted-url> -->
+                                    <!-- <a href="https://mtxlpi.force.com/tlcPortal/s/view-license"> -->
+                                    <lightning-icon icon-name="utility:preview" class="chevrondown"></lightning-icon>
+
+                                    &nbsp;&nbsp; &nbsp;&nbsp;
+                                    <template if:true={acc.Renew}>
+                                        <!-- <lightning-formatted-url name={acc.Id} onclick={onClick} label="| Review">|
+                                            Review
+                                        </lightning-formatted-url> -->
+
                                         <!-- | Renew -->
                                         <lightning-icon name={acc.Id} icon-name="utility:refresh" class="chevrondown"
                                             alternative-text="Renew" onclick={onClick}>
                                         </lightning-icon>
-                                    </a>
+                                    </template>
                                 </td>
                             </tr>
                         </template>

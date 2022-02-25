@@ -17,7 +17,7 @@
                 <tbody>
                     <template for:each={summons} for:item="summon">
                         <tr key={summon.Id}>
-                            <td>{summon.Business_License__r.Name}</td>
+                            <td><template if:true={summon.Business_License__c}>{summon.Business_License__r.Name}</template></td>
                             <td>{summon.Date_of_Offense__c}</td>
                             <td>{summon.Date_Issued__c}</td>
                             <td>{summon.TLC_Driver_Number__c}</td>
@@ -54,7 +54,7 @@
                 <tbody>
                     <template for:each={settlements} for:item="settlement">
                         <tr key={settlement.Id}>
-                            <td>{settlement.Business_License__r.Name}</td>
+                            <td><template if:true={settlement.Summon__c}>{settlement.Summon__r.Name}</template></td>
                             <td>{settlement.Points__c}</td>
                             <td><template if:true={settlement.Fines__c}><template
                                         if:true={settlement.Fines__r.X1st_Violation__c}>$
