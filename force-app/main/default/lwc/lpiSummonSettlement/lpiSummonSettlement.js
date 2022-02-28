@@ -40,6 +40,21 @@ export default class LpiSummonSettlement extends NavigationMixin(LightningElemen
         });
     }
 
+    viewSettlement(event) {
+        let parentId = event.currentTarget.dataset.id;
+        
+        this[NavigationMixin.Navigate]({
+            type: 'comm__namedPage',
+            attributes: {
+                name: 'Settlement_Flow__c'
+            },
+            state:
+            {
+                Info: parentId
+            }
+        });
+    }
+
     handlePayment(event) {
         let parentId = event.currentTarget.dataset.id;
         let objName = event.currentTarget.dataset.name;

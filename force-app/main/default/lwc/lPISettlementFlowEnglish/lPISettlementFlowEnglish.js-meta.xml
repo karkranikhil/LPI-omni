@@ -3,8 +3,8 @@
 <apiVersion>53.0</apiVersion>
 <runtimeNamespace>vlocity_ins</runtimeNamespace>
 <isExposed>true</isExposed>
-<description>Vlocity OmniScript Auto-generated - a3e5f000000Vie0AAC</description>
-<masterLabel>LPI/SummonFlow/English</masterLabel>
+<description>Vlocity OmniScript Auto-generated - a3e5f000000VidvAAC</description>
+<masterLabel>LPI/SettlementFlow/English</masterLabel>
 <targets>
 <target>lightningCommunity__Page</target>
 <target>lightningCommunity__Default</target>
@@ -16,7 +16,7 @@
             <targetConfig targets="lightning__AppPage, lightning__RecordPage">
                 <property name="layout" type="String" datasource="lightning,newport"/>
                 <property name="inline" type="boolean" default="false" />
-                <property name="inlineLabel" type="string" default="Launch LPI/SummonFlow" />
+                <property name="inlineLabel" type="string" default="Launch LPI/SettlementFlow" />
                 <property name="inlineVariant" type="string" default="brand" datasource="brand,outline-brand,neutral,success,destructive,text-destructive,inverse,link"/>
                 <property name="dir" type="string" default="ltr" datasource="ltr,rtl"/>
                 <supportedFormFactors>
@@ -27,7 +27,7 @@
             <targetConfig targets="lightning__HomePage">
                 <property name="layout" type="String" datasource="lightning,newport"/>
                 <property name="inline" type="boolean" default="false" />
-                <property name="inlineLabel" type="string" default="Launch LPI/SummonFlow" />
+                <property name="inlineLabel" type="string" default="Launch LPI/SettlementFlow" />
                 <property name="inlineVariant" type="string" default="brand" datasource="brand,outline-brand,neutral,success,destructive,text-destructive,inverse,link"/>
                 <property name="dir" type="string" default="ltr" datasource="ltr,rtl"/>
                 <supportedFormFactors>
@@ -37,7 +37,7 @@
             <targetConfig targets="lightningCommunity__Default">
                 <property name="layout" type="String" datasource="lightning,newport"/>
                 <property name="inline" type="boolean" default="false" />
-                <property name="inlineLabel" type="string" default="Launch LPI/SummonFlow" />
+                <property name="inlineLabel" type="string" default="Launch LPI/SettlementFlow" />
                 <property name="inlineVariant" type="string" default="brand" datasource="brand,outline-brand,neutral,success,destructive,text-destructive,inverse,link"/>
                 <property name="recordId" type="String" label="Record Id" description="Automatically bind the page's record id to the component variable" default="{!recordId}" />
                 <property name="flexipageRegionWidth" type="String" label="Region Width" description="Set the responsive context for the OmniScript." default="LARGE" datasource="LARGE,MEDIUM,SMALL" />

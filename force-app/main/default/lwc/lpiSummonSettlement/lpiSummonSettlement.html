@@ -45,7 +45,7 @@
         <div class=" slds-col slds-size_12-of-12">
             <table>
                 <thead>
-                    <th>License Name</th>
+                    <th>Summon Number</th>
                     <th>Points</th>
                     <th>1st Violation</th>
                     <th>Status</th>
@@ -56,11 +56,14 @@
                         <tr key={settlement.Id}>
                             <td><template if:true={settlement.Summon__c}>{settlement.Summon__r.Name}</template></td>
                             <td>{settlement.Points__c}</td>
-                            <td><template if:true={settlement.Fines__c}><template
-                                        if:true={settlement.Fines__r.X1st_Violation__c}>$
-                                        {settlement.Fines__r.X1st_Violation__c}</template></template></td>
+                            <td>
+                                <template if:true={settlement.Fines__c}>
+                                    <template if:true={settlement.Fines__r.X1st_Violation__c}>$ {settlement.Fines__r.X1st_Violation__c}</template>
+                                </template>
+                            </td>
                             <td>{settlement.Status__c}</td>
                             <td>
+                                <button data-id={settlement.Id} data-name="settlement" class="slds-button" onclick={viewSettlement}>View</button> &nbsp;
                                 <button data-id={settlement.Id} data-name="settlement" class="slds-button" onclick={handlePayment}>PAY</button>
                             </td>
                         </tr>

@@ -1,7 +1,340 @@
 <template>
     <div class="slds-card slds-align_absolute-center ">
         <div class="slds-col slds-size_8-of-12 tableData">
-            <table>
+
+            <div class="slds-grid slds-wrap updateLicenseForm">
+                <h3>Applicant Information</h3>
+                <div class="slds-col slds-size_3-of-12">
+                    <b>Licensee</b>
+                </div>
+
+                <div class="slds-col slds-size_4-of-12">
+                    {data.LicenseName}
+                </div>
+
+                <div class="clearSpacing">&nbsp;</div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    <b>License Type
+                    </b>
+                </div>
+
+                <div class="slds-col slds-size_4-of-12">
+                    {data.LicenseType}
+                </div>
+                <div class="clearSpacing">&nbsp;</div>
+                <div class="slds-col slds-size_3-of-12">
+                    <b>License Number</b>
+                </div>
+
+                <div class="slds-col slds-size_4-of-12">
+                    {data.BusinessLicense}
+                </div>
+
+
+                <h3>Updated Contact Information</h3>
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>Current Contact Information</strong>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>New Contact Information</strong>
+                </div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Cell Phone
+                </div>
+          
+                <div class="slds-col slds-size_3-of-12">
+                    {data.CellPhone}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="tel" name="cell" value={cell} onchange={handleChange}>
+                    </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    Telephone
+                </div>
+          
+                <div class="slds-col slds-size_3-of-12">
+                    {data.TelePhone}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="tel" name="tel" value={tel} onchange={handleChange}>
+                    </lightning-input>
+                </div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Email Address
+                </div>
+          
+                <div class="slds-col slds-size_3-of-12">
+                    {data.Email}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="email" name="email" value={email} onchange={handleChange}>
+                    </lightning-input>
+                </div>
+
+
+                <h3>Updated Address Information </h3>
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>Current Mailing Address</strong>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>New Mailing Information</strong>
+                </div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Building Number
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MBuilding}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mBuilding" maxlength="20" value={mBuilding}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Street
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MStreet}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mStreet" maxlength="250" value={mStreet}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Apt#
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MApt}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mApt" maxlength="20" value={mApt}
+                    onchange={handleChange}></lightning-input>
+                </div>
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    City
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MCity}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mCity" maxlength="20" value={mCity}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    State
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MState}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mState" maxlength="20" value={mState}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Zip Code
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MZipcode}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mZip" maxlength="20" value={mZip}
+                                    onchange={handleChange}></lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Borough
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.MBorough}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="mBorough" maxlength="20" value={mBorough}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>Current Residence Address </strong>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <strong>New Residence Information</strong>
+                </div>
+
+                
+                <div class="slds-col slds-size_3-of-12">
+                    Building Number
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RBuilding}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rBuilding" maxlength="20" value={rBuilding}
+                    onchange={handleChange}>
+                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    Street
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RStreet}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rStreet" maxlength="250" value={rStreet}
+                                    onchange={handleChange}>
+                                </lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    Apt#
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RApt}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rApt" maxlength="20" value={rApt}
+                    onchange={handleChange}></lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    City
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RCity}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rCity" maxlength="20" value={rCity}
+                    onchange={handleChange}></lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="slds-col slds-size_3-of-12">
+                    State
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RState}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rState" maxlength="20" value={rState}
+                    onchange={handleChange}></lightning-input>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    Zip Code
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RZipcode}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rZip" maxlength="20" value={rZip}
+                    onchange={handleChange}></lightning-input>
+                </div>
+
+  <div class="clear"></div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    Borough
+                </div>
+
+                <div class="slds-col slds-size_3-of-12">
+                    {data.RBorough}
+                </div>
+
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" name="rBorough" maxlength="20" value={rBorough}
+                    onchange={handleChange}></lightning-input>
+                </div>
+                <div class="clearSpacing">&nbsp;</div>
+                <div class="slds-col slds-size_12-of-12 slds-text-align_right">
+
+                <a class="secondary_button" onclick={saveRecord}>Save</a>
+                <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
+                    </div>
+                    <div class="clearSpacing">&nbsp;</div>
+            </div>
+
+
+
+<!-- 
+            <table > 
                 <thead class="slds-clearfix">
                     <th class="slds-float_left">
                         <h3>Applicant Information</h3>
@@ -401,11 +734,13 @@
                     </tr>
 
                 </tbody>
-            </table>
+            </table> 
             <div class="slds-align_absolute-center">
                 <a class="primary_button" onclick={saveRecord}>Save</a>
                 <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
             </div>
+        -->
+
         </div>
     </div>
 </template>

@@ -34,18 +34,24 @@
 
 
 .homePage .banner{
-    background: linear-gradient(89.98deg, #FFCC00 42.5%, rgba(255, 204, 0, 0) 136.38%);
-    height:300px;
-    align-items: center;
+    background: linear-gradient(89.98deg, #FFCC00 50.5%, rgba(255, 204, 0, 0) 136.38%);
     overflow: hidden;
     position:relative;
-    margin: -12px;
+    margin: -12px -8.7rem 0px -9rem;
+
+}
+.bannerContent{
+    height:300px;
+    display:grid;
+    align-items: center;
+    padding: 0px 8rem;
 }
 .homePage .banner img{
     position: absolute;
-    width: 64%;
+    width: 59%;
     z-index: -1;
-    right: 0px;
+    right: -8rem;
+    top: -110px;
 }
 
 
@@ -94,7 +100,7 @@
 }
 
 .pageTitle {
-    padding: 3rem 8rem;
+    padding: 3rem 0rem;
 }
 
 .pageTitle h3{

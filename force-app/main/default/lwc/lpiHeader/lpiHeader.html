@@ -8,7 +8,7 @@
                 <div class="slds-col slds-size_2-of-12 slds-text-align_left">
                     <img src={logo} onclick={navigateToHome} class="logo" />
                 </div>
-                <div class="slds-col slds-size_6-of-12">
+                <div class="slds-col slds-size_7-of-12">
                     <template if:false={isGuest}>
                         <nav>
                             <a href="/tlcPortal/s/" class="active">Home </a>
@@ -17,7 +17,7 @@
 
                             <span>
                                 <lightning-combobox name="license" label="" value={value} placeholder="License"
-                                    options={license} class="slds-text-align_left rightSpace" onchange={handleChange}>
+                                    options={license} class="slds-text-align_left rightSpace" onchange={handleChange} >
                                 </lightning-combobox>
                             </span>
 
@@ -30,7 +30,7 @@
                                 <button class="summonsBtn" onclick={navigateToPage}>Summons & Settlements</button>
                             </span>
                             <span>
-                                <lightning-combobox name="complaints" label="" value={value} placeholder="Complaints"
+                                <lightning-combobox name="progress" label="" value={value} placeholder="Complaints"
                                     options={complaints} class="slds-text-align_left rightSpace"
                                     onchange={handleChange}>
                                 </lightning-combobox>
@@ -48,7 +48,7 @@
                         </nav>
                     </template>
                 </div>
-                <div class="slds-col slds-size_4-of-12 slds-text-align_right userLogin">
+                <div class="slds-col slds-size_3-of-12 slds-text-align_right userLogin">
                     <span>
                         <lightning-combobox name="progress" label="" value={value} placeholder="languages"
                             options={options} class="slds-text-align_left languages" onchange={handleChange}>

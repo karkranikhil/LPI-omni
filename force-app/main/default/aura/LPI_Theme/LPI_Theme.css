@@ -59,6 +59,25 @@ background:#FFFAE6;
 }
 
 
+.THIS lightning-formatted-rich-text table tbody td:first-child{
+    color: #8b8b8b!important;
+
+}
+
+.THIS lightning-formatted-rich-text table tbody td:last-child{
+    color: #000!important;
+    font-weight: bold
+
+}
+
+.THIS  .slds-accordion__summary{
+    background: #fff2bf;
+}
+.THIS .slds-file-selector__dropzone{
+    border:none!important;
+}
+
+
 .THIS .pageTitle h3{
     font-size:20px!important;
     font-weight: 400;
@@ -150,6 +169,7 @@ background:#FFFAE6;
 
 .THIS td ol{
     font-size: 14px;
+    margin-top: 20px;
 }
 
 .THIS td ol li{
@@ -171,6 +191,20 @@ background:#FFFAE6;
     color: #000!important;
     margin-bottom: 16px;
 }
+.THIS .slds-form-element__control span.slds-radio {
+    margin: 7px 0px;
+}
+
+
+.THIS .forceCommunityEmbeddedServiceHelpButton .flatButton, 
+.THIS  .flatButton:hover, 
+.THIS  .flatButton:focus{
+    background-color: #ffffff;
+    border: 2px solid #fc0;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 5px!important;
+    bottom: -4px!important;
+}
 
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -179,20 +213,8 @@ background:#FFFAE6;
         
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .THIS .lpiContent{
-        padding: 0rem 2rem!important;
-        
-    }
 
-}
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
-    .THIS .lpiContent{
-        padding: 0rem 2rem!important;
-        
-    }
-}
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
     .THIS .lpiContent{
         padding: 0rem 2rem!important;
         

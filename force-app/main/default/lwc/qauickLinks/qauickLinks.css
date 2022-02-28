@@ -16,6 +16,8 @@
 
 .qauickLinks{
     justify-content: space-around;
+    margin: 2rem 0px;
+
 }
 
 
@@ -65,4 +67,20 @@
 }
 .qauickLinks .shape img{
     margin-top: 12px;
+}
+
+.qauickLinks p{
+    color:#999;
+    padding: 0px 20px;
+    line-height: 20px;
+}
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .qauickLinks .box{
+        padding: 2% 1%;
+        margin: 5% 0px;
+
+    }
+    .qauickLinks h3 {
+        font-size: 14px;
+    }
 }

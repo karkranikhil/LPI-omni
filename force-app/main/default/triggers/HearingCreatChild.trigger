@@ -54,6 +54,7 @@ trigger HearingCreatChild on Hearing__c (After Insert) {
         insert lstAg;
     }
     
+    /* Commentted as causing error in DR
     for(ContentDocumentLink objDoc : [SELECT ContentDocumentId,LinkedEntityId,ShareType,Visibility 
                                             FROM ContentDocumentLink 
                                             WHERE LinkedEntityId in : idMap.keySet()]){
@@ -61,7 +62,7 @@ trigger HearingCreatChild on Hearing__c (After Insert) {
         objDocToInsert.ShareType = 'V';
         objDocToInsert.LinkedEntityId = idMap.get(objDoc.LinkedEntityId);
         lstContent.add(objDocToInsert);
-    }
+    }*/
     if(!lstContent.isEmpty()){
         insert lstContent;
     }

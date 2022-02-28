@@ -5,7 +5,7 @@
         <div class="newHeader">
             {!v.newHeader}
         </div>
-        <div class="content LoginForm" id="main-content-1">
+        <div class="content loginForm" id="main-content-1">
             {!v.body}
         </div>
         <div class="newFooter">

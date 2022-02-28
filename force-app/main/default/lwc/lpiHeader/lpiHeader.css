@@ -28,7 +28,7 @@ header .logo{
 header .languages{
     width:max-content;
     border:none;
-    margin-right:26px;
+
 }
 
 header .languages button{
@@ -48,7 +48,7 @@ header .line{
 }
 .userLogin{
     
-    margin-top: -12px;
+    margin-top: 0px;
 }
 .userLogin a{
     font-size: 14px;
@@ -61,13 +61,13 @@ header .line{
 }
 
 .userLogin .userName{
-    margin: 0px 16px;
+    margin: 0px 8px;
     color: #000;
     font-weight: bold;
 }
 
 .notificationIcon{
-    width:20px;
+    width:16px;
 }
 
 nav a, .active{
@@ -120,22 +120,20 @@ nav .active{
         
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
    .content{
         padding: 0rem 2rem!important;
         
     }
-
-}
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
- .content{
-        padding: 0rem 2rem!important;
-        
+    .rightSpace{
+        margin-right: 4px!important;
     }
-}
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
-   .content{
-        padding: 0rem 6rem!important;
-        
+    .summonsBtn{
+        margin-right: 0px;
     }
+    nav a{
+        padding: 7px 4px;
+        margin-left: 8px;
+    }
+    
 }
