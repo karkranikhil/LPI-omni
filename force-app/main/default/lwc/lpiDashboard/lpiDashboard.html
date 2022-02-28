@@ -15,36 +15,40 @@
 
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center approvedData">
-                    <div class=" slds-col slds-size_8-of-12 ">
-                        <strong>Active</strong>
-                        <p> Licenses </p>
+                    <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{ActiveLicenseCount}</h2>
+                        <span class="slds-m-left_small">
+                            <strong>Active</strong>
+                            <p> Licenses </p>
+                        </span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={licensing} /></div>
+                    <div class="slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"><img src={licensing} /></div>
 
                 </div>
             </div>
 
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center submittedData">
-                    <div class=" slds-col slds-size_8-of-12 ">
-                        <strong>Active</strong>
-                        <p> Vehicles</p>
+                    <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{ActiveVehicleCount}</h2>
+                        <span class="slds-m-left_small">
+                        <strong>Active</strong>
+                        <p> Vehicles</p></span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={vehicle} /></div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={vehicle} /></div>
 
                 </div>
             </div>
 
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center draftData">
-                    <div class=" slds-col slds-size_8-of-12 ">
-                        <strong>Pending</strong>
-                        <p> Licenses Renewal</p>
+                    <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{PendingRenewalCount}</h2>
+                        <span class="slds-m-left_small">
+                        <strong>Pending</strong>
+                        <p> Licenses Renewal</p></span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={renewal} /></div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={renewal} /></div>
 
                 </div>
             </div>
@@ -52,12 +56,13 @@
 
             <div class=" slds-col slds-size_3-of-12 statusDetails">
                 <div class="box slds-wrap slds-grid slds-grid_align-center expiredData">
-                    <div class=" slds-col slds-size_8-of-12 ">
-                        <strong>Expiring in</strong>
-                        <p>10 Day's</p>
+                    <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{ExpiringLicenseCount}</h2>
+                        <span class="slds-m-left_small">
+                        <strong>Expiring in</strong>
+                        <p>10 Day's</p></span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center"> <img src={date} /></div>
+                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={date} /></div>
 
                 </div>
             </div>

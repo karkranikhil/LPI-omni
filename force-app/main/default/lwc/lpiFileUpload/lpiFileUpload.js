@@ -1,15 +1,20 @@
 import { LightningElement, api, track } from 'lwc';
 
 export default class LpiFileUpload extends LightningElement {
-    @api myRecordId;
+    @api caseId;
     @track showFiles = false;
     @track fileName;
     @track uploadedFiles;
+    get recFields(){
+        return ['Name','Id'];
+    }
 
     get acceptedFormats() {
         return ['.pdf', '.png', '.pdf'];
     }
-
+    connectedCallback() {
+        console.log('CaseId :>> ', this.caseId);
+    }
     handleUploadFinished(event) {
         this.showFiles = true;
         this.uploadedFiles = event.detail.files;
@@ -25,7 +30,7 @@ export default class LpiFileUpload extends LightningElement {
         let baseURL = "https://" + location.host + "/";
         var docId = this.uploadedFiles[0].contentVersionId;
         let fileURL = baseURL +
-            "sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId=" +
+            "tlcPortal/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId=" +
             docId;
         window.open(fileURL, "_blank");
         console.log('fileURL :>> ', fileURL);

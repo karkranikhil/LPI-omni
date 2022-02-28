@@ -1,9 +1,15 @@
 @JsonAccess(serializable='always')
 global without sharing class LPINewCompliantController implements vlocity_ins.VlocityOpenInterface2{
     global String invokeMethod(String methodName, Map<String,Object> input, Map<String,Object> output, Map<String,Object> options) {
+        if (methodName == 'createCase') {
+            Id caseId = createCase();
+            output.put('newCaseId', caseId);
+            return null;
+        }
         Map<String,Object> inputWhat = (Map<String,Object>)input.get('What');
         Map<String,Object> inputWhere = (Map<String,Object>)input.get('Where');
         Map<String,Object> inputWho = (Map<String,Object>)input.get('Who');
+        Map<String,Object> inputCase = (Map<String,Object>)input.get('NewCase');
         System.debug('inputWhat>>>' + JSON.serialize(inputWhat));
         System.debug('Where>>>' + JSON.serialize(inputWhere));
         System.debug('inputWho>>>' + JSON.serialize(inputWho));
@@ -83,11 +89,10 @@ global without sharing class LPINewCompliantController implements vlocity_ins.Vl
                 Apartment = Block3.containsKey('Apartment') ? (String)Block3.get('Apartment'):'';
                 Additional_Location_Details = Block3.containsKey('Additional_Location_Details') ? (String)Block3.get('Additional_Location_Details'):'';
             }
+            String caseId = (String)inputCase.get('newCaseId');
+
             Case newCase = new Case();
-            newCase.Origin = 'Web';
-            newCase.Status = 'New';
-            //Complaint id
-            newCase.RecordTypeId = '0125f000000uQ46AAE';
+            newCase.Id = caseId;
             newCase.ContactId = con.Id;
             newCase.The_hearing_can_be_done_in_person__c = Radio1;
             newCase.Complaint_with_Licensee__c = Radio2 == 'Yes' ? true : false;
@@ -111,14 +116,28 @@ global without sharing class LPINewCompliantController implements vlocity_ins.Vl
             newCase.Apartment__c = Apartment;
             newCase.Additional_Location_Details__c = Additional_Location_Details;
 
-            insert newCase;
-            System.debug('newCase>>'+newCase.Id);
-            
+            update newCase;
 
         } catch(Exception exp) {
             Database.rollback(sp);
             return exp.getMessage(); 
         }
         return null;
+    }
+    global String createCase(){
+        Savepoint sp = null;
+        
+        try {
+            sp = Database.setSavepoint();
+            Case newCase = new Case();
+            newCase.Origin = 'Web';
+            newCase.Status = 'New';
+            newCase.RecordTypeId = '0125f000000uQ46AAE';
+            insert newCase;
+            return newCase.Id;
+        } catch (Exception exp) {
+            Database.rollback(sp);
+            return exp.getMessage(); 
+        }
     }
 }

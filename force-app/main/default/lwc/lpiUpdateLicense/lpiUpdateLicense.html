@@ -2,8 +2,316 @@
     <div class="slds-card slds-align_absolute-center ">
         <div class="slds-col slds-size_8-of-12 tableData">
 
-            <div class="slds-grid slds-wrap updateLicenseForm">
+            <div class="slds-grid slds-wrap updateLicenseTable">
+                <table>
+                    <tr>
+                        <td colspan="4" class="sectionName">Applicant Information</td>
+                    </tr>
+                    <tr>
+                        <td class="licenseName">Licensee</td>
+                        <td colspan="3">{data.LicenseName}</td>
+                    </tr>
+                    <tr>
+                        <td class="licenseName">Licensee Type</td>
+                        <td colspan="3">{data.LicenseType}</td>
+                    </tr>
+                    <tr>
+                        <td class="licenseName">Licensee Number</td>
+                        <td colspan="3">{data.BusinessLicense}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Updated Contact Information </td>
+                    </tr>
+
+
+                    <tr>
+                        <td ><b>Current Contact Information</b></td>
+                        <td></td>
+                        <td ><b>New Contact Information</b></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Cell Phone </td>
+                        <td> {data.CellPhone}</td>
+                        <td class="licenseName">Cell Phone </td>
+                        <td> {data.CellPhone}</td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">Telephone</td>
+                        <td> {data.TelePhone}</td>
+                        <td class="licenseName">Telephone</td>
+                        <td>
+                            <lightning-input type="tel" name="cell" value={cell} onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Email Address</td>
+                        <td> {data.Email}</td>
+                        <td class="licenseName">Email Address</td>
+                        <td>
+                            <lightning-input type="email" name="email" value={email} onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" class="sectionName">Updated Address Information </td>
+                    </tr>
+
+
+                    <tr>
+                        <td ><b>Current Mailing Address
+                            </b></td>
+                        <td></td>
+                        <td ><b>New Mailing Information
+                            </b></td>
+                        <td></td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="licenseName">Building Number
+                        </td>
+                        <td> {data.MBuilding}</td>
+                        <td class="licenseName">Email Address</td>
+                        <td>
+                            <lightning-input type="text" name="mBuilding" maxlength="20" value={mBuilding}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Street</td>
+                        <td> {data.MStreet}</td>
+                        <td class="licenseName">Street</td>
+                        <td>
+                            <lightning-input type="text" name="mStreet" maxlength="250" value={mStreet}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Apt#</td>
+                        <td> {data.MApt}</td>
+                        <td class="licenseName">Apt#</td>
+                        <td>
+                            <lightning-input type="text" name="mApt" maxlength="20" value={mApt}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">City</td>
+                        <td> {data.MCity}</td>
+                        <td class="licenseName">City</td>
+                        <td>
+                            <lightning-input type="text" name="mCity" maxlength="20" value={mCity}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">State</td>
+                        <td> {data.MState}</td>
+                        <td class="licenseName">State</td>
+                        <td>
+                            <lightning-input type="text" name="mState" maxlength="20" value={mState}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">Zip Code
+                        </td>
+                        <td> {data.MStreet}</td>
+                        <td class="licenseName">Zip Code
+                        </td>
+                        <td>
+                            <lightning-input type="text" name="mStreet" maxlength="250" value={mStreet}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="licenseName">Borough</td>
+                        <td> {data.MBorough}</td>
+                        <td class="licenseName">Borough</td>
+                        <td>
+                            <lightning-input type="text" name="mBorough" maxlength="20" value={mBorough}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+
+
+
+
+
+
+                    <tr>
+                        <td ><b>Current Residence Address
+
+                            </b></td>
+                        <td></td>
+                        <td ><b>New Residence Information
+
+                            </b></td>
+                        <td></td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="licenseName">Building Number
+                        </td>
+                        <td> {data.RBuilding}</td>
+                        <td class="licenseName">Email Address</td>
+                        <td>
+                            <lightning-input type="text" name="rBuilding" maxlength="20" value={rBuilding}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Street</td>
+                        <td> {data.RStreet}</td>
+                        <td class="licenseName">Street</td>
+                        <td>
+                            <lightning-input type="text" name="rStreet" maxlength="250" value={rStreet}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Apt#</td>
+                        <td> {data.rApt}</td>
+                        <td class="licenseName">Apt#</td>
+                        <td>
+                            <lightning-input type="text" name="rApt" maxlength="20" value={rApt}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">City</td>
+                        <td> {data.rCity}</td>
+                        <td class="licenseName">City</td>
+                        <td>
+                            <lightning-input type="text" name="rCity" maxlength="20" value={rCity}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">State</td>
+                        <td> {data.RState}</td>
+                        <td class="licenseName">State</td>
+                        <td>
+                            <lightning-input type="text" name="rState" maxlength="20" value={rState}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="licenseName">Zip Code
+                        </td>
+                        <td> {data.RStreet}</td>
+                        <td class="licenseName">Zip Code
+                        </td>
+                        <td>
+                            <lightning-input type="text" name="rStreet" maxlength="250" value={rStreet}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="licenseName">Borough</td>
+                        <td> {data.RBorough}</td>
+                        <td class="licenseName">Borough</td>
+                        <td>
+                            <lightning-input type="text" name="rBorough" maxlength="20" value={rBorough}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="4" class="sectionName">Updated Contact Information </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Auto Insurance Carrier
+                        </td>
+
+                        <td colspan="3">
+                            <lightning-input type="text" name="AutoInsuranceCarrier" maxlength="100"
+                                value={data.AutoInsuranceCarrier} onchange={handleChange}></lightning-input>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="licenseName">Auto Insurance Policy Number</td>
+                        <td colspan="3">
+                            <lightning-input type="text" name="AutoInsurancePolicy" maxlength="100"
+                                value={data.AutoInsurancePolicy} onchange={handleChange}></lightning-input>
+                        </td>
+                    </tr>
+
+                 
+                </table>
+
+                <div class="clearSpacing">&nbsp;</div>
+                <div class="slds-col slds-size_12-of-12 slds-text-align_right">
+
+                    <a class="secondary_button" onclick={saveRecord}>Save</a>
+                    <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
+                </div>
+                <div class="clearSpacing">&nbsp;</div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<!-- 
+
                 <h3>Applicant Information</h3>
+
+
+               
+
                 <div class="slds-col slds-size_3-of-12">
                     <b>Licensee</b>
                 </div>
@@ -352,11 +660,11 @@
                     <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
                 </div>
                 <div class="clearSpacing">&nbsp;</div>
-            </div>
+            </div> -->
 
 
 
-            <!-- 
+<!-- 
             <table > 
                 <thead class="slds-clearfix">
                     <th class="slds-float_left">
@@ -763,7 +1071,3 @@
                 <a class="primary_button" href="https://mtxlpi.force.com/tlcPortal/s/">Cancel</a>
             </div>
         -->
-
-        </div>
-    </div>
-</template>

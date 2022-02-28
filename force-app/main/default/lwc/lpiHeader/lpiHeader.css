@@ -84,7 +84,7 @@ nav a:hover{
 }
 nav .active{
     color: #000!important;
-    border:1px solid #fc0!important;
+    background: #fff0b4;
 
 }
 .chevrondown svg{

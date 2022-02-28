@@ -14,9 +14,10 @@
 
 .statusDetails .box{
     border-radius: 4px;
-    padding: 20px 16px;
+    padding: 1rem 2rem;
     width: 96%;
     border-bottom: 5px solid #43B100;
+    align-items: center;
 }
 .approvedData{
     background: rgba(67, 177, 0, 0.1);
@@ -50,18 +51,18 @@
 }
 
 .statusDetails .box p{
-    font-size: 12px;
+    font-size: 14px;
     font-weight:500;
 
 }
 
 .statusDetails .box h2{
-    font-size: 22px;
+    font-size: 48px;
     font-weight:500;
 }
 
 .statusDetails .box img{
-    width:55px;
+    width: 50px;
 }
 
 

@@ -59,7 +59,7 @@
 .qauickLinks a{
     padding-right: 16px;
     /* color:#3787FF; */
-    color:#999;
+    color:#505050;
     display: inline-block;
     margin: 2px 0px;
     text-decoration: none;
@@ -70,7 +70,7 @@
 }
 
 .qauickLinks p{
-    color:#999;
+    color:#505050;
     padding: 0px 20px;
     line-height: 20px;
 }

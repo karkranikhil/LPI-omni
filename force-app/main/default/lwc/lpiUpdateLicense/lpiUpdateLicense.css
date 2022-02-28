@@ -12,7 +12,7 @@
 }
 
 
-.updateLicenseForm  .clear{
+.updateLicenseTable  .clear{
     clear: both;
     width: 100%;
     /* margin: 20px 0px; */
@@ -25,7 +25,7 @@
 }
 
 
-.updateLicenseForm  .primary_button{
+.updateLicenseTable  .primary_button{
     padding:10px 3%;
     background:#FFCC00;
     color:#000;
@@ -34,7 +34,7 @@
     font-size: 16px;
     border-radius: 6px;
 }
-.updateLicenseForm .secondary_button{
+.updateLicenseTable .secondary_button{
     padding:10px 3%;
     background:#fff;
     color:#000;
@@ -60,4 +60,39 @@
     clear: both;
     margin: 6px 0px;
     width: 100%;
+}
+
+.licenseName{
+    width:180px;
+}
+
+
+.updateLicenseTable{
+    font-size: 16px;
+}
+
+.updateLicenseTable td {
+    padding: 10px 10px!important;
+}
+.updateLicenseTable input, .updateLicenseTable .slds-form-element  input{
+    background: #fffae6;
+    margin: 0px!important;
+    padding:0px!important;
+}
+
+.updateLicenseTable table  tr:hover, .updateLicenseTable table  td:hover {
+    background: none!important;
+}
+.sectionName{
+    font-size: 18px;
+    font-weight: bold;
+    background: #fffae6;
+}
+.licenseName b{
+    padding: 10px;
+    background: #fff;
+}
+
+.licenseName{
+    background: #fffae6;
 }

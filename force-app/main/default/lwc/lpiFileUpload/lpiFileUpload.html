@@ -1,6 +1,6 @@
 <template>
-    <lightning-file-upload label="" name="fileUploader" accept={acceptedFormats}
-        record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+    <lightning-file-upload label="" name="fileUploader" accept={acceptedFormats} record-id={caseId}
+        onuploadfinished={handleUploadFinished}>
     </lightning-file-upload>
     <div if:true={showFiles}>
         <lightning-card>
@@ -11,13 +11,11 @@
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="fileActions">
-                    <lightning-icon icon-name="utility:delete" size="small"
-                        alternative-text="Delete" title="Delete"
+                    <lightning-icon icon-name="utility:delete" size="small" alternative-text="Delete" title="Delete"
                         class="deleteIcon" onclick={handleDeleteFile}></lightning-icon>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <lightning-icon icon-name="utility:preview" size="small"
-                        alternative-text="Preview" class="previewIcon" title="Preview"
-                        onclick={handlePreviewFile}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-icon icon-name="utility:preview" size="small" alternative-text="Preview"
+                        class="previewIcon" title="Preview" onclick={handlePreviewFile}>
                     </lightning-icon>
 
                 </div>

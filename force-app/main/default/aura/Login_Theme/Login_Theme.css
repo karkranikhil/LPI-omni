@@ -2,7 +2,7 @@
     background: #f9f9f9;
     border-radius: 8px;
     width: 520px;
-    margin: 5% auto 15% auto;
+    margin: 0;
     position: relative;
     padding: 3%;
 }
@@ -13,12 +13,19 @@
        border-radius: 6px!important;
 }
 
+.THIS .loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15%;
+}
+
 .THIS .loginForm button{
     background: #ffcc00!important;
     border-radius: 6px!important;
     border: none;
     padding: 8px 16px;
-    margin: 16px;
+    /* margin: 16px; */
     width: 100%;
     font-weight: 600;
 }
