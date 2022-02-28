@@ -7,8 +7,8 @@ export default class BCDDashboard extends LightningElement {
     @track data = [];
 	@track rawdata = [];
 	@track tempData = [];
-    @track selectedItem = 'VActive';
-    @track currentContent = 'VActive';
+    @track selectedItem;
+    @track currentContent;
 
 	renewURL;
 	DActiveCount = 0;
@@ -59,12 +59,28 @@ export default class BCDDashboard extends LightningElement {
 				}
 			}
 
-			console.log('DActiveCount', this.DActiveCount);
-			console.log('DPendingCount', this.DPendingCount);
-			console.log('DInactiveCount', this.DInactiveCount);
-			console.log('VActiveCount', this.VActiveCount);
-			console.log('VPendingCount', this.VPendingCount);
-			console.log('VInactiveCount', this.VInactiveCount);
+			if(this.VActiveCount > 0){
+				this.selectedItem = 'VActive';
+				this.currentContent = 'VActive';
+			}
+			else if(this.DActiveCount > 0){
+				this.selectedItem = 'DActive';
+				this.currentContent = 'DActive';
+			}
+			else if(this.VPendingCount > 0){
+				this.selectedItem = 'VPending';
+				this.currentContent = 'VPending';
+			}else if(this.DPendingCount > 0){
+				this.selectedItem = 'DPending';
+				this.currentContent = 'DPending';
+			}else if(this.VInactiveCount > 0){
+				this.selectedItem = 'VInactive';
+				this.currentContent = 'VInactive';
+			}else if(this.DInactiveCount > 0){
+				this.selectedItem = 'DInactive';
+				this.currentContent = 'DInactive';
+			}
+
 			this.error = undefined;
 		})
 		.catch(error => {

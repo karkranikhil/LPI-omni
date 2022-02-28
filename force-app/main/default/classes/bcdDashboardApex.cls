@@ -3,21 +3,21 @@ public class bcdDashboardApex {
     public static list<WrapperClass> getDetails(){
         try {
             System.debug('Current User Id - '+UserInfo.getUserId());
-            List<User> us = new List<User>([SELECT Id,ContactId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1]);
+            List<User> us = new List<User>([SELECT Id,ContactId,Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1]);
             if(us.size()>0){
-                String contactID = us[0].ContactId;
+                String accountID = us[0].Contact.AccountId;
                 List<WrapperClass> wc = new List<WrapperClass>();
                 for(BusinessLicense ac :  [SELECT Id,Account.Name,Account.PersonEmail,License_Type__c,Account.TLC_License_number__c,
-                                           PeriodEnd,Status,Regulatory_Authorization_Type__c,Name
+                                           PeriodEnd,Status,RegulatoryAuthorizationType.Name,Name
                                            FROM BusinessLicense 
-                                           WHERE ContactId = :contactID 
-                                           AND Regulatory_Authorization_Type__c IN ('Vehicle License','Driver License','Vehicle Licensing','Driver Licensing')
+                                           WHERE AccountId = :accountID 
+                                           AND RegulatoryAuthorizationType.Name IN ('Vehicle License','Driver License','Vehicle Licensing','Driver Licensing')
                                            AND Status ='Active']){
                     WrapperClass wrapper  = new WrapperClass();
                     wrapper.Id = ac.Id;
                     wrapper.Name = ac.Account.Name;
                     wrapper.Email = ac.Account.PersonEmail;
-                    wrapper.Type = ac.License_Type__c;
+                    wrapper.Type = ac.RegulatoryAuthorizationType.Name;
                     wrapper.status = ac.Status;
                     wrapper.tlcNumber = ac.Name;
 
@@ -79,20 +79,20 @@ public class bcdDashboardApex {
     public static list<WrapperClass> getAllDetails(){
         try {
             System.debug('Current User Id - '+UserInfo.getUserId());
-            List<User> us = new List<User>([SELECT Id,ContactId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1]);
+            List<User> us = new List<User>([SELECT Id,ContactId,AccountId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1]);
             if(us.size()>0){
-                String contactID = us[0].ContactId;
+                String accountID = us[0].AccountId;
                 List<WrapperClass> wc = new List<WrapperClass>();
                 for(BusinessLicense ac :  [SELECT Id,Account.Name,Account.PersonEmail,License_Type__c,Account.TLC_License_number__c,
-                                           PeriodEnd,Status,Regulatory_Authorization_Type__c,Name
+                                           PeriodEnd,Status,Regulatory_Authorization_Type__c,Name,RegulatoryAuthorizationType.Name
                                            FROM BusinessLicense 
-                                           WHERE ContactId = :contactID AND Regulatory_Authorization_Type__c IN ('Vehicle License','Driver License','Vehicle Licensing','Driver Licensing')]){
+                                           WHERE AccountId = :accountID AND RegulatoryAuthorizationType.Name IN ('Vehicle License','Driver License','Vehicle Licensing','Driver Licensing')]){
 
                     WrapperClass wrapper  = new WrapperClass();
                     wrapper.Id = ac.Id;
                     wrapper.Name = ac.Account.Name;
                     wrapper.Email = ac.Account.PersonEmail;
-                    wrapper.Type = ac.Regulatory_Authorization_Type__c;
+                    wrapper.Type = ac.RegulatoryAuthorizationType.Name;
                     wrapper.status = ac.Status;
                     wrapper.tlcNumber = ac.Name;
                     if(ac.PeriodEnd != null){                     

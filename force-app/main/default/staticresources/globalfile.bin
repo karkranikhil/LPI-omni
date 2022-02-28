@@ -1,17 +1,6 @@
 /* Main CSS */
-/* header{
-    background:yellow;
-    button{
-         border:none!important;
-    }
-} */
-/*# sourceMappingURL=globalfile.css.map */
-
 
  header{
     background:yellow;
 
 } 
-button{
-  border:none!important;
-}

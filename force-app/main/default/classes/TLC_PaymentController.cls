@@ -2,9 +2,12 @@ public without sharing class TLC_PaymentController {
 
     @AuraEnabled
     public static List<Settlement__c> fetchSettlements(){
+        Id contactId = [SELECT ContactId FROM User WHERE Id = :UserInfo.getUserId()].ContactId;
         try {
             return [SELECT Id,Summon__r.Name,Business_License__r.Name,Points__c,Fines__r.X1st_Violation__c,Fines__r.X2nd_Violation__c,Fines__r.X3rd_Violation__c,Status__c
-                FROM Settlement__c ORDER BY createdDate DESC LIMIT 20];
+                FROM Settlement__c 
+                WHERE Summon__r.Business_License__r.ContactId = :contactId
+                ORDER BY createdDate DESC LIMIT 20];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -12,9 +15,13 @@ public without sharing class TLC_PaymentController {
 
     @AuraEnabled
     public static List<Summon__c> fetchSummons(){
+        Id contactId = [SELECT ContactId FROM User WHERE Id = :UserInfo.getUserId()].ContactId;
+
         try {
             return [SELECT Id,Business_License__r.Name,Date_of_Offense__c,Date_Issued__c,TLC_Driver_Number__c,TLC_Vehicle_Number__c
-                FROM Summon__c ORDER BY createdDate DESC LIMIT 20];
+                FROM Summon__c
+                WHERE Business_License__r.ContactId = :contactId
+                ORDER BY createdDate DESC LIMIT 20];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
