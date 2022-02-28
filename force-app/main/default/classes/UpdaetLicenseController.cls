@@ -11,30 +11,44 @@ public class UpdaetLicenseController {
             Account.Residence_City__c, Account.Residence_State__c,  Account.Residence_Zip_Code__c,  Account.Residence_Borough__c
             FROM BusinessLicense WHERE ID = :businessLicenseId LIMIT 1]);
            WrapperClass wc = new WrapperClass();
-           wc.accountId = bs[0].Account.Id;
-           wc.BusinessLicense = bs[0].Name;
-           wc.LicenseName = bs[0].Licensee_Name__c;
-           wc.LicenseType = bs[0].RegulatoryAuthorizationType.Name;
+            wc.accountId = bs[0].Account.Id;
+            wc.BusinessLicense = bs[0].Name;
+            wc.LicenseName = bs[0].Licensee_Name__c;
+            wc.LicenseType = bs[0].RegulatoryAuthorizationType.Name;
 
-           wc.CellPhone = bs[0].Account.Cell_Phone__c;
-           wc.TelePhone = bs[0].Account.Telephone__c;
-           wc.Email = bs[0].Account.PersonEmail;
+            wc.CellPhone = bs[0].Account.Cell_Phone__c;
+            wc.TelePhone = bs[0].Account.Telephone__c;
+            wc.Email = bs[0].Account.PersonEmail;
 
-            wc.MBuilding = bs[0].Account.Mailing_Building_Number__c;
-            wc.MStreet = bs[0].Account.PersonMailingStreet;
-            wc.MApt = bs[0].Account.Mailing_Apartment_Number__c;
-            wc.MCity = bs[0].Account.PersonMailingCity;
-            wc.MState = bs[0].Account.PersonMailingState;
-            wc.MZipcode = bs[0].Account.PersonMailingPostalCode;
-            wc.MBorough = bs[0].Account.Mailing_Borough__c;
+                wc.MBuilding = bs[0].Account.Mailing_Building_Number__c;
+                wc.MStreet = bs[0].Account.PersonMailingStreet;
+                wc.MApt = bs[0].Account.Mailing_Apartment_Number__c;
+                wc.MCity = bs[0].Account.PersonMailingCity;
+                wc.MState = bs[0].Account.PersonMailingState;
+                wc.MZipcode = bs[0].Account.PersonMailingPostalCode;
+                wc.MBorough = bs[0].Account.Mailing_Borough__c;
 
-            wc.RBuilding = bs[0].Account.Residence_Building_Number__c;
-            wc.RStreet = bs[0].Account.Residence_Street__c;
-            wc.RApt = bs[0].Account.Residence_Apartment_Number__c;
-            wc.RCity = bs[0].Account.Residence_City__c;
-            wc.RState = bs[0].Account.Residence_State__c;
-            wc.RZipcode = bs[0].Account.Residence_Zip_Code__c;
-            wc.RBorough = bs[0].Account.Residence_Borough__c;
+                wc.RBuilding = bs[0].Account.Residence_Building_Number__c;
+                wc.RStreet = bs[0].Account.Residence_Street__c;
+                wc.RApt = bs[0].Account.Residence_Apartment_Number__c;
+                wc.RCity = bs[0].Account.Residence_City__c;
+                wc.RState = bs[0].Account.Residence_State__c;
+                wc.RZipcode = bs[0].Account.Residence_Zip_Code__c;
+                wc.RBorough = bs[0].Account.Residence_Borough__c;
+
+                System.debug('businessLicenseId'+businessLicenseId);
+                List<PreliminaryApplicationRef> pA = new List<PreliminaryApplicationRef>([SELECT Id,Business_License__c,Auto_Insurance_Carrier__c,Auto_Insurance_Policy_Number__c 
+                FROM PreliminaryApplicationRef WHERE Business_License__c = :businessLicenseId LIMIT 1]);
+
+                System.debug('PreliminaryApplicationRef '+pA.size());
+                
+                if(pA.size()>0){
+                    wc.AutoInsuranceCarrier = pA[0].Auto_Insurance_Carrier__c;
+                    wc.AutoInsurancePolicy = pA[0].Auto_Insurance_Policy_Number__c;
+                }else{
+                    wc.AutoInsuranceCarrier = null;
+                    wc.AutoInsurancePolicy = null;
+                }
             
             return wc;
         } catch (Exception e) {
@@ -43,7 +57,7 @@ public class UpdaetLicenseController {
     }
 
     @AuraEnabled
-    public static string updateLicenseDetails(String accountId, String wrapperString) {
+    public static string updateLicenseDetails(String accountId, String businesslicenceId, String wrapperString) {
         try {
             System.debug('Input Params '+accountId +' wrapperString '+ wrapperString);
             Map<String, Object> wrapData = (Map<String, Object>)JSON.deserializeUntyped(wrapperString);
@@ -120,6 +134,56 @@ public class UpdaetLicenseController {
             }
             
             update acc;
+
+            if(wrapData.containsKey('AutoInsurancePolicy') || wrapData.containsKey('AutoInsuranceCarrier') ){
+                String AutoInsurancePolicy = null;
+                String AutoInsuranceCarrier = null;
+
+                if(wrapData.containsKey('AutoInsurancePolicy') && wrapData.get('AutoInsurancePolicy') != null){
+                   AutoInsurancePolicy = wrapData.get('AutoInsurancePolicy').toString();
+                 }
+     
+                 if(wrapData.containsKey('AutoInsuranceCarrier') && wrapData.get('AutoInsuranceCarrier') != null){
+                    AutoInsuranceCarrier = wrapData.get('AutoInsuranceCarrier').toString();
+                 }
+
+                    if(AutoInsurancePolicy!= null || AutoInsuranceCarrier != null){
+
+                        List<PreliminaryApplicationRef> lpA = new List<PreliminaryApplicationRef>([SELECT Id,Business_License__c,Auto_Insurance_Carrier__c,Auto_Insurance_Policy_Number__c 
+                        FROM PreliminaryApplicationRef WHERE Business_License__c = :businesslicenceId LIMIT 1]);
+    
+                        PreliminaryApplicationRef pA = new PreliminaryApplicationRef();
+    
+                        if(lpA.size()>0){
+
+                            pA.Id = lpA[0].Id;
+
+                            if(AutoInsurancePolicy!= null){
+                                pA.Auto_Insurance_Policy_Number__c = AutoInsurancePolicy;
+                            }
+                           
+                            if(AutoInsuranceCarrier!= null){
+                                pA.Auto_Insurance_Carrier__c = AutoInsuranceCarrier;
+                            }
+                            update pA;
+                        }else{
+                            if(AutoInsurancePolicy!= null){
+                                pA.Auto_Insurance_Policy_Number__c = AutoInsurancePolicy;
+                            }
+                           
+                            if(AutoInsuranceCarrier!= null){
+                                pA.Auto_Insurance_Carrier__c = AutoInsuranceCarrier;
+                            }
+
+                            pA.ApplicationName = 'APP_'+businesslicenceId;
+                            pA.SavedApplicationUrl = 'https://google.com';
+                            pA.ApplicationType = 'IndividualApplication';
+                            pA.RecordTypeId = '0125f000000uQ4IAAU';
+
+                            insert pA;
+                        }
+                }
+            }
             return 'SUCCESS';
         } catch (Exception e) {
             return 'ERROR';
@@ -173,6 +237,9 @@ public class UpdaetLicenseController {
         @AuraEnabled
         public String RBorough;
 
-
+        @AuraEnabled
+        public String AutoInsuranceCarrier;
+        @AuraEnabled
+        public String AutoInsurancePolicy;
     }
 }

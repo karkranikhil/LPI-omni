@@ -27,6 +27,9 @@ export default class LpiUpdateLicense extends LightningElement {
     @track rState;
     @track rZip;
     @track rBorough;
+
+    @track AutoInsurancePolicy;
+    @track AutoInsuranceCarrier;
     
 
     connectedCallback() {
@@ -68,6 +71,8 @@ export default class LpiUpdateLicense extends LightningElement {
             case 'rState': this.rState = event.detail.value; break;
             case 'rZip': this.rZip = event.detail.value; break;
             case 'rBorough': this.rBorough = event.detail.value; break;
+            case 'AutoInsurancePolicy': this.AutoInsurancePolicy = event.detail.value; break;
+            case 'AutoInsuranceCarrier': this.AutoInsuranceCarrier = event.detail.value; break;
             default: break;
         }
 
@@ -92,11 +97,14 @@ export default class LpiUpdateLicense extends LightningElement {
             RCity : this.rCity != null && this.rCity != "" && this.rCity != undefined ? this.rCity : null,
             RState : this.rState != null && this.rState != "" && this.rState != undefined ? this.rState : null,
             RZip : this.rZip != null && this.rZip != "" && this.rZip != undefined ? this.rZip : null,
-            RBorough : this.rBorough != null && this.rBorough != "" && this.rBorough ? this.rBorough : null
+            RBorough : this.rBorough != null && this.rBorough != "" && this.rBorough ? this.rBorough : null,
+            AutoInsurancePolicy : this.AutoInsurancePolicy != null && this.AutoInsurancePolicy != "" && this.AutoInsurancePolicy != undefined ? this.AutoInsurancePolicy : null,
+            AutoInsuranceCarrier : this.AutoInsuranceCarrier != null && this.AutoInsuranceCarrier != "" && this.AutoInsuranceCarrier != undefined ? this.AutoInsuranceCarrier : null
         }
         console.log(JSON.stringify(wrapperString));
         updateLicenseDetails({
             accountId : this.accountId,
+            businesslicenceId : this.parameters.licenseId,
             wrapperString : JSON.stringify(wrapperString)
         }).then( data => {
             if(data == 'SUCCESS'){
