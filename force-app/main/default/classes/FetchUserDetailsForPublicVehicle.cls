@@ -1,32 +1,43 @@
 @JsonAccess(serializable='always')
 global without sharing class FetchUserDetailsForPublicVehicle implements vlocity_ins.VlocityOpenInterface2{
     global String invokeMethod(String methodName, Map<String,Object> input, Map<String,Object> output, Map<String,Object> options) {
+        Boolean create = false;
+        
+        
+        // if(create == false){
+            
+        // }
+        
         if(methodName == 'createNewRecord'){
+            // PreliminaryApplicationRef newObj;
+            // newObj = new PreliminaryApplicationRef();
+            // String ApplicationType = (String)input.get('ApplicationType');
+            // String LicenseType = (String)input.get('LicenseType');
+            // newObj.Application_Type__c = ApplicationType;
+            // newObj.License_Type__c = LicenseType;
+            // newObj.SavedApplicationUrl = 'NewTestURL';
+            // newObj.ApplicationType = 'IndividualApplication';
+            // newObj.ApplicationName = 'Vehicle License Application';
+            // insert newObj;
+            // output.put('objectId',newObj.Id);
+        }
+        if(methodName == 'updateValues'){
             PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
             String ApplicationType = (String)input.get('ApplicationType');
             String LicenseType = (String)input.get('LicenseType');
             newObj.Application_Type__c = ApplicationType;
             newObj.License_Type__c = LicenseType;
-            newObj.SavedApplicationUrl = 'NewTestURL';
+            newObj.SavedApplicationUrl = 'NewTestURL1';
             newObj.ApplicationType = 'IndividualApplication';
             newObj.ApplicationName = 'Vehicle License Application';
             insert newObj;
             output.put('objectId',newObj.Id);
-        }
-        if(methodName == 'updateValues'){
-            // PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
-            // String ApplicationType = (String)input.get('ApplicationType');
-            // String LicenseType = (String)input.get('LicenseType');
-            // newObj.Application_Type__c = ApplicationType;
-            // newObj.Licenswe_Type__c = LicenseType;
-            // newObj.SavedApplicationUrl = 'NAanup';
-            // newObj.ApplicationType = 'IndividualApplication';
-            // newObj.ApplicationName = 'Vehicle License Application';
-            String parId = (String)input.get('parId');
-            System.debug('parId ' + parId);
-            //PreliminaryApplicationRef newObj = [SELECT ID FROM PreliminaryApplicationRef WHERE ID =:id ];
-            PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
-            newObj.Id = parId;
+        
+            // String parId = (String)input.get('parId');
+            // PreliminaryApplicationRef newObj = [SELECT ID FROM PreliminaryApplicationRef WHERE ID =:parId ];
+            // System.debug('parId ' + newObj.Id);
+            //PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
+            //newObj.Id = parId;
 
             Map<String,Object> AppInfo = (Map<String,Object>)input.get('APPLICANT_INFORMATION');
             Map<String,Object> VehInfo = (Map<String,Object>)input.get('VEHICLE_INFORMATION');
@@ -138,7 +149,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
                 PARTNERS_CITY = PARTNERS.containsKey('PARTNERS_CITY') ? (String)PARTNERS.get('PARTNERS_CITY'):'';
                 PARTNERS_STATE = PARTNERS.containsKey('PARTNERS_STATE') ? (String)PARTNERS.get('PARTNERS_STATE'):'';
                 PARTNERS_ZIP = PARTNERS.containsKey('PARTNERS_ZIP') ? (String)PARTNERS.get('PARTNERS_ZIP'):'';
-                PARTNERS_TELEPHONE = PARTNERS.containsKey('PARTNERS_TELEPHONE') ? (String)PARTNERS.get('PARTNERS_TELEPHONE'):'';
+                // PARTNERS_TELEPHONE = PARTNERS.containsKey('PARTNERS_TELEPHONE') ? (String)PARTNERS.get('PARTNERS_TELEPHONE'):'';
                 PARTNERS_OF_SHARES = PARTNERS.containsKey('PARTNERS_OF_SHARES') ? (String)PARTNERS.get('PARTNERS_OF_SHARES'):'';
                 PARTNERS_SS = PARTNERS.containsKey('PARTNERS_SS') ? (String)PARTNERS.get('PARTNERS_SS'):'';
                 PARTNERS_DRIVER_LICENSE = PARTNERS.containsKey('PARTNERS_DRIVER_LICENSE') ? (String)PARTNERS.get('PARTNERS_DRIVER_LICENSE'):'';
@@ -153,7 +164,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
                 OFFICERS_CITY = Block11.containsKey('OFFICERS_CITY') ? (String)Block11.get('OFFICERS_CITY'):'';
                 OFFICERS_STATE = Block11.containsKey('OFFICERS_STATE') ? (String)Block11.get('OFFICERS_STATE'):'';
                 OFFICERS_ZIP = Block11.containsKey('OFFICERS_ZIP') ? (String)Block11.get('OFFICERS_ZIP'):'';
-                OFFICERS_TELEPHONE = Block11.containsKey('OFFICERS_TELEPHONE') ? (String)Block11.get('OFFICERS_TELEPHONE'):'';
+                // OFFICERS_TELEPHONE = Block11.containsKey('OFFICERS_TELEPHONE') ? (String)Block11.get('OFFICERS_TELEPHONE'):'';
                 OFFICERS_OF_SHARES = Block11.containsKey('OFFICERS_OF_SHARES') ? (String)Block11.get('OFFICERS_OF_SHARES'):'';
                 OFFICERS_SS = Block11.containsKey('OFFICERS_SS') ? (String)Block11.get('OFFICERS_SS'):'';
                 OFFICERS_DRIVER_LICENSE = Block11.containsKey('OFFICERS_DRIVER_LICENSE') ? (String)Block11.get('OFFOFFICERS_DRIVER_LICENSEICERS_SS'):'';
@@ -168,7 +179,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
                 STOCKHOLDERS_CITY = STOCKHOLDERS.containsKey('STOCKHOLDERS_CITY') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_CITY'):'';
                 STOCKHOLDERS_STATE = STOCKHOLDERS.containsKey('STOCKHOLDERS_STATE') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_STATE'):'';
                 STOCKHOLDERS_ZIP = STOCKHOLDERS.containsKey('STOCKHOLDERS_ZIP') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_ZIP'):'';
-                STOCKHOLDERS_TELEPHONE = STOCKHOLDERS.containsKey('STOCKHOLDERS_TELEPHONE') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_TELEPHONE'):'';
+                // STOCKHOLDERS_TELEPHONE = STOCKHOLDERS.containsKey('STOCKHOLDERS_TELEPHONE') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_TELEPHONE'):'';
                 STOCKHOLDERS_OF_SHARES = STOCKHOLDERS.containsKey('STOCKHOLDERS_OF_SHARES') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_OF_SHARES'):'';
                 STOCKHOLDERS_SS = STOCKHOLDERS.containsKey('STOCKHOLDERS_SS') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_SS'):'';
                 STOCKHOLDERS_DRIVER_LICENSE = STOCKHOLDERS.containsKey('STOCKHOLDERS_DRIVER_LICENSE') ? (String)STOCKHOLDERS.get('STOCKHOLDERS_DRIVER_LICENSE'):'';
@@ -176,7 +187,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
             //done
             String CHECKBOX,Sign_Name,SignLAO,LOTitle,Date1='';
             if(Block13 != null){
-                CHECKBOX = Block13.containsKey('CHECKBOX') ? (String)Block13.get('CHECKBOX'):'';
+                // CHECKBOX = Block13.containsKey('CHECKBOX') ? (String)Block13.get('CHECKBOX'):'';
                 Sign_Name = Block13.containsKey('Sign_Name') ? (String)Block13.get('Sign_Name'):'';
                 SignLAO = Block13.containsKey('SignLAO') ? (String)Block13.get('SignLAO'):'';
                 LOTitle = Block13.containsKey('LOTitle') ? (String)Block13.get('LOTitle'):'';
@@ -187,12 +198,12 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
            newObj.Vehicle_Type_Id__c = VEHICLE_ID;
            newObj.SEATING_CAPACITY__c = SEATING_CAPACITY;
            newObj.Plate_new__c = PLATE;
-           newObj.YEAR__c = Integer.valueof(YEAR);
+        //    newObj.YEAR__c = Date.valueof(YEAR);
            newObj.MAKE__c = MAKE;
            newObj.HAS_THIS_VEHICLE_BEEN_STRETCHED__c = RadioVI1;
            newObj.IS_THIS_VEHICLE_WHEELCHAIR_ACCESSIBLE__c = RadioVI2;
            newObj.IF_YES_GIVE_THE_NAME_OF_THE_COACH_BUILD__c = TextVI1;
-           newObj.Signature_Date__c = Date.valueOf(Date1);
+        //    newObj.Signature_Date__c = Date.valueOf(Date1);
            newObj.Signature_Title__c = LOTitle;
            newObj.Signature_Name__c = Sign_Name;
            newObj.Signature__c = SignLAO;
@@ -210,6 +221,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
            newObj.Does_this_vehicle_weigh_over_8_500lbs__c = Radio6FH;
            update newObj;
            output.put('updatedObjId',newObj.Id);
+           System.debug('success');
         }
         return null;
     }

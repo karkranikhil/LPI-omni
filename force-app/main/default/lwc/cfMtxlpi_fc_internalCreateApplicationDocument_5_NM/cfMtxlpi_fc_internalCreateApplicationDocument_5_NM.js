@@ -2,18 +2,18 @@ import { FlexCardMixin } from "vlocity_ins/flexCardMixin";
     import {interpolateWithRegex, interpolateKeyValue, fetchCustomLabels, loadCssFromStaticResource } from "vlocity_ins/flexCardUtility";
     
           import { LightningElement, api, track } from "lwc";
-          import { loadStyle } from "lightning/platformResourceLoader";
+          
           import pubsub from "vlocity_ins/pubsub";
           import { OmniscriptBaseMixin } from "vlocity_ins/omniscriptBaseMixin";
           import data from "./definition";
           
           import styleDef from "./styleDefinition";
               
-          export default class cfMtxlpi_fc_internalCreateApplicationDocument extends FlexCardMixin(OmniscriptBaseMixin(LightningElement)){
+          export default class cfMtxlpi_fc_internalCreateApplicationDocument_5_NM extends FlexCardMixin(OmniscriptBaseMixin(LightningElement)){
               @api debug;
               @api recordId;
               @api objectApiName;
-              @track _omniSupportKey = 'cfMtxlpi_fc_internalCreateApplicationDocument';
+              @track _omniSupportKey = 'cfMtxlpi_fc_internalCreateApplicationDocument_5_NM';
                   @api get omniSupportKey() {
                     return this._omniSupportKey;
                   }
@@ -37,15 +37,7 @@ import { FlexCardMixin } from "vlocity_ins/flexCardMixin";
                 
                 
                 this.setDefinition(data);
-                this.setAttribute(
-                  "class",
-                  "card-a6H5f000000LbNdEAK"
-                );
-                this.getCommunityPrefix().then((result) => {
-                  loadStyle(this, result +"/servlet/servlet.FileDownload?file=00P5f00000UdkDWEAZ").then(() =>{
-                    //Loading Custom CSS.
-                  })
-                });
+                
                 
               }
               

@@ -10,7 +10,7 @@ export default class LpiFileUpload extends LightningElement {
     }
 
     get acceptedFormats() {
-        return ['.pdf', '.png', '.pdf'];
+        return ['.pdf', '.png', '.pdf','.JPEG','.jpg'];
     }
     connectedCallback() {
         console.log('CaseId :>> ', this.caseId);

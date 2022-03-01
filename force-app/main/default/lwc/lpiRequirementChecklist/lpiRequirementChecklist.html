@@ -1,0 +1,42 @@
+<template>
+    <div class="mainWraper homePage">
+        <div class="slds-wrap slds-grid ">
+            <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+                <img src={renewal} /> &nbsp;
+                <div class="pageTitle slds-col slds-size_12-of-12">
+                    <h3> Requirement Checklist</h3>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <template for:each={requirementList} for:item="req">
+            <p key={req.Id} style="height:100px" class="slds-box slds-p-around_small">
+                <lightning-layout>
+                    <lightning-layout-item size="2" style="font-size:large">
+                        {req.Id}
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                        <lightning-icon icon-name="utility:task"></lightning-icon>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" style="font-size:large">
+                        {req.Name}
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                        <template if:true={req.Checked}>
+                            <a class="green_button slds-align_absolute-center">Completed</a>
+                        </template>
+                        <template if:false={req.Checked}>
+                            <a class="primary_button slds-align_absolute-center"
+                                href="https://www1.nyc.gov/site/tlc/drivers/get-a-drivers-license.page">Complete
+                                Item</a>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </p>
+        </template>
+        <div class="divider"></div>
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <a class="primary_button slds-float_right" href="https://mtxlpi.force.com/tlcPortal/s/">Back to Home</a>
+        </div>
+    </div>
+</template>

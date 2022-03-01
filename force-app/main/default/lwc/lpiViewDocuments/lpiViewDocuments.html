@@ -6,28 +6,31 @@
         </div>
     </template>
     <template if:false={showSpinner}>
-        <div class="slds-wrap slds-grid ">
-            <div
-                class="slds-col slds-p-around_small mtx_global_table_head slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_12-of-12 slds-size_12-of-12">
-                <table>
-                    <thead>
-                        <th>DOCUMENT NAME</th>
-                        <th>DOCUMENT Type</th>
-                        <th>MAVERICK SCORE</th>
-                    </thead>
-                    <tbody>
-                        <template if:true={showDocument}>
-                            <template for:each={dataList} for:item="data">
-                                <tr key={data.Id}>
-                                    <td>{data.Title}</td>
-                                    <td>{data.FileType}</td>
-                                    <td>98</td>
-                                </tr>
-                            </template>
-                        </template>
-                    </tbody>
-                </table>
+        <!-- <div class="slds-clearfix">
+            <div class="slds-float_right">
+                <button class="slds-button slds-button_brand" onclick={handleClick}>Add New</button>
             </div>
+        </div>
+        </br> -->
+        <div class="slds-wrap slds-grid  documentsView">
+            <table>
+                <thead>
+                    <th>DOCUMENT NAME</th>
+                    <th>DOCUMENT TYPE</th>
+                    <th>MAVERICK SCORE</th>
+                </thead>
+                <tbody>
+                    <template if:true={showDocument}>
+                        <template for:each={dataList} for:item="data">
+                            <tr key={data.Id}>
+                                <td>{data.Title}</td>
+                                <td>{data.FileType}</td>
+                                <td>{data.maverickscore} / 100</td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
         </div>
     </template>
 </template>

@@ -1,0 +1,182 @@
+@font-face{
+    font-family: 'Roboto', sans-serif;
+    src: url("@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Roboto:wght@100;300;400;500;700;900&display=swap')") format('TrueType');
+}
+
+.mainWraper{
+    font-family: 'Roboto', sans-serif;
+   
+}
+/* 
+.content{
+    padding: 0rem 8rem!important;
+} */
+
+.statusDetails .box{
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    width: 96%;
+    border-bottom: 5px solid #43B100;
+    align-items: center;
+}
+.approvedData{
+    background: rgba(67, 177, 0, 0.1);
+    border-color: #43B100!important;
+
+}
+
+.submittedData{
+    background: rgba(0, 123, 236, 0.1);
+    border-color: #007BEC!important;
+
+}
+
+.draftData{
+    background: rgba(255, 204, 0, 0.1);
+    border-color: #FFCC00!important;
+
+}
+
+.expiredData{
+    background: rgba(255, 61, 0, 0.1);
+    border-color: #FF3D00!important;
+
+}
+
+
+.statusDetails .box strong{
+    font-size: 16px;
+    font-weight:500;
+    text-transform: uppercase;
+}
+
+.statusDetails .box p{
+    font-size: 14px;
+    font-weight:500;
+
+}
+
+.statusDetails .box h2{
+    font-size: 48px;
+    font-weight:500;
+}
+
+.statusDetails .box img{
+    width: 50px;
+}
+
+
+td a span{
+    margin-right: 10px;
+    color: #7b7b7b;
+    cursor: none;
+}
+
+
+
+.divider{
+    clear:both;
+    margin:30px 0px;
+}
+.tableData{
+    max-height: 350px;
+    overflow: auto;
+}
+
+
+.primary_button{
+    padding:10px 3%;
+    background:#FFCC00;
+    color:#000;
+    margin:16px;
+    border:1px solid #FFCC00;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.green_button{
+    padding:10px 3%;
+    background: #4bc076;
+    color:white;
+    margin:16px;
+    border:1px solid #4bc076;
+    font-size: 16px;
+    border-radius: 6px;
+
+}
+.secondary_button{
+    padding:10px 3%;
+    background:#fff;
+    color:#000;
+    margin:16px 0px;
+    border:1px solid #FFCC00;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+/* 
+
+.edit{
+    width: 20px!important;
+    --sds-c-icon-color-foreground-default: #3787FF;
+}
+
+.edit svg ,.delete svg{
+    width: 20px!important;
+}
+
+.delete{
+    width: 20px!important;
+    --sds-c-icon-color-foreground-default: #FF3D00;
+} */
+
+
+
+.pageTitle {
+    padding: 1rem 0rem;
+}
+
+.pageTitle h3{
+    font-size:18px;
+    font-weight: 400;
+}
+
+
+.pageTitle p{
+    font-size:16px;
+    font-weight: 400;
+    color:#808080;
+}
+
+.contentRegion{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .THIS .lpiContent{
+        padding: 0rem 1rem!important;
+        
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .THIS .lpiContent{
+        padding: 0rem 2rem!important;
+        
+    }
+
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    .THIS .lpiContent{
+        padding: 0rem 2rem!important;
+        
+    }
+}
+@media screen and (min-width: 1280px) and (max-width: 1439px) {
+    .THIS .lpiContent{
+        padding: 0rem 2rem!important;
+        
+    }
+}
