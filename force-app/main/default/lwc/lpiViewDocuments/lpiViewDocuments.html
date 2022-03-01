@@ -6,26 +6,28 @@
         </div>
     </template>
     <template if:false={showSpinner}>
-        <!-- <div class="slds-clearfix">
-            <div class="slds-float_right">
-                <button class="slds-button slds-button_brand" onclick={handleClick}>Add New</button>
-            </div>
-        </div>
-        </br> -->
         <div class="slds-wrap slds-grid  documentsView">
+
             <table>
                 <thead>
                     <th>DOCUMENT NAME</th>
                     <th>DOCUMENT TYPE</th>
+                    <th>DOCUMENT CATEGORY</th>
                     <th>MAVERICK SCORE</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
                     <template if:true={showDocument}>
                         <template for:each={dataList} for:item="data">
                             <tr key={data.Id}>
-                                <td>{data.Title}</td>
-                                <td>{data.FileType}</td>
+                                <td>{data.Name}</td>
+                                <td>{data.ExtType}</td>
+                                <td>{data.DocType}</td>
                                 <td>{data.maverickscore} / 100</td>
+                                <td>
+                                    <a onclick={previewHandler} name={data.ContentDocumentId}>Preview </a>
+                                    <a onclick={downloadHandler} name={data.Id}> | Download </a>
+                                </td>
                             </tr>
                         </template>
                     </template>

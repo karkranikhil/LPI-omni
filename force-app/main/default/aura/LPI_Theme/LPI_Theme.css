@@ -70,7 +70,7 @@ background:#fff5ce;
 
 }
 
-.THIS  .slds-accordion__summary{
+.THIS  .slds-accordion__summary .slds-button{
     background: #fff2bf;
 }
 .THIS .slds-file-selector__dropzone{
@@ -212,6 +212,11 @@ background:#fff5ce;
 .THIS .paymentPageDetailsTable td{
     background:none!important;
 
+}
+
+.THIS .licensesNav .slds-nav-vertical__item.slds-is-active a {
+    font-weight: bold;
+    box-shadow: inset 0.25rem 0 0 #ffcc00!important;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {

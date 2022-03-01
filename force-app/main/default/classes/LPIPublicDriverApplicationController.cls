@@ -101,7 +101,7 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
         mailingAddressBuildingNumber = (String)inputApply.get('mailingAddress:buildingNumber');
         mailingAddressCity = (String)inputApply.get('mailingAddress:city');
         mailingAddressState = (String)inputApply.get('mailingAddress:state');
-        mailingAddressStreet = (String)inputApply.get('mailingAddress:street');
+        //mailingAddressStreet = (String)inputApply.get('mailingAddress:street');
         mailingAddressZipCode = (String)inputApply.get('mailingAddress:zipCode');
         sameAsMailing = (Boolean)inputApply.get('sameAsMailing');
         sex = (String)inputApply.get('sex');
@@ -136,7 +136,7 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
         acc.Mailing_Borough__c = mailingAddressBorough;
         acc.Mailing_Building_Number__c = mailingAddressBuildingNumber;
         acc.PersonMailingCity = mailingAddressCity;
-        acc.PersonMailingStreet = mailingAddressStreet;
+        //acc.PersonMailingStreet = mailingAddressStreet;
         acc.PersonMailingState = mailingAddressState;
         acc.PersonMailingPostalCode = mailingAddressZipCode;
         acc.Sex__c = sex;

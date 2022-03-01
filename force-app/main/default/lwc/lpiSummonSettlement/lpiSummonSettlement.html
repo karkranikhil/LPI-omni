@@ -46,8 +46,11 @@
             <table>
                 <thead>
                     <th>Summon Number</th>
-                    <th>Points</th>
-                    <th>1st Violation</th>
+                    <th>Pre-Hearing Fees</th>
+                    <th>Pre-Hearing Points</th>
+                    <th>Post-Hearing Fees</th>
+                    <th>Post-Hearing Points</th>
+                    <th>TLC</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
@@ -55,12 +58,16 @@
                     <template for:each={settlements} for:item="settlement">
                         <tr key={settlement.Id}>
                             <td><template if:true={settlement.Summon__c}>{settlement.Summon__r.Name}</template></td>
-                            <td>{settlement.Points__c}</td>
                             <td>
-                                <template if:true={settlement.Fines__c}>
-                                    <template if:true={settlement.Fines__r.X1st_Violation__c}>$ {settlement.Fines__r.X1st_Violation__c}</template>
-                                </template>
+                                <template if:true={settlement.Pre_Hearing_Fee__c}>$ {settlement.Pre_Hearing_Fee__c}</template>
                             </td>
+                            <td>{settlement.Pre_Hearing_Points__c}</td>
+                            <td>
+                                <template if:true={settlement.Post_Hearing_Fee__c}>$ {settlement.Post_Hearing_Fee__c}</template>
+                            </td>
+                            <td>{settlement.Post_Hearing_Points__c}</td>
+
+                            <td>{settlement.TLC__c}</td>
                             <td>{settlement.Status__c}</td>
                             <td>
                                 <button data-id={settlement.Id} data-name="settlement" class="slds-button" onclick={viewSettlement}>View</button> &nbsp;
