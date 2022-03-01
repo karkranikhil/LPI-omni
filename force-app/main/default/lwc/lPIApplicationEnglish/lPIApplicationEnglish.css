@@ -60,6 +60,6 @@
     padding: 0px 10px;
 }
 
-.omniscript-sfl-actions > div:last-of-type {
-    border-right: none
+.omniscript-body{
+  border-right: none!important;
 }

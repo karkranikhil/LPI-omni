@@ -13,31 +13,19 @@ global without sharing class LPINewCompliantController implements vlocity_ins.Vl
         System.debug('inputWhat>>>' + JSON.serialize(inputWhat));
         System.debug('Where>>>' + JSON.serialize(inputWhere));
         System.debug('inputWho>>>' + JSON.serialize(inputWho));
-        // String temp = JSON.serialize(inputWhere);
-        // System.debug('Radio333>>>' + JSON.serialize(inputWhere).Block2);
-        // System.debug('Radio333>>>' + inputWhere.Block2.Radio3);
         Savepoint sp = null;
-        // Boolean isQualified = false;
-        // System.debug('INTO::'+inputSQ);
         try {
             sp = Database.setSavepoint();
+            //contact record
             String fname = (String)inputWho.get('FirstName');
             String lname = (String)inputWho.get('LastName');
             String Email = inputWho.containsKey('Email') ? (String)inputWho.get('Email'):'';
             String phone = inputWho.containsKey('PrimaryPhone') ? (String)inputWho.get('PrimaryPhone'):'';
-
             String AddressLine1 = inputWho.containsKey('AddressLine1') ? (String)inputWho.get('AddressLine1'):'';
             String AddressLine2 = inputWho.containsKey('AddressLine2') ? (String)inputWho.get('AddressLine2'):'';
             String State = inputWho.containsKey('State') ? (String)inputWho.get('State'):'';
             String City = inputWho.containsKey('City') ? (String)inputWho.get('City'):'';
             String Zip = inputWho.containsKey('Zip') ? (String)inputWho.get('Zip'):'';
-            // String AddressLine1 = inputWho.containsKey('Contact_Address-Block') ? (String)((Map<String,Object>)inputWho.get('Contact_Address-Block')).get('AddressLine1'):'';
-
-            // String AddressLine2 = inputWho.containsKey('Contact_Address-Block') ? (String)((Map<String,Object>)inputWho.get('Contact_Address-Block')).get('AddressLine2'):'';
-            // String Country = inputWho.containsKey('Contact_Address-Block') ? (String)((Map<String,Object>)inputWho.get('Contact_Address-Block')).get('Country'):'';
-            // String City = inputWho.containsKey('Contact_Address-Block') ? (String)((Map<String,Object>)inputWho.get('Contact_Address-Block')).get('City'):'';
-            // String Zip = inputWho.containsKey('Contact_Address-Block') ? (String)((Map<String,Object>)inputWho.get('Contact_Address-Block')).get('Zip'):'';
-
 
             Contact con = new Contact();
             con.FirstName = fname;
@@ -50,7 +38,7 @@ global without sharing class LPINewCompliantController implements vlocity_ins.Vl
             con.MailingPostalCode = Zip;
             insert con;
 
-            System.debug('ContactId>>'+con.Id);
+            //Complaint case
             String Radio1,Radio2,Problem_Detail,Driver_Name,License,Description,Date_Observed,Additional_Details,Taxi_Payment_Type,Location_Type,PickUpRadio,DestRadio,PickUp_Location_destination,PickUp_Location_address = '';
             Radio1 = inputWhat.containsKey('Radio1') ? (String)inputWhat.get('Radio1'):'';
             Radio2 = inputWhat.containsKey('Radio2') ? (String)inputWhat.get('Radio2'):'';
@@ -126,7 +114,6 @@ global without sharing class LPINewCompliantController implements vlocity_ins.Vl
     }
     global String createCase(){
         Savepoint sp = null;
-        
         try {
             sp = Database.setSavepoint();
             Case newCase = new Case();

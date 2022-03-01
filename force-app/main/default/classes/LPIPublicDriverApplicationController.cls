@@ -4,7 +4,21 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
         if(methodName == 'createDriverApplication'){
            createIA(input, output);
         }
+        if(methodName == 'createEmptyDriverApplication'){
+            createPRA(input, output);
+        }
         return null;
+    }
+    global void createPRA(Map<String, Object> input, Map<String, Object> output){
+        String applicationType = (String)input.get('applicationType');
+        String licenseType = (String)input.get('licenseType');
+        PreliminaryApplicationRef par = new PreliminaryApplicationRef();
+        par.Application_Type__c = applicationType;
+        par.SavedApplicationUrl = 'N/A';
+        par.ApplicationType = 'IndividualApplication';
+        par.ApplicationName = 'Driver\'s License Application';
+        insert par;
+        output.put('newPARId', par.Id);
     }
     global void createIA(Map<String, Object> input, Map<String, Object> output){
 		Map<String,Object> inputApply = (Map<String,Object>)input.get('apply');
@@ -78,7 +92,10 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
         weight = (Decimal)inputApply.get('weight');
 
         Account acc = new Account();
-        acc.Name = firstName+' '+lastName;
+        //acc.Name = firstName+' '+lastName;
+        //acc.Name='Test';
+        acc.FirstName = firstName;
+        acc.LastName = lastName;
         acc.RecordTypeId = '0125f000000uMBJAA2';
         acc.Cell_Phone__c = cellphone;
         acc.Country_Of_Birth__c = countryOfBirth;
@@ -102,7 +119,8 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
         acc.Telephone__c = telephone;
         acc.Weight_in_lbs__c = weight;
         insert acc;
-
+        system.debug('======'+acc.id);
+		//system.assert(false,acc.id);
         PreliminaryApplicationRef par = new PreliminaryApplicationRef();
         par.Application_Type__c = applicationType;
         par.SavedApplicationUrl = 'N/A';
@@ -138,7 +156,7 @@ global without sharing class LPIPublicDriverApplicationController implements vlo
             par.Received_NYC_TLC_licence_before__c = false;
 
         insert par;
-
+		system.debug('======'+par.Id);
         output.put('newPARId', par.Id);
     }
 }

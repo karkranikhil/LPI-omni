@@ -7,9 +7,27 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
             String LicenseType = (String)input.get('LicenseType');
             newObj.Application_Type__c = ApplicationType;
             newObj.License_Type__c = LicenseType;
-            newObj.SavedApplicationUrl = 'NAanup';
+            newObj.SavedApplicationUrl = 'NewTestURL';
             newObj.ApplicationType = 'IndividualApplication';
             newObj.ApplicationName = 'Vehicle License Application';
+            insert newObj;
+            output.put('objectId',newObj.Id);
+        }
+        if(methodName == 'updateValues'){
+            // PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
+            // String ApplicationType = (String)input.get('ApplicationType');
+            // String LicenseType = (String)input.get('LicenseType');
+            // newObj.Application_Type__c = ApplicationType;
+            // newObj.Licenswe_Type__c = LicenseType;
+            // newObj.SavedApplicationUrl = 'NAanup';
+            // newObj.ApplicationType = 'IndividualApplication';
+            // newObj.ApplicationName = 'Vehicle License Application';
+            String parId = (String)input.get('parId');
+            System.debug('parId ' + parId);
+            //PreliminaryApplicationRef newObj = [SELECT ID FROM PreliminaryApplicationRef WHERE ID =:id ];
+            PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
+            newObj.Id = parId;
+
             Map<String,Object> AppInfo = (Map<String,Object>)input.get('APPLICANT_INFORMATION');
             Map<String,Object> VehInfo = (Map<String,Object>)input.get('VEHICLE_INFORMATION');
             Map<String,Object> BaseAffInfo = (Map<String,Object>)input.get('BASE_AFFILIATION_INFORMATION');
@@ -30,12 +48,13 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
             Map<String,Object> Block11 = (Map<String,Object>)ListOwner.get('Block11');
             Map<String,Object> STOCKHOLDERS = (Map<String,Object>)ListOwner.get('STOCKHOLDERS');
             Map<String,Object> Block13 = (Map<String,Object>)ListOwner.get('Block13');
-
+            //System.debug('run>>> ',JSON.serialize(STOCKHOLDERS););
+            System.debug('>>>>passed line 52');
             String Vehicle_Classification,TLC_License_number,First_name,lastName,DOB,MailAddress,City,State,Zip,Cell_phone,EIN,SS,Email_Address,Other_Telephone,Residence_Address='';
             String City1,State1,Zip1,Business_Type='';
             if (Block1 != null) {
                 Vehicle_Classification = Block1.containsKey('Vehicle_Classification') ? (String)Block1.get('Vehicle_Classification'):'';
-                TLC_License_number = Block1.containsKey('TLC_License_number') ? (String)Block1.get('TLC_License_number'):'';
+                // TLC_License_number = Block1.containsKey('TLC_License_number') ? (String)Block1.get('TLC_License_number'):'';
             }
             if (Block2 != null) {
                 First_name = Block2.containsKey('First_name') ? (String)Block2.get('First_name'):'';
@@ -164,7 +183,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
                 Date1 = Block13.containsKey('Date1') ? (String)Block13.get('Date1'):'';
             }
            // return (String)newObj.id;
-           newObj.Auto_Insurance_Carrier__c = LicenseType;
+           //newObj.Auto_Insurance_Carrier__c = LicenseType;
            newObj.Vehicle_Type_Id__c = VEHICLE_ID;
            newObj.SEATING_CAPACITY__c = SEATING_CAPACITY;
            newObj.Plate_new__c = PLATE;
@@ -180,8 +199,8 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
            newObj.Had_any_type_of_license_suspended__c = Radio7BQ == 'Yes'? true : false;
            newObj.Had_any_NYC_TLC_permit_with_your_name__c = Radio8BQ == 'Yes'? true : false;
            newObj.Applied_for_and_or_received__c = Radio9BQ == 'Yes'? true : false;
-           newObj.BASE_LICENSE__c = Integer.valueof(BASE_LICENSE);
-           newObj.BASE_AUTHORITY_NAME__c = BASE_NAME;
+        //    newObj.BASE_LICENSE__c = Integer.valueof(BASE_LICENSE);
+        //    newObj.BASE_AUTHORITY_NAME__c = BASE_NAME;
            newObj.Business_Type__c = Radio10;
            newObj.SHL_PERMIT__c = SHL_PERMIT;
            newObj.SHL_PERMIT_ENTITY_NAME__c = SHL_PERMIT_ENTITY_NAME;
@@ -189,7 +208,8 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
            newObj.Does_the_vehicle_have_less_than_500__c = Radio4FH;
            newObj.Is_the_vehicle_higher_than_7_feet__c = Radio5FH;
            newObj.Does_this_vehicle_weigh_over_8_500lbs__c = Radio6FH;
-            insert newObj;
+           update newObj;
+           output.put('updatedObjId',newObj.Id);
         }
         return null;
     }
