@@ -274,20 +274,31 @@
                         </tr>
 
                         <tr>
+                            <td><b>Current Information</b></td>
+                            <td></td>
+                            <td><b>New Information</b></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td class="licenseName">Auto Insurance Carrier</td>
+                            <td> {data.AutoInsuranceCarrier}</td>
                             <td class="licenseName">Auto Insurance Carrier
                             </td>
 
                             <td colspan="3">
                                 <lightning-input type="text" name="AutoInsuranceCarrier" maxlength="100"
-                                    value={data.AutoInsuranceCarrier} onchange={handleChange}></lightning-input>
+                                    value={AutoInsuranceCarrier} onchange={handleChange}></lightning-input>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="licenseName">Auto Insurance Policy Number</td>
+                            <td> {data.AutoInsurancePolicy}</td>
+                            <td class="licenseName">Auto Insurance Policy Number</td>
                             <td colspan="3">
                                 <lightning-input type="text" name="AutoInsurancePolicy" maxlength="100"
-                                    value={data.AutoInsurancePolicy} onchange={handleChange}></lightning-input>
+                                    value={AutoInsurancePolicy} onchange={handleChange}></lightning-input>
                             </td>
                         </tr>
 
