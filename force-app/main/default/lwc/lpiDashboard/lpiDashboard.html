@@ -7,7 +7,9 @@
             <div class="pageTitle slds-col slds-size_12-of-12">
 
                 <h3>Dashboard</h3>
-                <p>Welcome to the Licensing permitting & Inspections</p>
+                <!-- <p>Welcome to the Licensing permitting & Inspections</p> -->
+                <p>Welcome to the Licensing permitting & Inspections subheader
+                </p>
             </div>
         </div>
 
@@ -22,7 +24,10 @@
                             <p> Licenses </p>
                         </span>
                     </div>
-                    <div class="slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"><img src={licensing} /></div>
+                    <div
+                        class="slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+                        <img src={licensing} />
+                    </div>
 
                 </div>
             </div>
@@ -32,10 +37,14 @@
                     <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{ActiveVehicleCount}</h2>
                         <span class="slds-m-left_small">
-                        <strong>Active</strong>
-                        <p> Vehicles</p></span>
+                            <strong>Active</strong>
+                            <p> Vehicles</p>
+                        </span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={vehicle} /></div>
+                    <div
+                        class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+                        <img src={vehicle} />
+                    </div>
 
                 </div>
             </div>
@@ -45,10 +54,14 @@
                     <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{PendingRenewalCount}</h2>
                         <span class="slds-m-left_small">
-                        <strong>Pending</strong>
-                        <p> Licenses Renewal</p></span>
+                            <strong>Pending</strong>
+                            <p> Licenses Renewal</p>
+                        </span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={renewal} /></div>
+                    <div
+                        class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+                        <img src={renewal} />
+                    </div>
 
                 </div>
             </div>
@@ -59,10 +72,14 @@
                     <div class=" slds-col slds-size_8-of-12 slds-grid slds-grid_vertical-align-center">
                         <h2>{ExpiringLicenseCount}</h2>
                         <span class="slds-m-left_small">
-                        <strong>Expiring in</strong>
-                        <p>10 Day's</p></span>
+                            <strong>PENDING IN</strong>
+                            <p>10 Days</p>
+                        </span>
                     </div>
-                    <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center"> <img src={date} /></div>
+                    <div
+                        class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+                        <img src={date} />
+                    </div>
 
                 </div>
             </div>
@@ -125,6 +142,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="divider"></div><br /><br />
             <div class="divider"></div>
             <div class="pageTitle slds-col slds-size_12-of-12">
                 <h3>Applications</h3>
@@ -137,6 +155,7 @@
                         <th>Application Type</th>
                         <th>Applied Date</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         <template for:each={appData} for:item="ad">
@@ -145,6 +164,23 @@
                                 <td>{ad.Type}</td>
                                 <td>{ad.licenseDate}</td>
                                 <td>{ad.status}</td>
+                                <td>
+                                    <template if:true={ad.showResumeLink}>
+                                        <a href={ad.resumeLink}>
+                                            Continue
+                                        </a>
+                                    </template>
+                                    <template if:false={ad.showResumeLink}>
+                                        <a href="#">
+                                            View
+                                        </a>
+                                        <a href="https://mtxlpi.force.com/tlcPortal/s/confirmation">
+                                            <span>|</span>
+                                            View Checklist
+                                        </a>
+                                    </template>
+
+                                </td>
                             </tr>
                         </template>
                     </tbody>

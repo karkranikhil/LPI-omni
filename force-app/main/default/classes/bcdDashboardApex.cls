@@ -1,5 +1,30 @@
 public class bcdDashboardApex {
     @AuraEnabled
+    public static List<WrapperClass> getSavedApplications(){
+        try {
+            List<vlocity_ins__OmniScriptInstance__c> savedApps = new List<vlocity_ins__OmniScriptInstance__c>([
+                SELECT Id, CreatedById, vlocity_ins__OmniScriptSubType__c, vlocity_ins__ResumeLink__c, CreatedDate, vlocity_ins__ObjectId__c, vlocity_ins__ObjectName__c
+                FROM vlocity_ins__OmniScriptInstance__c WHERE CreatedById =: UserInfo.getUserId() AND vlocity_ins__Status__c =: 'In Progress' ORDER BY CreatedDate Desc
+            ]);
+            List<WrapperClass> wcList = new List<WrapperClass>();
+            for(vlocity_ins__OmniScriptInstance__c app: savedApps){
+                WrapperClass wc = new WrapperClass();
+                wc.Id = app.vlocity_ins__ObjectName__c;
+                wc.Type = app.vlocity_ins__OmniScriptSubType__c + ' License';
+                wc.status = 'In Progress';              
+                DateTime dT = app.CreatedDate;
+                Date licenseDate = date.newinstance(dT.year(), dT.month(), dT.day());
+                wc.licenseDate = licenseDate;
+                wc.resumeLink = app.vlocity_ins__ResumeLink__c;
+                wc.showResumeLink = true;
+                wcList.add(wc);
+            }
+            return wcList;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    @AuraEnabled
     public static list<WrapperClass> getDetails(){
         try {
             System.debug('Current User Id - '+UserInfo.getUserId());
@@ -133,7 +158,8 @@ public class bcdDashboardApex {
         public String tlcNumber;
         @AuraEnabled
         public String status;
-
+        @AuraEnabled public String resumeLink;
+        @AuraEnabled public Boolean showResumeLink = false;
         @AuraEnabled
         public Boolean Renew;
     }

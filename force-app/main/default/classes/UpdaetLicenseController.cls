@@ -134,8 +134,10 @@ public class UpdaetLicenseController {
             }
             
             update acc;
-
+            System.debug('AUTOINSURANCE >>>> '+ wrapData.containsKey('AutoInsurancePolicy') +' AutoInsuranceCarrier >>>' +wrapData.containsKey('AutoInsuranceCarrier'));
+           
             if(wrapData.containsKey('AutoInsurancePolicy') || wrapData.containsKey('AutoInsuranceCarrier') ){
+                System.debug('INSIDE AUTOINSURANCE');
                 String AutoInsurancePolicy = null;
                 String AutoInsuranceCarrier = null;
 
@@ -167,20 +169,23 @@ public class UpdaetLicenseController {
                             }
                             update pA;
                         }else{
+                            PreliminaryApplicationRef pARec = new PreliminaryApplicationRef();
                             if(AutoInsurancePolicy!= null){
-                                pA.Auto_Insurance_Policy_Number__c = AutoInsurancePolicy;
+                                pARec.Auto_Insurance_Policy_Number__c = AutoInsurancePolicy;
                             }
                            
                             if(AutoInsuranceCarrier!= null){
-                                pA.Auto_Insurance_Carrier__c = AutoInsuranceCarrier;
+                                pARec.Auto_Insurance_Carrier__c = AutoInsuranceCarrier;
                             }
+                            pARec.Business_License__c = businesslicenceId;
+                            pARec.ApplicationName = 'PAR-9999';
+                            pARec.SavedApplicationUrl = 'https://google.com';
+                            pARec.ApplicationType = 'IndividualApplication';
+                            pARec.RecordTypeId = '0125f000000uQ4IAAU';
 
-                            pA.ApplicationName = 'APP_'+businesslicenceId;
-                            pA.SavedApplicationUrl = 'https://google.com';
-                            pA.ApplicationType = 'IndividualApplication';
-                            pA.RecordTypeId = '0125f000000uQ4IAAU';
+                            insert pARec;
 
-                            insert pA;
+                            System.debug('Inserted Record ID >>>>'+pARec.Id);
                         }
                 }
             }

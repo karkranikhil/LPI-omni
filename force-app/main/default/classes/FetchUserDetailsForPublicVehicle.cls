@@ -29,6 +29,7 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
             Map<String,Object> ForHire = (Map<String,Object>)input.get('FOR_HIRE_VEHICLES_ONLY');
             Map<String,Object> BackQues = (Map<String,Object>)input.get('BACKGROUND_QUESTIONNAIRE');
             Map<String,Object> ListOwner = (Map<String,Object>)input.get('LIST_ALL_OWNERS');
+            // Map<String,Object> Consent = (Map<String,Object>)input.get('Consent');
             
             PreliminaryApplicationRef newObj = new PreliminaryApplicationRef();
             Account acc = new Account();
@@ -245,9 +246,11 @@ global without sharing class FetchUserDetailsForPublicVehicle implements vlocity
                 Date1 = Block13.containsKey('Date1') ? (String)Block13.get('Date1'):null;
             }
 
+
             // PAR 
             upsert acc;
-        //    newObj.Auto_Insurance_Carrier__c = LicenseType;
+            // newObj.Signature__c = Consent.containsKey('Signature') ? (String)Consent.get('Signature'):null;
+
             newObj.Id = parId;
            newObj.Vehicle_Type_Id__c = VEHICLE_ID;
            newObj.Auto_Insurance_Policy_Number__c = Insurance_Policy_Number;

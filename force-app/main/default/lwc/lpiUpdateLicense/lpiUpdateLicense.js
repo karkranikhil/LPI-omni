@@ -27,15 +27,18 @@ export default class LpiUpdateLicense extends LightningElement {
     @track rState;
     @track rZip;
     @track rBorough;
+    showSpinner;
 
     @track AutoInsurancePolicy;
     @track AutoInsuranceCarrier;
     
 
     connectedCallback() {
+        this.showSpinner = true;
         this.parameters = this.getQueryParameters();
         console.log(this.parameters);
         this.getDetails();
+        this.showSpinner = false;
     }
 
     getQueryParameters() {
@@ -79,6 +82,7 @@ export default class LpiUpdateLicense extends LightningElement {
     }
 
     saveRecord(event) {
+        this.showSpinner = true;
         console.log('Saving Record');
         var wrapperString = {
             Cell : this.cell != null && this.cell != "" && this.cell != undefined ? this.cell : null,
@@ -121,6 +125,7 @@ export default class LpiUpdateLicense extends LightningElement {
         }).catch(error => {
             console.log(JSON.stringify(error));
             this.getDetails();
+            this.showSpinner = false;
         });
 
     }

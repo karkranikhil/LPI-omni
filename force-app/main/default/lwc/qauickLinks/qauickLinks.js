@@ -12,4 +12,22 @@ export default class AuickLinks extends LightningElement {
         console.log("open License");
         window.open("./license-application", "_self");
     }
+
+    licenseRenewal() {
+        console.log("license Renewal");
+        window.open("./license-renewal", "_self");
+    }
+
+    updateLicense() {
+        console.log("update License");
+        window.open("./update-license", "_self");
+    }
+    summons() {
+        console.log("summons and Settlements");
+        window.open("./summons-and-settlements", "_self");
+    }
+    raiseComplaint() {
+        console.log("open License");
+        window.open("./raise-complaint", "_self");
+    }
 }

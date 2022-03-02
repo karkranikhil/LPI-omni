@@ -1,4 +1,4 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, wire } from "lwc";
 import isGuest from "@salesforce/user/isGuest";
 import NAME_FIELD from "@salesforce/schema/User.Name";
 import USER_ID from "@salesforce/user/Id";
@@ -6,19 +6,14 @@ import basePath from "@salesforce/community/basePath";
 import { getRecord } from "lightning/uiRecordApi";
 import fetchUserDetail from "@salesforce/apex/ManageUserController.fetchUserDetail";
 import lpiLogo from "@salesforce/resourceUrl/lpiLogo";
-import { NavigationMixin } from 'lightning/navigation';
-
-
-
+import { NavigationMixin } from "lightning/navigation";
 
 export default class LpiHeader extends NavigationMixin(LightningElement) {
-
     @track showSpinner;
     @track logo;
     @track profileUrl;
-    value = 'English';
+    value = "English";
     @track name;
-
 
     @wire(getRecord, {
         recordId: USER_ID,
@@ -26,17 +21,16 @@ export default class LpiHeader extends NavigationMixin(LightningElement) {
     })
     wireuser({ error, data }) {
         if (error) {
-            console.log('error :>> ', error);
+            console.log("error :>> ", error);
             // this.showSpinner = false;
         } else if (data) {
             this.name = data.fields.Name.value;
-            console.log('this.name :>> ', this.name);
+            console.log("this.name :>> ", this.name);
             // this.showSpinner = false;
         }
     }
 
     connectedCallback() {
-
         // this.showSpinner = true;
         this.getProfilePicture();
         this.logo = lpiLogo;
@@ -44,16 +38,16 @@ export default class LpiHeader extends NavigationMixin(LightningElement) {
 
     get options() {
         return [
-            { label: 'English', value: 'English' },
-            { label: 'Hindi', value: 'Hindi' },
-            { label: 'Spanish', value: 'Spanish' },
+            { label: "English", value: "English" },
+            { label: "Hindi", value: "Hindi" },
+            { label: "Spanish", value: "Spanish" },
         ];
     }
 
     get license() {
         return [
-            { label: 'View License', value: 'View License' },
-            { label: 'Apply For License', value: 'Apply For License' },
+            { label: "View License", value: "View License" },
+            { label: "Apply For License", value: "Apply For License" },
         ];
     }
 
@@ -67,12 +61,10 @@ export default class LpiHeader extends NavigationMixin(LightningElement) {
 
     get complaints() {
         return [
-            { label: 'Raise a Complaint', value: 'Raise a Complaint' },
-            { label: 'View Complaints', value: 'View Complaints' },
+            { label: "File a Complaint", value: "Raise a Complaint" },
+            { label: "View Complaints", value: "View Complaints" },
         ];
     }
-
-
 
     handleNotification() {
         console.log("Navigate");
@@ -86,22 +78,26 @@ export default class LpiHeader extends NavigationMixin(LightningElement) {
     navigateToPage() {
         window.open("/tlcPortal/s/summons-and-settlements", "_self");
     }
+    reliefPackage() {
+        window.open(
+            "https://www1.nyc.gov/site/tlc/about/taxi-medallion-owner-relief-program.page",
+            "_blank"
+        );
+    }
 
     handleChange(event) {
         this.value = event.detail.value;
-        if (event.target.name == 'license') {
-            if (event.target.value == 'Apply For License') {
+        if (event.target.name == "license") {
+            if (event.target.value == "Apply For License") {
                 window.open("/tlcPortal/s/license-application/", "_self");
-            }
-            else if (event.target.value == 'View License') {
+            } else if (event.target.value == "View License") {
                 window.open("/tlcPortal/s/view-license", "_self");
             }
         }
-        if (event.target.name == 'complaints') {
-            if (event.target.value == 'Raise a Complaint') {
+        if (event.target.name == "complaints") {
+            if (event.target.value == "Raise a Complaint") {
                 window.open("/tlcPortal/s/raise-complaint", "_self");
             }
-            
         }
     }
 

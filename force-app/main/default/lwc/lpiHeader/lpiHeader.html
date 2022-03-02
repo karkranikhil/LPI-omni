@@ -30,14 +30,20 @@
                                 <button class="summonsBtn" onclick={navigateToPage}>Summons & Settlements</button>
                             </span>
                             <span>
-                                <lightning-combobox name="complaints" label="" value={value} placeholder="Complaints"
-                                    options={complaints} class="slds-text-align_left rightSpace"
-                                    onchange={handleChange}>
+                                <lightning-combobox name="File A Complaint" label="" value={value}
+                                    placeholder="Complaints" options={complaints}
+                                    class="slds-text-align_left rightSpace" onchange={handleChange}>
                                 </lightning-combobox>
+                            </span>
+                            <span>
+                                <button class="summonsBtn" onclick={reliefPackage}>Medallion Relief</button>
                             </span>
 
 
                             <!-- 
+                                   <span>
+                                <button class="summonsBtn" onclick={reliefPackage}>Apply for Medallion Relief Package</button>
+                            </span>
                             <a href="">License  <lightning-icon icon-name="utility:chevrondown" class="chevrondown"
                                 alternative-text="Approved"  ></lightning-icon></a>
                             <a href="">Summons/Settlements<lightning-icon icon-name="utility:chevrondown" class="chevrondown"
@@ -61,7 +67,7 @@
                     </span> -->
                     <!-- <span class="line"></span>  -->
                     <template if:false={isGuest}>
-                        <a href="" class="userName">{name}</a>
+                        <a href="/tlcPortal/s/manage-account" class="userName">{name}</a>
                         <span class="dropdown">
                             <span class="slds-avatar  profileImage">
                                 <img src={profileUrl} alt="profile picture">

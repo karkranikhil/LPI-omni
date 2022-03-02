@@ -1,15 +1,14 @@
 trigger UpdateCase on vlocity_ins__OmniScriptInstance__c (After insert, After update) {
-    Map<Id,String> mapCase = new Map<Id,String>();
+    if(Trigger.isAfter && Trigger.isInsert){
+        Map<Id,String> mapCase = new Map<Id,String>();
     List<Case> lstCase = new List<Case>();
-    List<PreliminaryApplicationRef> lstApp = new List<PreliminaryApplicationRef>();
+    
                 system.debug('======= Here I am  ');
 
     for (vlocity_ins__OmniScriptInstance__c instance : trigger.New){
         system.debug(' 1 ======= instance.vlocity_ins__ObjectId__c '+instance.vlocity_ins__ObjectId__c);
 
-        if(instance.vlocity_ins__ObjectId__c != null && (instance.vlocity_ins__ObjectId__c.startsWith('500') || 
-                                                       instance.vlocity_ins__ObjectId__c.startsWith('0go5')
-                                                        )){
+        if(instance.vlocity_ins__ObjectId__c != null && (instance.vlocity_ins__ObjectId__c.startsWith('500') )){
             system.debug('======= instance.vlocity_ins__ObjectId__c '+instance.vlocity_ins__ObjectId__c);
             mapCase.put(instance.vlocity_ins__ObjectId__c,instance.vlocity_ins__ResumeLink__c);
         }
@@ -22,7 +21,7 @@ trigger UpdateCase on vlocity_ins__OmniScriptInstance__c (After insert, After up
             }else {
                     system.debug('MapCase>>>>'+mapCase.get(iterateIds));
                     system.debug('Map>>>>'+mapCase);
-                lstApp.add(new PreliminaryApplicationRef (id=iterateIds, SavedApplicationUrl =mapCase.get(iterateIds)));
+                //lstApp.add(new PreliminaryApplicationRef (id=iterateIds, SavedApplicationUrl =mapCase.get(iterateIds)));
             }
             
         }
@@ -32,8 +31,25 @@ trigger UpdateCase on vlocity_ins__OmniScriptInstance__c (After insert, After up
         system.debug('=========. lstCase '+lstCase);
         update lstCase;
     }
-    if(! lstApp.isEmpty()){
-        update lstApp;
+    }
+    
+    if(Trigger.isAfter && Trigger.isUpdate){
+        Map<Id,String> mapApp = new Map<Id,String>();
+        List<PreliminaryApplicationRef> lstApp = new List<PreliminaryApplicationRef>();
+        for(vlocity_ins__OmniScriptInstance__c instance: trigger.New){
+            if(instance.vlocity_ins__ObjectId__c != null && instance.vlocity_ins__ObjectId__c.startsWith('0go5')){
+                mapApp.put(instance.vlocity_ins__ObjectId__c, instance.vlocity_ins__ResumeLink__c);
+            }
+        }
+        if(!mapApp.isEmpty()){
+            for(Id iteradeId: mapApp.keySet()){
+                String parId = String.valueOf(iteradeId);
+                lstApp.add(new PreliminaryApplicationRef(Id = iteradeId, SavedApplicationUrl = mapApp.get(iteradeId)));
+            }
+        }
+        if(!lstApp.isEmpty()){
+            update lstApp;
+        }
     }
 
 }

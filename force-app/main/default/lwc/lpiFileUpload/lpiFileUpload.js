@@ -2,7 +2,7 @@ import { LightningElement, api, track } from 'lwc';
 
 export default class LpiFileUpload extends LightningElement {
     @api caseId;
-    @api helpText = 'test';
+    @api helpText;
     @track showFiles = false;
     @track fileName;
     @track uploadedFiles;
@@ -15,6 +15,7 @@ export default class LpiFileUpload extends LightningElement {
     }
     connectedCallback() {
         console.log('CaseId :>> ', this.caseId);
+        console.log('object :>> ');
         console.log('helpText :>> ', this.helpText);
     }
     handleUploadFinished(event) {

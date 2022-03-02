@@ -16,7 +16,8 @@
         </div>
 
         <div class="slds-col slds-size_2-of-12 ">
-            <div class="box  slds-text-align_center">
+       
+            <div class="box  slds-text-align_center" onclick={licenseRenewal}>
                 <div class="shape">
                     <img src={renewallicense} />
                 </div>
@@ -28,11 +29,13 @@
                 <a>Medallion</a>
                 <a>SHL Permit Holder</a>
             </div>
+           
         </div>
 
 
         <div class=" slds-col slds-size_2-of-12  ">
-            <div class="box  slds-text-align_center">
+           
+            <div class="box  slds-text-align_center" onclick={updateLicense}>
                 <div class="shape">
                     <img src={updatelicense} />
                 </div>
@@ -42,11 +45,13 @@
                 <a>Vehicle</a>
                 <a>SHL Permit Holder</a>
             </div>
+        
         </div>
 
 
         <div class=" slds-col slds-size_2-of-12  ">
-            <div class="box  slds-text-align_center">
+          
+            <div class="box  slds-text-align_center" onclick={summons}>
                 <div class="shape">
                     <img src={summons} />
                 </div>
@@ -58,17 +63,19 @@
                 <a>Medallion</a>
                 <a>SHL Permit Holder</a>
             </div>
+    
         </div>
 
         <div class=" slds-col slds-size_2-of-12  ">
-            <div class="box  slds-text-align_center">
+            
+            <div class="box  slds-text-align_center" onclick={raiseComplaint}>
                 <div class="shape">
                     <img src={fees} />
                 </div>
                 <h3>File a <br/>complaint</h3>
                 <p>Make a complaint about a car service company's office staff, drivers, or vehicles</p>
             </div>
-
+          
         </div>
     </div>
 </template>
