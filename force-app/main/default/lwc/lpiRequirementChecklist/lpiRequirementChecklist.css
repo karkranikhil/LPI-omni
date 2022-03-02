@@ -96,10 +96,10 @@ td a span{
 
 .green_button{
     padding:10px 3%;
-    background: #4bc076;
-    color:white;
+    /* background: #fff; */
+    color:#4bc076;
     margin:16px;
-    border:1px solid #4bc076;
+    /* border:1px solid #4bc076; */
     font-size: 16px;
     border-radius: 6px;
 
@@ -153,7 +153,88 @@ td a span{
     padding: 0px;
 }
 
+.pageName{
+    background: #fbf8eb;
+    margin: -12px;
+    padding: 10px 15px;
+   position: relative;
+   margin-bottom:20px;
 
+}
+.pageName::before{
+    content:"";
+    background: #fbf8eb;
+    width: 100%;
+    height: 65px;
+    position: absolute;
+    left: -8rem;
+    z-index: -1;
+    top: -2px;
+}
+
+.pageName::after{
+    content:"";
+    background: #fbf8eb;
+    width: 100%;
+    height: 65px;
+    position: absolute;
+    right: -9.5rem;
+    z-index: -1;
+    top: -2px;
+}
+.pageName img{
+    float:left;
+    width: 38px;
+}
+.pageName h3{
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+.requirementListBox{
+    background: #fff;
+    margin: 20px;
+    box-shadow: rgba;
+    box-shadow: 18px 17px 19px rgb(167 167 167 / 25%);
+    border-radius: 6px;
+    padding: 16px;
+    align-items: center;
+    width: 300px;
+    justify-content: center;
+    float: left;
+    border: 1px solid #e9e9e9;
+    min-height: 160px;
+    max-height: 180px;
+    text-align: center;
+}
+.requirementListBox .name{
+    font-size:18px;
+    font-weight:bold;
+    margin: 20px 0px;
+}
+.clear{
+    clear:both;
+}
+a{
+    text-decoration: none;
+}
+.backButton{
+    margin:10px;
+    position:relative;
+    cursor: pointer;
+    padding-left: 30px;
+}
+.backButton:before{
+    content:" ";
+    position:absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #227cd0;
+    left: 11px;
+}
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .THIS .lpiContent{
@@ -161,20 +242,7 @@ td a span{
         
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .THIS .lpiContent{
-        padding: 0rem 2rem!important;
-        
-    }
-
-}
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
-    .THIS .lpiContent{
-        padding: 0rem 2rem!important;
-        
-    }
-}
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
+@media screen and (min-width: 768px)  and (max-width: 1439px) {
     .THIS .lpiContent{
         padding: 0rem 2rem!important;
         

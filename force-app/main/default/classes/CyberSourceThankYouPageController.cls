@@ -501,7 +501,8 @@ public without sharing class CyberSourceThankYouPageController {
                 Req_Reference_Number__c = reqReferenceNumber,
                 transaction_Id__c = params.get('transaction_id') != null ? params.get('transaction_id') + '' : 'Transaction Fail',
                 Fee_Type__c = paymentResponse.paymentType,
-                Mode_Of_Payment__c = paymentResponse.paymentMethod
+                Mode_Of_Payment__c = paymentResponse.paymentMethod,
+                Total_Fee_Amount__c = 598
             );
             
             insert rtxnFee;

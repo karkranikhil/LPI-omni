@@ -75,7 +75,7 @@
     border: 1px solid rgba(255, 230, 0, 0.8);
     border-radius: 12px;
     text-align: center;
-    padding: 8% 30px;
+    padding: 8% 0px;
 }
 .makeaNew h5{
     font-size:18px;
@@ -98,7 +98,11 @@
     background:#FFCC00;
     border:1px solid #FFCC00;
 }
-
+.notes{
+    margin: 10px 0px;
+    display: inline-block;
+    color: #fff;
+}
 .pageTitle {
     padding: 3rem 0rem;
 }

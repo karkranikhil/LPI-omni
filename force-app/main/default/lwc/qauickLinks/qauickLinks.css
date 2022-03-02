@@ -25,7 +25,7 @@
     background: #F9F9F9;
     border:1px solid #F9F9F9;
     position: relative;
-    padding: 2% 14%;
+    padding: 2% 9%;
     max-height: 220px;
     min-height: 220px;
     border-radius: 12px;
@@ -71,7 +71,7 @@
 
 .qauickLinks p{
     color:#505050;
-    padding: 0px 20px;
+    padding: 0px 0px;
     line-height: 20px;
 }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {

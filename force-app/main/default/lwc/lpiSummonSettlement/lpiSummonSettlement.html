@@ -45,29 +45,35 @@
         <div class=" slds-col slds-size_12-of-12">
             <table>
                 <thead>
+                    <th>License Number</th>
                     <th>Summon Number</th>
                     <th>Pre-Hearing Fees</th>
-                    <th>Pre-Hearing Points</th>
+                    <!-- <th>Pre-Hearing Points</th> -->
                     <th>Post-Hearing Fees</th>
-                    <th>Post-Hearing Points</th>
-                    <th>TLC</th>
+                    <!-- <th>Post-Hearing Points</th> -->
+                    <!-- <th>TLC</th> -->
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
                     <template for:each={settlements} for:item="settlement">
                         <tr key={settlement.Id}>
+                            <td>
+                                <template if:true={settlement.Summon__c}>
+                                    <template if:true={settlement.Summon__r.Business_License__c}>{settlement.Summon__r.Business_License__r.Name}</template>
+                                </template>
+                            </td>
                             <td><template if:true={settlement.Summon__c}>{settlement.Summon__r.Name}</template></td>
                             <td>
                                 <template if:true={settlement.Pre_Hearing_Fee__c}>$ {settlement.Pre_Hearing_Fee__c}</template>
                             </td>
-                            <td>{settlement.Pre_Hearing_Points__c}</td>
+                            <!-- <td>{settlement.Pre_Hearing_Points__c}</td> -->
                             <td>
                                 <template if:true={settlement.Post_Hearing_Fee__c}>$ {settlement.Post_Hearing_Fee__c}</template>
                             </td>
-                            <td>{settlement.Post_Hearing_Points__c}</td>
+                            <!-- <td>{settlement.Post_Hearing_Points__c}</td> -->
 
-                            <td>{settlement.TLC__c}</td>
+                            <!-- <td>{settlement.TLC__c}</td> -->
                             <td>{settlement.Status__c}</td>
                             <td>
                                 <button data-id={settlement.Id} data-name="settlement" class="slds-button" onclick={viewSettlement}>View</button> &nbsp;

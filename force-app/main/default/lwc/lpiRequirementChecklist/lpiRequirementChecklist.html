@@ -1,42 +1,76 @@
 <template>
-    <div class="mainWraper homePage">
+    <div >
         <div class="slds-wrap slds-grid ">
-            <div class=" slds-col slds-size_4-of-12 slds-grid_align-center slds-grid slds-grid_vertical-align-center">
+            <div class=" slds-col slds-size_12-of-12 pageName">
                 <img src={renewal} /> &nbsp;
-                <div class="pageTitle slds-col slds-size_12-of-12">
+              
                     <h3> Requirement Checklist</h3>
-                </div>
+              
             </div>
         </div>
         <div class="divider"></div>
+
+        <div class="backButton">
+            <a href="https://mtxlpi.force.com/tlcPortal/s/">
+              Back to Home
+            </a>
+        </div>
+
+
         <template for:each={requirementList} for:item="req">
-            <p key={req.Id} style="height:100px" class="slds-box slds-p-around_small">
-                <lightning-layout>
-                    <lightning-layout-item size="2" style="font-size:large">
+            <div key={req.Id} class="requirementListBox" >
+                                <div>
+                    <lightning-icon icon-name="utility:asset_audit"></lightning-icon>
+                </div>
+                <div class="name">
+                    {req.Name}
+                </div>
+             
+                <div class="clear"></div>
+                <div>
+                    <template if:true={req.Checked}>
+                        <span class="green_button">Completed</span>
+                    </template>
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <template if:false={req.Checked}>
+                        <a class="primary_button "
+                            href="https://www1.nyc.gov/site/tlc/drivers/get-a-drivers-license.page">Complete
+                            Item</a>
+                    </template>
+                </div>
+
+
+                <!-- <lightning-layout class="slds-grid_align-center">
+                   <lightning-layout-item  >
                         {req.Id}
-                    </lightning-layout-item>
-                    <lightning-layout-item size="2">
+                    </lightning-layout-item> 
+                    <lightning-layout-item >
                         <lightning-icon icon-name="utility:task"></lightning-icon>
                     </lightning-layout-item>
-                    <lightning-layout-item size="6" style="font-size:large">
+                    <div class="clear"></div>
+                    <lightning-layout-item  >
                         {req.Name}
                     </lightning-layout-item>
-                    <lightning-layout-item size="2">
+                    <div class="clear"></div>
+                    <lightning-layout-item >
                         <template if:true={req.Checked}>
                             <a class="green_button slds-align_absolute-center">Completed</a>
                         </template>
+                        <div class="clear"></div>
                         <template if:false={req.Checked}>
                             <a class="primary_button slds-align_absolute-center"
                                 href="https://www1.nyc.gov/site/tlc/drivers/get-a-drivers-license.page">Complete
                                 Item</a>
                         </template>
                     </lightning-layout-item>
-                </lightning-layout>
-            </p>
+                </lightning-layout> -->
+            </div>
         </template>
-        <div class="divider"></div>
+        <!-- <div class="divider"></div>
         <div class="slds-align_absolute-center" style="height:5rem">
             <a class="primary_button slds-float_right" href="https://mtxlpi.force.com/tlcPortal/s/">Back to Home</a>
-        </div>
+        </div> -->
     </div>
 </template>

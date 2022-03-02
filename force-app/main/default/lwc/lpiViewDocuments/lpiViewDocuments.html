@@ -10,19 +10,19 @@
 
             <table>
                 <thead>
+                    <th>DOCUMENT CATEGORY</th>
                     <th>DOCUMENT NAME</th>
                     <th>DOCUMENT TYPE</th>
-                    <th>DOCUMENT CATEGORY</th>
                     <th>MAVERICK SCORE</th>
-                    <th>Actions</th>
+                    <th>ACTIONS</th>
                 </thead>
                 <tbody>
                     <template if:true={showDocument}>
                         <template for:each={dataList} for:item="data">
                             <tr key={data.Id}>
+                                <td>{data.DocType}</td>
                                 <td>{data.Name}</td>
                                 <td>{data.ExtType}</td>
-                                <td>{data.DocType}</td>
                                 <td>{data.maverickscore} / 100</td>
                                 <td>
                                     <a onclick={previewHandler} name={data.ContentDocumentId}>Preview </a>

@@ -8,8 +8,7 @@ trigger UpdateCase on vlocity_ins__OmniScriptInstance__c (After insert, After up
         system.debug(' 1 ======= instance.vlocity_ins__ObjectId__c '+instance.vlocity_ins__ObjectId__c);
 
         if(instance.vlocity_ins__ObjectId__c != null && (instance.vlocity_ins__ObjectId__c.startsWith('500') || 
-                                                       instance.vlocity_ins__ObjectId__c.startsWith('0go5') 
-                                                        
+                                                       instance.vlocity_ins__ObjectId__c.startsWith('0go5')
                                                         )){
             system.debug('======= instance.vlocity_ins__ObjectId__c '+instance.vlocity_ins__ObjectId__c);
             mapCase.put(instance.vlocity_ins__ObjectId__c,instance.vlocity_ins__ResumeLink__c);
@@ -21,6 +20,8 @@ trigger UpdateCase on vlocity_ins__OmniScriptInstance__c (After insert, After up
             if(iterateIdSting.startsWith('500')){
                 lstCase.add(new Case(id=iterateIds, Resume_Link__c=mapCase.get(iterateIds)));
             }else {
+                    system.debug('MapCase>>>>'+mapCase.get(iterateIds));
+                    system.debug('Map>>>>'+mapCase);
                 lstApp.add(new PreliminaryApplicationRef (id=iterateIds, SavedApplicationUrl =mapCase.get(iterateIds)));
             }
             

@@ -4,7 +4,7 @@ public without sharing class TLC_PaymentController {
     public static List<Settlement__c> fetchSettlements(){
         Id contactId = [SELECT ContactId FROM User WHERE Id = :UserInfo.getUserId()].ContactId;
         try {
-            return [SELECT Id,Name,Summon__r.Name,Business_License__r.Name,Points__c,Fines__r.X1st_Violation__c,Fines__r.X2nd_Violation__c,Fines__r.X3rd_Violation__c,Status__c,
+            return [SELECT Id,Name,Summon__r.Name,Summon__r.Business_License__r.Name,Points__c,Fines__r.X1st_Violation__c,Fines__r.X2nd_Violation__c,Fines__r.X3rd_Violation__c,Status__c,
                     Post_Hearing_Points__c,Post_Hearing_Fee__c,Pre_Hearing_Points__c,Pre_Hearing_Fee__c,TLC__c
                 FROM Settlement__c 
                 WHERE Summon__r.Business_License__r.ContactId = :contactId

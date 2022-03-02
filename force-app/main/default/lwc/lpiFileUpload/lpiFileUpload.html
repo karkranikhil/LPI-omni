@@ -1,6 +1,7 @@
 <template>
     <lightning-file-upload label="" name="fileUploader" accept={acceptedFormats} record-id={caseId}
         onuploadfinished={handleUploadFinished}>
+        <lightning-helptext content={helpText}></lightning-helptext>
     </lightning-file-upload>
     <div if:true={showFiles}>
         <lightning-card>
