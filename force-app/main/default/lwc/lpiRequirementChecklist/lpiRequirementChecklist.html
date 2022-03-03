@@ -1,48 +1,68 @@
 <template>
-    <div >
-        <div class="slds-wrap slds-grid ">
-            <div class=" slds-col slds-size_12-of-12 pageName">
-                <img src={renewal} /> &nbsp;
-              
+    <template if:true={isVehicle}>
+        <div>
+            <div class="slds-wrap slds-grid ">
+                <div class=" slds-col slds-size_12-of-12 pageName">
+                    <img src={renewal} /> &nbsp;
+
                     <h3> Requirement Checklist</h3>
-              
+
+                </div>
             </div>
-        </div>
-        <div class="divider"></div>
+            <div class="divider"></div>
 
-        <div class="backButton">
-            <a href="https://mtxlpi.force.com/tlcPortal/s/">
-              Back to Home
-            </a>
-        </div>
-
-
-        <template for:each={requirementList} for:item="req">
-            <div key={req.Id} class="requirementListBox" >
-                                <div>
-                    <lightning-icon icon-name="utility:asset_audit"></lightning-icon>
-                </div>
-                <div class="name">
-                    {req.Name}
-                </div>
-             
-                <div class="clear"></div>
-                <div>
-                    <template if:true={req.Checked}>
-                        <span class="green_button">Completed</span>
-                    </template>
-                </div>
-                <div class="clear"></div>
-                <div>
-                    <template if:false={req.Checked}>
-                        <a class="primary_button "
-                            href="https://www1.nyc.gov/site/tlc/drivers/get-a-drivers-license.page">Complete
-                            Item</a>
-                    </template>
-                </div>
+            <div class="backButton">
+                <a href="https://mtxlpi.force.com/tlcPortal/s/">
+                    Back to Home
+                </a>
+            </div>
 
 
-                <!-- <lightning-layout class="slds-grid_align-center">
+            <template for:each={requirementList} for:item="req">
+                <div key={req.Id} class="requirementListBox">
+                    <div>
+                        <lightning-icon icon-name="utility:asset_audit"></lightning-icon>
+                    </div>
+                    <div class="name">
+                        {req.Name}
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div>
+                        <template if:false={req.Checked}>
+                            <!-- <span class="green_button">Completed</span> -->
+                            Due Date : {req.date}
+                        </template>
+
+
+                        <!-- </br> -->
+                        <!-- <span class="green_button"></span> -->
+
+                    </div>
+
+                    </br>
+
+                    <div class="clear"></div>
+
+
+                    <div>
+                        <template if:true={req.Checked}>
+                            <span class="green_button">Completed</span>
+                        </template>
+                    </div>
+                    <div class="clear"></div>
+                    <div>
+                        <template if:false={req.Checked}>
+                            <a class="primary_button "
+                                href="https://www1.nyc.gov/site/tlc/drivers/get-a-drivers-license.page"
+                                target="_blank">Complete
+                                Item</a>
+                        </template>
+                    </div>
+
+
+                    <!-- <lightning-layout class="slds-grid_align-center">
                    <lightning-layout-item  >
                         {req.Id}
                     </lightning-layout-item> 
@@ -66,11 +86,20 @@
                         </template>
                     </lightning-layout-item>
                 </lightning-layout> -->
-            </div>
-        </template>
-        <!-- <div class="divider"></div>
+                </div>
+            </template>
+            <!-- <div class="divider"></div>
         <div class="slds-align_absolute-center" style="height:5rem">
             <a class="primary_button slds-float_right" href="https://mtxlpi.force.com/tlcPortal/s/">Back to Home</a>
         </div> -->
-    </div>
+        </div>
+    </template>
+    <template if:false={isVehicle}>
+        <div class="slds-align_absolute-center" style="height:5rem">
+
+            <p style="color:green; font-size:15px">Congratulations! Your application is submitted successfully.</p>
+
+            <a class="primary_button slds-float_right" href="https://mtxlpi.force.com/tlcPortal/s/">Back to Home</a>
+        </div>
+    </template>
 </template>

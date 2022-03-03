@@ -85,13 +85,13 @@ td a span{
 
 
 .primary_button{
-    padding:10px 3%;
-    background:#FFCC00;
-    color:#000;
-    margin:16px;
-    border:1px solid #FFCC00;
-    font-size: 16px;
-    border-radius: 6px;
+    background: #0070D2;
+    color: white;
+    margin: 16px;
+    font-size: 14px;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
 }
 
 .green_button{
@@ -193,20 +193,17 @@ td a span{
     margin-left: 10px;
 }
 .requirementListBox{
-    background: #fff;
+    background: #fdfdfd;
     margin: 20px;
-    box-shadow: rgba;
-    box-shadow: 18px 17px 19px rgb(167 167 167 / 25%);
-    border-radius: 6px;
+    border-radius: 3px;
     padding: 16px;
     align-items: center;
     width: 300px;
     justify-content: center;
     float: left;
     border: 1px solid #e9e9e9;
-    min-height: 160px;
-    max-height: 180px;
     text-align: center;
+    padding: 2rem;
 }
 .requirementListBox .name{
     font-size:18px;
